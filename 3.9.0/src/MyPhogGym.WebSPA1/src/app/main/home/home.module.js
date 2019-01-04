@@ -6,7 +6,8 @@
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, $translatePartialLoaderProvider, msApiProvider, msNavigationServiceProvider) {
+    function config($stateProvider, $translatePartialLoaderProvider, msApiProvider, msNavigationServiceProvider, $qProvider) {
+        $qProvider.errorOnUnhandledRejections(false);
         // State
         $stateProvider
             .state('app.home', {

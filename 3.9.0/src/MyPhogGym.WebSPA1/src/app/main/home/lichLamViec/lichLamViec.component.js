@@ -145,6 +145,7 @@
 
         function showModal(input) {
             var modalInstance = $uibModal.open({
+                backdrop: false,
                 component: 'lichLamViecCrud',
                 resolve: {
                     lichLamViec: function () {

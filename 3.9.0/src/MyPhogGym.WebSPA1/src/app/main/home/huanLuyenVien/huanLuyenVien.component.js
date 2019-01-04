@@ -107,6 +107,7 @@
 
         function showModal(input) {
             var modalInstance = $uibModal.open({
+                backdrop: false,
                 component: 'huanLuyenVienCrud',
                 resolve: {
                     huanLuyenVien: function () {

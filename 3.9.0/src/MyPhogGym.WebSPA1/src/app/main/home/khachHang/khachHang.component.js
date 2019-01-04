@@ -66,6 +66,7 @@
 
         function showModalThongTinKhachHang(input) {
             var modalInstance = $uibModal.open({
+                backdrop: false,
                 component: 'khachHangCrud',
                 resolve: {
                     khachHang: function () {
@@ -88,6 +89,7 @@
 
         function showDangKyGoiTapModal(input) {
             var modalInstance = $uibModal.open({
+                backdrop: false,
                 component: 'khachHangDangKyGoiTap',
                 resolve: {
                     khachHang: function () {
@@ -106,6 +108,7 @@
 
         function showModalKhachHangDetail(input) {
             var modalInstance = $uibModal.open({
+                backdrop: false,
                 component: 'khachHangDetail',
                 resolve: {
                     khachHang: function () {

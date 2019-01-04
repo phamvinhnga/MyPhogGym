@@ -41,7 +41,6 @@
         }
 
         function soNgayConLai(input) {
-            console.log(input);
             var output;
             switch (input.dichVu.loaiGoi) {
                 case 1:

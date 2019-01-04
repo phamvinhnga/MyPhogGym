@@ -52,6 +52,7 @@
 
         function showModal(input) {
             var modalInstance = $uibModal.open({
+                backdrop: false,
                 component: 'dichVuCrud',
                 resolve: {
                     dichVu: function () {

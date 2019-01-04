@@ -64,6 +64,7 @@
 
         function showModal(input) {
             var modalInstance = $uibModal.open({
+                backdrop: false,
                 component: 'caLamViecCrud',
                 resolve: {
                     caLamViec: function () {
