@@ -1,0 +1,80 @@
+<!--<div class="">
+    <form class="ng-pristine ng-valid" name="loginForm">
+        <div class="modal-header" style="background-color:#4E5966">
+            <h3 style="color:white; margin-top:10px" class="modal-title">Đăng nhập hệ thống</h3>
+        </div>
+        <br />
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div ng-class="!loginForm.usernameOrEmailAddress.$touched ? 'form-group row' : (loginForm.usernameOrEmailAddress.$valid ? 'form-group row has-success has-feedback' : 'form-group row has-error has-feedback') ">
+                        <label for="email">Tên đăng nhập:</label>
+                        <input ng-model="vm.userLogin.usernameOrEmailAddress" name="usernameOrEmailAddress" type="text" class="form-control" required>
+                        <div ng-show="loginForm.usernameOrEmailAddress.$touched" class="text-danger">
+                            <small ng-show="loginForm.usernameOrEmailAddress.$error.required">
+                                Tên đăng nhập không được để trống.
+                            </small>
+                        </div>
+                    </div>
+                    <div ng-class="!loginForm.password.$touched ? 'form-group row' : (loginForm.password.$valid ? 'form-group row has-success has-feedback' : 'form-group row has-error has-feedback') ">
+                        <label for="pwd">Mật khẩu:</label>
+                        <input ng-model="vm.userLogin.password" name="password" type="password" class="form-control" required>
+                        <div ng-show="loginForm.password.$touched" class="text-danger">
+                            <small ng-show="loginForm.password.$error.required">
+                                Mật khẩu không được để trống.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button"
+                    ng-click="vm.login()"
+                    ng-class="!loginForm.$valid ? 'btn btn-success disabled' : 'btn btn-success'"
+                    ng-disabled="!loginForm.$valid">
+                <i class="fa fa-save pr-2"></i>Đăng nhập
+            </button>
+            <button type="button" class="btn btn-danger" ng-click="vm.cancel()"><i class="fa fa-times pr-2"></i>Đóng</button>
+        </div>
+
+    </form>
+</div>-->
+<div class="container-fluid container-login">
+    <div class="container">
+        <div class="content">
+            <form class="login-form" name="loginForm" ng-submit="vm.signIn(vm.userLogin)" style="">
+                <h3 class="form-title font-green ng-scope">Đăng nhập</h3>
+                <div class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button><span class="ng-scope">Nhập thông tin đăng nhập</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9 ng-scope">Tên đăng nhập</label>
+                    <input ng-model="vm.userLogin.usernameOrEmailAddress" name="usernameOrEmailAddress"
+                           required class="form-control ng-empty ng-invalid ng-invalid-required"
+                           type="text" placeholder="Tên đăng nhập">
+                    <div ng-show="loginForm.usernameOrEmailAddress.$touched" class="text-danger">
+                        <div ng-show="loginForm.usernameOrEmailAddress.$error.required" class="ng-scope">Nhập Tên đăng nhập</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9 ng-scope">Mật khẩu</label>
+                    <input ng-model="vm.userLogin.password" name="password" required
+                            class="form-control ng-empty ng-invalid ng-invalid-required"
+                            type="password" placeholder="Mật khẩu">
+                    <div ng-show="loginForm.password.$touched" class="text-danger">
+                        <div ng-show="loginForm.password.$error.required" class="ng-scope">Nhập Mật Khẩu</div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button ng-disabled="!loginForm.$valid"
+                            type="submit" class="btn green uppercase pull-left">Đăng nhập</button>
+                    <a href="home/khach-hang" class="btn default uppercase pull-right">
+                        <i class="fa fa-long-arrow-left"></i>
+                        <span class="ng-scope">Home</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,272 @@
+﻿<is-load-form ng-if="vm.loadForm"></is-load-form>
+<form class="container student-userInfo-course-home" ng-submit="vm.saveObj(studentuserInfoCourseHome)" name="studentuserInfoCourseHome">
+    <info-center-home-component thong-tin-trung-tam="vm.khoaHoc.trungTam"></info-center-home-component>
+    <!-- Học Viên -->
+    <ng-form name="student">
+        <div class="portlet box grey-steel">
+            <div class="portlet-title">
+                <div class="caption  uppercase">
+                    <i class="fa fa-info"></i>Thông Tin Học Viên
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <!-- Họ -->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input padding-l-0" ng-class="vm.requiredFactory.titleInput(student.surname)">
+                            <input autofocus required type="text" ng-disabled="vm.isUserInfor" class="form-control"
+                                name="surname" ng-model="vm.userInfo.hoTenDem" placeholder="Họ" />
+                            <label class="font-dark">Họ <span class="font-red">*</span></label>
+                            <div class="help-block " ng-messages="student.surname.$error" ng-if="student.surname.$dirty || student.surname.$error.required || student.surname.$touched"
+                                role="alert">
+                                <div ng-messages="required">Nhập Họ</div>
+                            </div>
+                            <div ng-if="student.surname.$touched && student.surname.$error.required" class="help-block help-block-error">
+                                Không Được Để Trống
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Họ  -->
+                    <!-- Tên  -->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input padding-l-0" ng-class="vm.requiredFactory.titleInput(student.name)">
+                            <input autofocus required type="text" ng-disabled="vm.isUserInfor" class="form-control"
+                                name="name" ng-model="vm.userInfo.ten" placeholder="Tên" />
+                            <label class="font-dark">Tên <span class="font-red">*</span></label>
+                            <div class="help-block " ng-messages="student.name.$error" ng-if="student.name.$dirty || student.name.$error.required || student.name.$touched"
+                                role="alert">
+                                <div ng-messages="required">Nhập Tên</div>
+                            </div>
+                            <div ng-if="student.name.$touched && student.name.$error.required" class="help-block help-block-error">
+                                Không Được Để Trống
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Tên -->
+                    <!--Mail-->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input padding-l-0" ng-class="vm.requiredFactory.titleMail(student.emailAddress)">
+                            <input autofocus required type="email" name="emailAddress" ng-disabled="vm.isUserInfor"
+                                class="form-control" ng-blur="vm.checkUserName(vm.userInfo.email,$event)" ng-model="vm.userInfo.email"
+                                placeholder="emailAddress" />
+                            <label for="emailAddress" class="font-dark">Email <span class="font-red">*</span></label>
+                            <div class="help-block " ng-messages="student.emailAddress.$error" ng-if="student.emailAddress.$dirty || student.emailAddress.$error.required || student.emailAddress.$touched"
+                                role="alert">
+                                <div ng-messages="required">Email </div>
+                            </div>
+                            <div ng-if="student.emailAddress.$touched && student.emailAddress.$error.required" class="help-block help-block-error">
+                                Không được để trống
+                            </div>
+                            <div ng-if="student.emailAddress.$touched && student.emailAddress.$error.email" class="help-block help-block-error">
+                                Emai Chưa Chính Xác
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Mail -->
+                    <!-- Số Điện Thoại -->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input">
+                            <input autofocus type="text" ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/"
+                                class="form-control" ng-model="vm.userInfo.dienThoai" placeholder="Điện Thoại" />
+                            <label class="font-dark">Điện thoại</label>
+                        </div>
+                    </div>
+                    <!-- /Số Điện Thoại -->
+                    <!-- pass -->
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input" ng-if="!vm.isUserInfor" ng-class="vm.requiredFactory.titlePassWord(studentuserInfoCourseHome.password)">
+                            <input required class="form-control placeholder-no-fix" type="password" autocomplete="off"
+                                name="password" ng-class="vm.touched" ng-model="vm.userInfo.password" placeholder="Nhập Mật Khẩu" />
+                            <label class="font-dark"> Mật Khẩu <span class="font-red">*</span></label>
+                            <div class="help-block " ng-messages="studentuserInfoCourseHome.password.$error" ng-if="studentuserInfoCourseHome.password.$dirty || studentuserInfoCourseHome.password.$error.required || studentuserInfoCourseHome.password.$touched"
+                                role="alert">
+                                <div ng-messages="required">Nhập mật khẩu</div>
+                            </div>
+                            <div ng-if="studentuserInfoCourseHome.password.$touched && studentuserInfoCourseHome.password.$error.required"
+                                class="help-block help-block-error">
+                                Không được để trống
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /pass -->
+                    <!-- confirm pass -->
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input" ng-if="!vm.isUserInfor" ng-class="vm.requiredFactory.titleConfirmPassword(studentuserInfoCourseHome.passwordConfirm)">
+                            <input match="vm.userInfo.password" class="form-control placeholder-no-fix" type="password"
+                                autocomplete="off" ng-model="vm.userInfo.passwordConfirm" name="passwordConfirm"
+                                placeholder="Nhập Lại Mật Khẩu" />
+                            <label class="font-dark">Nhập Lại Mật Khẩu <span class="font-red">*</span></label>
+                            <div class="help-block " ng-messages="studentuserInfoCourseHome.passwordConfirm.$error"
+                                ng-if="studentuserInfoCourseHome.passwordConfirm.$dirty || studentuserInfoCourseHome.passwordConfirm.$error.required || studentuserInfoCourseHome.passwordConfirm.$touched"
+                                role="alert">
+                                <div ng-messages="required">Nhập lại mật khẩu</div>
+                            </div>
+                            <div ng-if="studentuserInfoCourseHome.passwordConfirm.$touched && studentuserInfoCourseHome.passwordConfirm.$error.required"
+                                class="help-block help-block-error">
+                                Không được để trống
+                            </div>
+                            <div ng-if="studentuserInfoCourseHome.passwordConfirm.$touched && studentuserInfoCourseHome.passwordConfirm.$error.match"
+                                class="help-block help-block-error">
+                                Mật Khẩu Không Khớp
+                            </div>
+                        </div>
+                    </div>
+                    <!-- confirm pass -->
+                </div>
+
+            </div>
+        </div>
+    </ng-form>
+    <!-- /học viên -->
+    <!-- Phụ huynh -->
+    <ng-form name="parentForm">
+        <div class="portlet box grey-steel">
+            <div class="portlet-title">
+                <div class="caption uppercase">
+                    <i class="fa fa-info"></i>Thông Tin Phụ Huynh
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row " ng-repeat="parent in vm.parents" ng-class="{'border-t padding-t-20' : !$first}">
+                    <!-- Họ -->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input" ng-class="vm.requiredFactory.titleInput(parentForm.hoTenDem)">
+                            <input autofocus name="hoTenDem" type="text" ng-disabled="parent.userId" ng-required="parent._isRequired" class="form-control"
+                                ng-model="parent.hoTenDem" placeholder="Họ" />
+                            <label class="font-dark">Họ <span ng-if="parent._isRequired" class="font-red">*</span></label>
+                        </div>
+                    </div>
+                    <!-- /Họ -->
+                    <!-- Tên -->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input" ng-class="vm.requiredFactory.titleInput(parentForm.ten)">
+                            <input autofocus ng-disabled="parent.userId" ng-required="parent._isRequired" type="text" class="form-control" ng-model="parent.ten"
+                                placeholder="Tên" name="ten" />
+                            <label class="font-dark">Tên <span ng-if="parent._isRequired" class="font-red">*</span></label>
+                        </div>
+                    </div>
+                    <!-- /Tên -->
+                    <!--Mail-->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input" ng-class="vm.requiredFactory.titleMail(parentForm.email)">
+                            <input autofocus ng-required="parent._isRequired" ng-disabled="parent.userId" name="email" type="email" class="form-control"
+                                ng-model="parent.email" placeholder="Email" />
+                            <label class="font-dark">Email <span ng-if="parent._isRequired" class="font-red">*</span></label>
+                        </div>
+                    </div>
+                    <!-- /Mail -->
+                    <!-- Số Điện Thoại -->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input">
+                            <input autofocus type="text" ng-disabled="parent.userId" class="form-control" ng-model="parent.dienThoai" placeholder="Số Điện Thoại" />
+                            <label class="font-dark">Điện thoại <span ng-if="parent._isRequired" class="font-red">*</span></label>
+                        </div>
+                    </div>
+                    <!-- /Số Điện Thoại -->
+                    <!-- Mối Quan hệ -->
+                    <div class="col-md-3">
+                        <div class="form-group form-md-line-input">
+                            <select class="form-control" ng-disabled="parent.userId" ng-model="parent.loaiQuanHeId">
+                                <option value="{{danhMuc.id}}" ng-repeat="danhMuc in vm.danhMucs">{{danhMuc.name}}</option>
+                            </select>
+                            <label>Mối quan hệ</label>
+                        </div>
+
+                    </div>
+                    <!-- /Mối Quan hệ -->
+                    <!-- pass -->
+                    <div class="col-md-3" ng-if="!parent.userId">
+                        <div class="form-group form-md-line-input" ng-class="vm.requiredFactory.titlePassWord(parentForm.password)">
+                            <input ng-required="parent._isRequired" name="password" class="form-control" type="password"
+                                ng-model="parent.password" placeholder="Nhập Mật Khẩu" />
+                            <label class="font-dark"> Mật Khẩu <span ng-if="parent._isRequired" class="font-red">*</span></label>
+                        </div>
+                    </div>
+                    <!-- /Pass -->
+                    <!-- confirm pass -->
+                    <div class="col-md-3" ng-if="!parent.userId">
+                        <div class="form-group form-md-line-input" ng-class="vm.requiredFactory.titleConfirmPassword(parentForm.passwordConfirm)">
+                            <input match="parent.password" ng-required="parent._isRequired" class="form-control" type="password"
+                                ng-model="parent.passwordConfirm" name="passwordConfirm" placeholder="Nhập Lại Mật Khẩu" />
+                            <label class="font-dark">Nhập Lại Mật Khẩu <span ng-if="parent._isRequired" class="font-red">*</span></label>
+                        </div>
+                    </div>
+                    <!-- confirm pass -->
+                    <confirm-delete name="'Xóa Phụ huynh'" size="'btn-sm btn-outline'" class="pull-right padding-r-15 margin-t-25"  confirm-end="vm.deleteParent($index)"></confirm-delete>
+                </div>
+                <div class="row text-right padding-r-15">
+                    <button class="btn green btn-sm btn-outline" type="button" ng-click="vm.addParent()">Thêm Phụ huynh</button>
+                </div>
+            </div>
+        </div>
+    </ng-form>
+    <!-- /Phụ huynh -->
+    <!-- Đăng ký học -->
+    <div class="portlet box grey-steel">
+        <div class="portlet-title">
+            <div class="caption uppercase">
+                <i class="fa fa-info"></i> Lớp Học
+            </div>
+            <div class="actions font-dark">
+                {{vm.khoaHoc.thoiGianBatDau | date : 'dd/MM/yyyy'}} - {{
+                vm.khoaHoc.thoiGianKetThuc | date :
+                'dd/MM/yyyy'
+                }}
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <pre ng-if="vm.khoaHoc.moTa">{{vm.khoaHoc.moTa}}</pre>
+                <table class="table table-border table-hover">
+                    <thead>
+                        <tr>
+                            <td>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" class="form-control" ng-click="vm.setCheckboxAll()" name="check"
+                                        ng-model="vm.checkboxAll" />
+                                    <span></span>
+                                </label>
+                            </td>
+                            <td>Đối Tượng</td>
+                            <td>Địa Điểm</td>
+                            <td>Môn học</td>
+                            <td>Học Phí</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat-start="diaDiemHoc in vm.khoaHoc.diaDiemHocs" ng-if="false"></tr>
+                        <tr ng-repeat="lopDoiTuong in diaDiemHoc.lopDoiTuongs">
+                            <td>
+                                <label class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" class="form-control" name="check" ng-click="vm.setCheckboxChild(lopDoiTuong.checkbox)"
+                                        ng-model="lopDoiTuong.checkbox" />
+                                    <span></span>
+                                </label>
+                            </td>
+                            <td>
+                                {{lopDoiTuong.doiTuongHoc.loaiDoiTuong.name}}
+                            </td>
+                            <td>
+                                {{diaDiemHoc.diaDiem.diaChi}}
+                            </td>
+                            <td>
+                                <span ng-repeat="chuongTrinhHoc in lopDoiTuong.doiTuongHoc.chuongTrinhHocs">
+                                    <span ng-if="!$first"> - </span>{{chuongTrinhHoc.monHoc.name}}
+                                </span>
+                            </td>
+                            <td>
+                                {{lopDoiTuong.hocPhi | currency : '':'0'}}
+                            </td>
+                        </tr>
+                        <tr ng-repeat-end ng-if="false"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Đăng Ký Học -->
+    <div class="row bg-grey-steel text-center">
+        <button type="submit" ng-disabled="studentuserInfoCourseHome.$invalid || !vm.enableSubmit"  class="btn green">Đăng Ký</button>
+    </div>
+</form>

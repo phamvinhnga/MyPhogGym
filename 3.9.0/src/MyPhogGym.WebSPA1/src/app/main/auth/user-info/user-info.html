@@ -1,0 +1,23 @@
+<div class="user-information">
+    <div class="btn-group" ng-if="vm.isAuthentication()">
+        <a class="btn btn-xs green " data-toggle="dropdown" href="javascript:;" aria-expanded="false">
+            <img alt="" class="img-circle" ng-src="{{vm.currentUser.avatarUrl || vm.settings.layoutPath + '/img/avatar.png'}}">
+            <span class="username username-hide-mobile">{{vm.currentUser.surname}}</span>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a ui-sref="app.work.teacher.teacher-profile">
+                    Profile Giáo Viên
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a ng-click="vm.logout()" class="btn btn-default" ng-if="vm.isAuthentication()">
+        <i class="fa fa-key"></i>
+        <span>Thoát</span>
+    </a>
+
+    <a class="btn red-sunglo" href="{{vm.loginUrl}}" ng-if="!vm.isAuthentication()">
+        <i class="fa fa-key"></i> Đăng nhập
+    </a>
+</div>

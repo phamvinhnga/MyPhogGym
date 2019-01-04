@@ -1,0 +1,13 @@
+.newsfrontend {
+    $news-font-family-default: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+    $news-general-heading-color: #FF0000;
+    $news-general-text-color: darken(#677581, 5%);
+
+    .news {
+        .title {
+            color:$news-general-heading-color;
+            border-left:3px solid $news-general-heading-color;
+        }
+    }
+}

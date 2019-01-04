@@ -1,0 +1,25 @@
+<table class="table table-striped table-bordered table-hover" id="menus">
+    <thead>
+        <tr>
+            <th style="width:20%">Ca Làm Việc</th>
+            <th style="width:20%">Thời Gian Bắt Đầu</th>
+            <th style="width:20%">Thời Gian Kết Thúc</th>
+            <th style="width:20%">Trạng Thái</th>
+            <th style="width:20%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="caLamViec in vm.caLamViecs">
+            <td ng-bind="caLamViec.tenCa"></td>
+            <td ng-bind="caLamViec.batDau"></td>
+            <td ng-bind="caLamViec.ketThuc"></td>
+            <td ng-bind="caLamViec.trangThai == 1 ? 'Hiệu Lực' : 'Hết Hiệu Lực' "></td>
+            <td><a href="" ng-click="vm.showModal(caLamViec)"><i class="fa fa-edit"></i> Chi Tiết</a></td>
+        </tr>
+        <tr ng-if="vm.caLamViecs.length == 0">
+            <td colspan="10">
+                <p style="text-align:center">Không tìm thấy bản ghi nào</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

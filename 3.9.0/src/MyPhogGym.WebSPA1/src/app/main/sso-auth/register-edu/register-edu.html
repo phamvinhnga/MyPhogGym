@@ -1,0 +1,88 @@
+<div class="content">
+    <form class="register-form" name="registerForm" ng-submit="vm.register(registerForm)" novalidate method="post">
+        <h3 class="font-green">Đăng ký</h3>
+        <p class="hint"> Nhập thông tin đăng ký: </p>
+        <div class="form-group" show-errors>
+            <label class="control-label visible-ie8 visible-ie9">Họ và tên</label>
+            <input required class="form-control placeholder-no-fix" type="text" placeholder="Họ và tên" ng-model="vm.form.fullName" name="fullName" />
+            <div class="help-block" ng-messages="registerForm.fullName.$error" ng-show="registerForm.fullName.$dirty || registerForm.$submitted" role="alert">
+                <div ng-message="required">
+                    <span>Nhập Họ và tên</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="control-label visible-ie8 visible-ie9">Email</label>
+                <input required class="form-control placeholder-no-fix" type="text" ng-pattern="/^.+@.+\..+$/" placeholder="Email" ng-model="vm.form.emailAddress" name="emailAddress" />
+                <div class="help-block" ng-messages="registerForm.emailAddress.$error" ng-show="registerForm.emailAddress.$dirty || registerForm.$submitted" role="alert">
+                    <div ng-message="required">
+                        <span>Nhập Email</span>
+                    </div>
+                    <div ng-message="pattern">
+                        <span>Email không chính xác</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label visible-ie8 visible-ie9">Số điện thoại</label>
+                <input required class="form-control placeholder-no-fix" type="text" ng-pattern="/(^\d+$)/" placeholder="Số điện thoại" ng-model="vm.form.phoneNumber" name="phoneNumber" />
+                <div class="help-block" ng-messages="registerForm.phoneNumber.$error" ng-show="registerForm.phoneNumber.$dirty || registerForm.$submitted" role="alert">
+                    <div ng-message="required">
+                        <span>Nhập Số điện thoại</span>
+                    </div>
+                    <div ng-message="pattern">
+                        <span>Số điện thoại không chính xác</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="hint"> Nhập tài khoản đăng ký: </p>
+        <div class="form-group" show-errors>
+            <label class="control-label visible-ie8 visible-ie9">Email / Số điện thoại</label>
+            <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" ng-pattern="/(^.+@.+\..+$)|(^\d+$)/" placeholder="Email / Số điện thoại" ng-model="vm.form.userName" name="userName" />
+            <div class="help-block" ng-messages="registerForm.userName.$error" ng-show="registerForm.userName.$dirty || registerForm.$submitted" role="alert">
+                <div ng-message="required">
+                    <span>Nhập thông tin Email / Số điện thoại</span>
+                </div>
+                <div ng-message="pattern">
+                    <span>Email / Số điện thoại không chính xác</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label visible-ie8 visible-ie9">Mật khẩu</label>
+            <input required class="form-control placeholder-no-fix" type="password" autocomplete="off" id="iPassword" ng-model="vm.form.iPassword" placeholder="Mật khẩu" name="iPassword" />
+            <div class="help-block" ng-messages="registerForm.iPassword.$error" ng-show="registerForm.iPassword.$dirty || registerForm.$submitted" role="alert">
+                <div ng-message="required">
+                    <span>Nhập mật khẩu</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label visible-ie8 visible-ie9">Nhập lại Mật khẩu</label>
+            <input match="vm.form.iPassword" class="form-control placeholder-no-fix" type="password" autocomplete="off" ng-model="vm.form.passwordConfirm" placeholder="Nhập lại Mật khẩu" name="rpassword" />
+            <div class="help-block" ng-messages="registerForm.rpassword.$error" ng-show="registerForm.rpassword.$dirty || registerForm.$submitted" role="alert">
+                <div ng-message="match">
+                    <span>Mật khẩu không khớp</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="mt-checkbox mt-checkbox-outline">
+                <input type="checkbox" name="tnc" ng-model="vm.form.acceptTerm" />
+                Tôi đồng ý với <a href="javascript:;"> edu.trenet.com.vn </a>
+                <span></span>
+            </label>
+            <div id="register_tnc_error"> </div>
+        </div>
+        <div class="form-actions">
+            <a ui-sref="app.auth_login" id="register-back-btn" class="btn green btn-outline">Trở ra</a>
+            <button type="submit" ng-disabled="vm.isSubmiting || !vm.form.acceptTerm" id="register-submit-btn" class="btn btn-success uppercase pull-right">
+                Đăng ký
+            </button>
+        </div>
+        <br />
+        <br />
+    </form>
+</div>

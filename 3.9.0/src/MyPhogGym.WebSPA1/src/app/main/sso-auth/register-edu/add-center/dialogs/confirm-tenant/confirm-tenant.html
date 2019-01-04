@@ -1,0 +1,28 @@
+<form role="form" name="trungTamDialog" novalidate>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.dismiss()"></button>
+        <h3 class="modal-title font-dark">
+            Xác Thực Mã
+        </h3>
+    </div>
+    <div class="modal-body row-space-1 pre-scrollable" perfect-scrollbar>
+        <div class="form-body">
+            <span>Mã <b>{{vm.resolve.code}}</b> đã được tồn tại</span> <br />
+            <span>Bạn Có Muốn Gia Nhập Tổ Chức Có Mã {{vm.resolve.code}} Không</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-actions">
+            <div class="btn-set pull-left">
+                <button type="button"
+                        ng-click="vm.submit(false)"
+                        class="btn sbold uppercase btn-outline green-steel">
+                    Không Phải Tôi
+                </button>
+            </div>
+            <button class="btn-set pull-right btn green" type="button" ng-click="vm.submit(true)">
+                    <i class="fa fa-key"></i> Gia Nhập
+            </button>
+        </div>
+    </div>
+</form>

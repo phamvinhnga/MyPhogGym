@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col col-md-10">
+        <div class="btn-set pull-left">
+            <button autofocus="" ng-click="vm.showModal({})" ladda="vm.loading" data-style="slide-right" class="btn sbold green ladda-button">
+                <span class="ladda-label">
+                    Tạo Gói Tập
+                    <i class="fa fa-plus"></i>
+                </span><span class="ladda-spinner"></span>
+            </button>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group form-md-line-input padding-t-0 marrgin-b-0">
+            <div class="input-group">
+                <input ng-change="vm.filterData()" ng-model="vm.filter.keySearch"
+                       type="text" placeholder="Tìm kiếm"
+                       class="form-control ng-valid ng-touched ng-dirty ng-valid-parse ng-empty" style="">
+                <label></label><span class="input-group-addon">
+                    <i class="fa fa-search font-size-18"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+

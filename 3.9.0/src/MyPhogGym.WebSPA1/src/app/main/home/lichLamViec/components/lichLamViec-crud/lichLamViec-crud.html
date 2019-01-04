@@ -1,0 +1,202 @@
+<div class="modal-content" ng-init="vm.get()">
+    <div class="ng-scope ng-isolate-scope">
+        <form name="crudForm" role="form" class="application-dialog-form ng-pristine ng-invalid ng-invalid-required" ng-submit="vm.update()">
+            <div class="portlet box grey-steel">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.dismiss()"
+                        style="margin-right:10px; margin-top:15px"></button>
+                <div class="portlet-title">
+                    <div class="caption  uppercase">
+                        <i class="glyphicon glyphicon-equalizer"></i>Thông Tin Huấn Luyện Viên
+                    </div>
+                </div>
+                <div class="portlet-body" style="height:70px">
+                    <div class="row">
+                        <!--id huấn luyện viên-->
+                        <div class="col-md-6">
+                            <div class="form-group form-md-line-input">
+                                <div class="input-icon">
+                                    <input type="hidden" ng-model="vm.lichLamViec.id">
+                                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off"
+                                           name="huanLuyenVienID" ng-model="vm.lichLamViec.iD_HLV"
+                                           placeholder="xxxxx-xxx-xxx-xxx-xxx" readonly />
+                                    <label class="font-dark"> ID Huấn Luyện Viên <span class="font-red">*</span></label>
+                                    <i class="fa fa-key"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end id huấn luyện viên-->
+                        <!--tên huấn luyện viên-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.tenHuanLuyenVien)">
+                                <select ng-change="vm.lichLamViec.iD_HLV = vm.huanLuyenVienID.id"
+                                        autofocus=""
+                                        class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                        required="" name="tenHuanLuyenVien"
+                                        ng-model="vm.huanLuyenVienID" ng-options="option.hoTen for option in vm.huanLuyenViens"
+                                        placeholder="Chọn huấn luyện viên" style=""></select>
+                                <label class="font-dark">Họ Tên <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end tên huấn luyện viên-->
+                    </div>
+                </div>
+            </div>
+            <div class="portlet box grey-steel">
+                <div class="portlet-title">
+                    <div class="caption uppercase">
+                        <i class="fa fa-info"></i> Ca Làm Việc
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <table class="table table-border table-hover">
+                            <thead>
+                                <tr>
+                                    <td>Ca Làm Việc</td>
+                                    <td>Thứ 2</td>
+                                    <td>Thứ 3</td>
+                                    <td>Thứ 4</td>
+                                    <td>Thứ 5</td>
+                                    <td>Thứ 6</td>
+                                    <td>Thứ 7</td>
+                                    <td>Chủ nhật</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in vm.caLamViecs">
+                                    <td ng-bind="item.tenCa"></td>
+                                    <td>
+                                        <div class="md-checkbox">
+                                            <input ng-model="item.days.thuHai"
+                                                   ng-checked="item.days.thuHai"
+                                                   id="{{ item.id + '_thuHai'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.id + '_thuHai'  }}">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="md-checkbox">
+                                            <input ng-model="item.days.thuBa"
+                                                   ng-checked="item.days.thuBa"
+                                                   id="{{ item.id + '_thuBa'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.id + '_thuBa'  }}">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="md-checkbox">
+                                            <input ng-model="item.days.thuTu"
+                                                   ng-checked="item.days.thuTu"
+                                                   id="{{ item.id + '_thuTu'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.id + '_thuTu'  }}">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="md-checkbox">
+                                            <input ng-model="item.days.thuNam"
+                                                   ng-checked="item.days.thuNam"
+                                                   id="{{ item.id + '_thuNam'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.id + '_thuNam'  }}">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="md-checkbox">
+                                            <input ng-model="item.days.thuSau"
+                                                   ng-checked="item.days.thuSau"
+                                                   id="{{ item.id + '_thuSau'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.id + '_thuSau'  }}">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="md-checkbox">
+                                            <input ng-model="item.days.thuBay"
+                                                   ng-checked="item.days.thuBay"
+                                                   id="{{ item.id + '_thuBay'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.id + '_thuBay'  }}">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="md-checkbox">
+                                            <input ng-model="item.days.chuNhat"
+                                                   ng-checked="item.days.chuNhat"
+                                                   id="{{ item.id + '_chuNhat'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.id + '_chuNhat'  }}">
+                                                <span class="check"></span>
+                                                <span class="box"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-actions">
+                    <div class="btn-set pull-left" ng-show="!vm.isConfirm">
+                        <button ng-disabled="!crudForm.$valid"
+                                autofocus="" type="submit" class="btn green left ng-scope ladda-button" ladda="vm.saving" data-style="expand-left">
+                            <span class="ladda-label">
+                                Lưu thông tin <i class="fa fa-save"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+
+                        <button type="button" autofocus=""
+                                ng-show="vm.showButtonDelete()"
+                                ng-click="vm.isDelete()"
+                                class="btn red left ng-scope ladda-button"
+                                ladda="vm.saving" data-style="expand-left">
+                            <span class="ladda-label">
+                                Xóa <i class="fa fa-recycle"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                    </div>
+                    <!--confirm-->
+                    <div class="btn-set pull-left" ng-show="vm.isConfirm">
+                        <button autofocus=""
+                                type="button"
+                                class="btn red left ng-scope ladda-button"
+                                ladda="vm.saving"
+                                data-style="expand-left"
+                                ng-click="vm.confirmDelete(vm.lichLamViec)">
+                            <span class="ladda-label">
+                                Chắc chắn xóa <i class="fa fa-recycle"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                        <button ng-click="vm.isDelete()"
+                                autofocus=""
+                                type="button"
+                                class="btn info left ng-scope ladda-button"
+                                ladda="vm.saving"
+                                data-style="expand-left">
+                            <span class="ladda-label">
+                                Quay lại <i class="fa fa-reply"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                    </div>
+                    <!--end confirm-->
+                    <div class="btn-set pull-right">
+                        <button ng-click="vm.dismiss()" autofocus="" type="button" class="btn dark btn-outline left" data-dismiss="modal" aria-hidden="false">Đóng <i class="fa fa-close"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

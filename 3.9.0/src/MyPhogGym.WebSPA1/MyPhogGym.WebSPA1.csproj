@@ -1,0 +1,602 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{366F17A0-D7A5-4C9B-930E-C9D88A74E0EE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyPhogGym.WebSPA1</RootNamespace>
+    <AssemblyName>MyPhogGym.WebSPA1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gulpfile.js" />
+    <Content Include="gulp\build.js" />
+    <Content Include="gulp\conf.js" />
+    <Content Include="gulp\deploy.js" />
+    <Content Include="gulp\e2e-tests.js" />
+    <Content Include="gulp\inject.js" />
+    <Content Include="gulp\scripts.js" />
+    <Content Include="gulp\server.js" />
+    <Content Include="gulp\styles.js" />
+    <Content Include="gulp\unit-tests.js" />
+    <Content Include="gulp\watch.js" />
+    <Content Include="karma.conf.js" />
+    <Content Include="protractor.conf.js" />
+    <Content Include="src\app\core\core.config.js" />
+    <Content Include="src\app\core\core.module.js" />
+    <Content Include="src\app\core\core.run.js" />
+    <Content Include="src\app\core\directives\highlight.directive.js" />
+    <Content Include="src\app\core\directives\ms-datepicker-fix\ms-datepicker-fix.directive.js" />
+    <Content Include="src\app\core\filters\altDate.filter.js" />
+    <Content Include="src\app\core\filters\basic.filter.js" />
+    <Content Include="src\app\core\filters\filterByIds.filter.js" />
+    <Content Include="src\app\core\filters\filterByPropIds.filter.js" />
+    <Content Include="src\app\core\filters\tag.filter.js" />
+    <Content Include="src\app\core\services\api-resolver.service.js" />
+    <Content Include="src\app\core\services\ms-api.provider.js" />
+    <Content Include="src\app\core\services\ms-navigation.provider.js" />
+    <Content Include="src\app\core\services\ms-utils.service.js" />
+    <Content Include="src\app\index.api.js" />
+    <Content Include="src\app\index.config.js" />
+    <Content Include="src\app\index.constants.js" />
+    <Content Include="src\app\index.module.js" />
+    <Content Include="src\app\index.route.js" />
+    <Content Include="src\app\index.run.js" />
+    <Content Include="src\app\main\auth2\user-info\user-info.component.js" />
+    <Content Include="src\app\main\auth2\user-info\user-info.html" />
+    <Content Include="src\app\main\auth2\user-login\user-login.component.js" />
+    <Content Include="src\app\main\auth2\user-login\user-login.html" />
+    <Content Include="src\app\main\auth\auth.module.js" />
+    <Content Include="src\app\main\auth\components\abp.oauth.module.js" />
+    <Content Include="src\app\main\auth\components\oauth.module.js" />
+    <Content Include="src\app\main\auth\user-info\user-info.component.js" />
+    <Content Include="src\app\main\auth\user-info\user-info.html" />
+    <Content Include="src\app\main\auth\user-login\user-login.component.js" />
+    <Content Include="src\app\main\auth\user-login\user-login.html" />
+    <Content Include="src\app\main\home\caLamViec\components\caLamViec-crud\caLamViec-crud.component.js" />
+    <Content Include="src\app\main\home\caLamViec\components\caLamViec-crud\caLamViec-crud.html" />
+    <Content Include="src\app\main\home\caLamViec\partials\action.html" />
+    <Content Include="src\app\main\home\caLamViec\partials\table.html" />
+    <Content Include="src\app\main\home\caLamViec\caLamViec.component.js" />
+    <Content Include="src\app\main\home\caLamViec\caLamViec.html" />
+    <Content Include="src\app\main\home\dichVu\components\dichVu-crud\dichVu-crud.component.js" />
+    <Content Include="src\app\main\home\dichVu\components\dichVu-crud\dichVu-crud.html" />
+    <Content Include="src\app\main\home\dichVu\dichVu.html" />
+    <Content Include="src\app\main\home\dichVu\partials\action.html" />
+    <Content Include="src\app\main\home\dichVu\partials\table.html" />
+    <Content Include="src\app\main\home\khachHang\components\dangKyGoiTap\dangKyGoiTap.component.js" />
+    <Content Include="src\app\main\home\khachHang\components\dangKyGoiTap\dangKyGoiTap.html" />
+    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\detail.html" />
+    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\detail.component.js" />
+    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\khachHang-crud.html" />
+    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\khachHang-crud.component.js" />
+    <Content Include="src\app\main\home\khachHang\khachHang.component.js" />
+    <Content Include="src\app\main\home\khachHang\khachHang.html" />
+    <Content Include="src\app\main\home\khachHang\partials\action.html" />
+    <Content Include="src\app\main\home\khachHang\partials\table.html" />
+    <Content Include="src\app\main\home\lichLamViec\components\lichLamViec-crud\lichLamViec-crud.html" />
+    <Content Include="src\app\main\home\lichLamViec\components\lichLamViec-crud\lichLamViec-crud.component.js" />
+    <Content Include="src\app\main\home\lichLamViec\partials\action.html" />
+    <Content Include="src\app\main\home\lichLamViec\partials\pagination.html" />
+    <Content Include="src\app\main\home\lichLamViec\partials\table.html" />
+    <Content Include="src\app\main\home\lichLamViec\lichLamViec.html" />
+    <Content Include="src\app\main\home\huanLuyenVien\components\huanLuyenVien-crud\huanLuyenVien-crud.component.js" />
+    <Content Include="src\app\main\home\huanLuyenVien\components\huanLuyenVien-crud\huanLuyenVien-crud.html" />
+    <Content Include="src\app\main\home\huanLuyenVien\partials\action.html" />
+    <Content Include="src\app\main\home\huanLuyenVien\partials\table.html" />
+    <Content Include="src\app\main\home\huanLuyenVien\huanLuyenVien.html" />
+    <Content Include="src\app\main\home\huanLuyenVien\huanLuyenVien.component.js" />
+    <Content Include="src\app\main\components\modules\abp.module.js" />
+    <Content Include="src\app\main\components\modules\errorHandler.module.js" />
+    <Content Include="src\app\main\components\modules\logger.module.js" />
+    <Content Include="src\app\main\components\modules\notification.module.js" />
+    <Content Include="src\app\main\components\modules\storage.module.js" />
+    <Content Include="src\app\main\components\services\utils.service.js" />
+    <Content Include="src\app\main\home\components\home-page\home-page.component.js" />
+    <Content Include="src\app\main\home\components\home-page\home-page.html" />
+    <Content Include="src\app\main\home\components\info-center-home\components\info-center\info-center.component.js" />
+    <Content Include="src\app\main\home\components\info-center-home\components\info-center\info-center.html" />
+    <Content Include="src\app\main\home\components\info-center-home\info-center-home.component.js" />
+    <Content Include="src\app\main\home\components\info-center-home\info-center-home.html" />
+    <Content Include="src\app\main\home\components\login\sso-login.component.js" />
+    <Content Include="src\app\main\home\components\login\sso-login.html" />
+    <Content Include="src\app\main\home\huanLuyenVien\partials\pagination.html" />
+    <Content Include="src\app\main\home\components\student-register-course-home\dialogs\info-register-home\info-register-home.component.js" />
+    <Content Include="src\app\main\home\components\student-register-course-home\dialogs\info-register-home\info-register-home.html" />
+    <Content Include="src\app\main\home\components\student-register-course-home\student-register-course-home.component.js" />
+    <Content Include="src\app\main\home\components\student-register-course-home\student-register-course-home.html" />
+    <Content Include="src\app\main\home\home.controller.js" />
+    <Content Include="src\app\main\home\home.html" />
+    <Content Include="src\app\main\home\home.module.js" />
+    <Content Include="src\app\main\home\valid.module.js" />
+    <Content Include="src\app\main\infos\components\alert\alert.component.js" />
+    <Content Include="src\app\main\infos\components\alert\alert.html" />
+    <Content Include="src\app\main\infos\components\application\application.component.js" />
+    <Content Include="src\app\main\infos\components\application\application.html" />
+    <Content Include="src\app\main\infos\components\web-footer\web-footer.component.js" />
+    <Content Include="src\app\main\infos\components\web-footer\web-footer.html" />
+    <Content Include="src\app\main\infos\components\web-header\web-header.component.js" />
+    <Content Include="src\app\main\infos\components\web-header\web-header.html" />
+    <Content Include="src\app\main\main.controller.js" />
+    <Content Include="src\app\main\sso-auth\login-edu\login-edu.component.js" />
+    <Content Include="src\app\main\sso-auth\login-edu\login-edu.html" />
+    <Content Include="src\app\main\sso-auth\login-edu\tenany-name-edu\tenany-name-edu.component.js" />
+    <Content Include="src\app\main\sso-auth\login-edu\tenany-name-edu\tenany-name-edu.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\add-center\add-center.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\add-center\add-center.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\add-center\dialogs\confirm-tenant\confirm-tenant.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\add-center\dialogs\confirm-tenant\confirm-tenant.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\join-organization\join-organization.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\join-organization\join-organization.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\confirm-email\confirm-email.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\confirm-email\confirm-email.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\login-email\login-email.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\login-email\login-email.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\register-center.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\register-center.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-edu.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-edu.html" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-other\register-other.component.js" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-other\register-other.html" />
+    <Content Include="src\app\main\sso-auth\sso.component.js" />
+    <Content Include="src\app\main\sso-auth\sso.html" />
+    <Content Include="src\app\main\sso-auth\sso.module.js" />
+    <Content Include="src\app\themes\themes.module.js" />
+    <Content Include="src\app\themes\xyz\app\config\xyz-config.provider.js" />
+    <Content Include="src\app\themes\xyz\app\directives.js" />
+    <Content Include="src\app\themes\xyz\app\main.js" />
+    <Content Include="src\app\main\home\lichLamViec\lichLamViec.component.js" />
+    <Content Include="src\app\main\home\dichVu\dichVu.component.js" />
+    <Content Include="src\app\main\auth2\user-info\user-info.scss" />
+    <Content Include="src\app\main\auth2\user-login\user-login.scss" />
+    <None Include="src\app\themes\xyz\assets\css\timesoft-web-style.scss" />
+    <Content Include="src\app\themes\xyz\assets\css\bootstrap-timepicker.min.css" />
+    <Content Include="src\app\themes\xyz\assets\css\site.css" />
+    <Content Include="src\app\themes\xyz\assets\img\accordion-plusminus.png" />
+    <Content Include="src\app\themes\xyz\assets\img\ajax-loading.gif" />
+    <Content Include="src\app\themes\xyz\assets\img\ajax-modal-loading.gif" />
+    <Content Include="src\app\themes\xyz\assets\img\arrow-down.png" />
+    <Content Include="src\app\themes\xyz\assets\img\avatar.png" />
+    <Content Include="src\app\themes\xyz\assets\img\datatable-row-openclose.png" />
+    <Content Include="src\app\themes\xyz\assets\img\home.svg" />
+    <Content Include="src\app\themes\xyz\assets\img\hor-menu-red-arrow.png" />
+    <Content Include="src\app\themes\xyz\assets\img\icon-color-close.png" />
+    <Content Include="src\app\themes\xyz\assets\img\icon-color.png" />
+    <Content Include="src\app\themes\xyz\assets\img\icon-img-down.png" />
+    <Content Include="src\app\themes\xyz\assets\img\icon-img-up.png" />
+    <Content Include="src\app\themes\xyz\assets\img\inbox-nav-arrow-blue.png" />
+    <Content Include="src\app\themes\xyz\assets\img\input-spinner.gif" />
+    <Content Include="src\app\themes\xyz\assets\img\loading-spinner-blue.gif" />
+    <Content Include="src\app\themes\xyz\assets\img\loading-spinner-default.gif" />
+    <Content Include="src\app\themes\xyz\assets\img\loading-spinner-grey.gif" />
+    <Content Include="src\app\themes\xyz\assets\img\loading.gif" />
+    <Content Include="src\app\themes\xyz\assets\img\logo.png" />
+    <Content Include="src\app\themes\xyz\assets\img\menu-toggler.png" />
+    <Content Include="src\app\themes\xyz\assets\img\overlay-icon.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-collapse-icon-white.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-collapse-icon.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-config-icon-white.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-config-icon.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-expand-icon-white.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-expand-icon.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-reload-icon-white.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-reload-icon.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-remove-icon-white.png" />
+    <Content Include="src\app\themes\xyz\assets\img\portlet-remove-icon.png" />
+    <Content Include="src\app\themes\xyz\assets\img\remove-icon-small.png" />
+    <Content Include="src\app\themes\xyz\assets\img\search_icon_light.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar-menu-arrow-reverse.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar-menu-arrow-right.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar-menu-arrow.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_arrow_icon_light.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_arrow_icon_light_rtl.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_inline_toggler_icon_blue.jpg" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_inline_toggler_icon_darkblue.jpg" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_inline_toggler_icon_default.jpg" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_inline_toggler_icon_grey.jpg" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_inline_toggler_icon_light.jpg" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_inline_toggler_icon_light2.jpg" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_toggler_icon_blue.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_toggler_icon_darkblue.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_toggler_icon_default.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_toggler_icon_grey.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_toggler_icon_light.png" />
+    <Content Include="src\app\themes\xyz\assets\img\sidebar_toggler_icon_light2.png" />
+    <Content Include="src\app\themes\xyz\assets\img\syncfusion-icons-white.png" />
+    <Content Include="src\app\themes\xyz\assets\img\syncfusion-icons.png" />
+    <Content Include="src\app\themes\xyz\assets\js\app.js" />
+    <Content Include="src\app\themes\xyz\assets\js\bootstrap-timepicker.min.js" />
+    <Content Include="src\app\themes\xyz\assets\js\datetime-picker.js" />
+    <Content Include="src\app\themes\xyz\assets\js\quick-nav.js" />
+    <Content Include="src\app\themes\xyz\assets\js\quick-sidebar.js" />
+    <Content Include="src\app\themes\xyz\assets\js\ui-bootstrap-tpls-2.5.0.min.js" />
+    <Content Include="src\app\themes\xyz\index-xyz.controller.js" />
+    <Content Include="src\app\themes\xyz\index.html" />
+    <Content Include="src\app\themes\xyz\script\jquery.blockUI.js" />
+    <Content Include="src\app\themes\xyz\theme-xyz.module.js" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\scripts\Abp\Framework\scripts\abp.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.blockUI.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.jquery.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.jtable.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.moment.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.signalr.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.spin.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.sweet-alert.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\abp.toastr.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\angularjs\abp.ng.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\libs\requirejs\plugins\service.js" />
+    <Content Include="src\scripts\Abp\Framework\scripts\utils\ie10fix.js" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.css" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.min.css" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.mixings.css" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.mixings.min.css" />
+    <Content Include="src\scripts\Abp\Framework\styles\utils\ie10fix.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".bowerrc" />
+    <Content Include=".editorconfig" />
+    <Content Include=".eslintignore" />
+    <Content Include=".eslintrc" />
+    <Content Include=".jshintrc" />
+    <Content Include=".yo-rc.json" />
+    <Content Include="bower.json" />
+    <Content Include="gulp\.eslintrc" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <None Include="packages.config" />
+    <Content Include="src\app\i18n\default.json" />
+    <Content Include="src\app\i18n\en.json" />
+    <Content Include="src\app\i18n\vi.json" />
+    <Content Include="src\app\index.scss" />
+    <Content Include="src\app\main\auth\user-info\user-info.scss" />
+    <Content Include="src\app\main\home\components\home-page\home-page.scss" />
+    <Content Include="src\app\main\home\components\info-center-home\info-center-home.scss" />
+    <Content Include="src\app\main\home\components\student-register-course-home\student-register-course-home.scss" />
+    <Content Include="src\app\main\home\home.scss" />
+    <Content Include="src\app\main\infos\components\application\application.scss" />
+    <Content Include="src\app\main\infos\components\web-footer\web-footer.scss" />
+    <Content Include="src\app\main\infos\components\web-header\web-header.scss" />
+    <Content Include="src\app\main\sso-auth\login-edu\login-edu.scss" />
+    <Content Include="src\app\main\sso-auth\login-edu\tenany-name-edu\tenany-name-edu.scss" />
+    <Content Include="src\app\main\sso-auth\register-edu\add-center\add-center.scss" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\confirm-email\confirm-email.scss" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\login-email\login-email.scss" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-center\register-center.scss" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-edu.scss" />
+    <Content Include="src\app\main\sso-auth\register-edu\register-other\register-other.scss" />
+    <Content Include="src\app\main\sso-auth\sso.scss" />
+    <Content Include="src\app\themes\xyz\scss\global.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_alerts.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_buttons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_center-block.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_forms.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_gradients.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_grid.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_hide-text.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_image.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_labels.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_list-group.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_nav-vertical-align.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_opacity.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_pagination.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_panels.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_progress-bar.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_reset-filter.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_resize.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_responsive-visibility.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_size.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_tab-focus.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_table-row.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_text-overflow.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_alerts.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_badges.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_breadcrumbs.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_button-groups.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_buttons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_carousel.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_close.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_code.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_component-animations.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_dropdowns.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_forms.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_glyphicons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_grid.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_input-groups.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_jumbotron.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_labels.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_list-group.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_media.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_mixins.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_modals.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_navbar.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_navs.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_normalize.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_pager.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_pagination.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_panels.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_popovers.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_print.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_progress-bars.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_responsive-embed.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_responsive-utilities.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_scaffolding.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_tables.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_theme.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_thumbnails.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_tooltip.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_type.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_utilities.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_variables.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\bootstrap\_wells.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components-md.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components-rounded.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\elements\cards\_card-1.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\elements\lists\_list-1.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\elements\overlay\_overlay-1.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\elements\ribbons\_ribbon-1.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\elements\steps\_step-1.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_alerts.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_animate.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_app-widgets.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_badges.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_bootstrap-multiselect.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_buttons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_carousel.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_charts.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_chats.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_clipboard.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_close.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_colors.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_comments.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_cookie-consent.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_dropdowns.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_feeds.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_font-icons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_form-layouts.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_form-repeater.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_grid.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_headings.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_icon-buttons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_input-icons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_inputs.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_labels.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_list-groups.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_loaders.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_md-base.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_md-checkboxes.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_md-inputs.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_md-radios.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_md.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_metro-icons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_mixins.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_modals.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_notes.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_pagination.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_panels.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_popovers.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_portlets.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_progress-bars.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_quick-actions.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_reset-general.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_reset-rounds.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_sidebar.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_social-icons.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_statistic-blocks.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_tables.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_tabs.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_tasks-widget.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_tiles.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_timeline-2.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_timeline-3.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_timeline.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_typography.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_ui-sweetalert.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_utils.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_wells.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\components\_widgets.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\custom.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\layout.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\layout\animate.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\layout\_content.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\layout\_footer.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\layout\_header.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\layout\_print.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\layout\_theme-panel.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\base\_mega-menu-mobile.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\base\_mega-menu.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\theme\_mega-menu-mobile.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\theme\_mega-menu.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\_mega-menu-dark-mobile.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\_mega-menu-dark.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\_mega-menu-light-mobile.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\mega-menu\_mega-menu-light.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_amchart.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootbox.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-colorpicker.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-datepaginator.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-datepicker.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-daterangepicker.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-datetimepicker.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-editable.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-fileinput.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-gtreetable.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-markdown.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-modal.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-select.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-summercode.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-switch.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-tabdrop.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-table.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-tagsinput.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-timepicker.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-toastr.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-wizard.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_bootstrap-wysihtml5.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_ckeditor.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_clockface.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_codemirror.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_datatables.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_dropzone.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_fancybox.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_fuelux.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_fullcalendar.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_gmaps.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_gritter.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_icheck.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-easy-pie-chart.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-file-upload.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-multi-select.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-notific8.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-pwstrength-bootstrap.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-slimscroll.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-sparkline.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jquery-ui.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jqvmap.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_jstree.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_minicolors.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_morris.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_nouislider.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_prism.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_recaptcha.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_select2.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_socicon.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\plugins\_ui-select.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\quick-sidebar\_quick-nav.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\quick-sidebar\_quick-sidebar.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\themes\default.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\themes\_base.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\_bootstrap-override.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\_colors.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\_components.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\_custom-layout.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\_layout-variables.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\_plugins.scss" />
+    <Content Include="src\app\themes\xyz\scss\partials\_variables.scss" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.css.map" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.less" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.mixings.css.map" />
+    <Content Include="src\scripts\Abp\Framework\styles\abp.mixings.less" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\main\home\dashboards\home-dashboard\components\register-center-dashboard\" />
+    <Folder Include="src\app\main\home\khachHang\img\barCodes\" />
+    <Folder Include="src\app\main\sso-auth\components\modules\" />
+    <Folder Include="src\app\main\system\i18n\" />
+    <Folder Include="src\app\themes\xyz\scss\partials\index\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52943</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52943/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

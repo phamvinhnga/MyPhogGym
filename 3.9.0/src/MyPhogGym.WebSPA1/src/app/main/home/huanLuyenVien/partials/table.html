@@ -1,0 +1,33 @@
+<table class="table table-striped table-bordered table-hover" id="menus">
+    <thead>
+        <tr>
+            <th style="width:15%">Họ & Tên</th>
+            <th style="width:10%">Số Điện Thoại</th>
+            <th style="width:30%">Địa Chỉ</th>
+            <th style="width:10%">Email</th>
+            <th style="width:10%">Hợp Đồng</th>
+            <th style="width:10%">Lương</th>
+            <th style="width:10%">Trạng Thái</th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="huanLuyenVien in vm.huanLuyenViens">
+            <td ng-bind="huanLuyenVien.hoTen"></td>
+            <td ng-bind="huanLuyenVien.sdt"></td>
+            <td ng-bind="huanLuyenVien.diaChi"></td>
+            <td ng-bind="huanLuyenVien.email"></td>
+            <td ng-bind="huanLuyenVien.hopDong == 1 ? 'Hợp đồng thử việc' : 'Hợp đồng lao động'"></td>
+            <td ng-bind="huanLuyenVien.luong | number"></td>
+            <td ng-bind="huanLuyenVien.trangThai == 1 ? 'Đang làm' : 'Nghĩ việc'"></td>
+            <td><a href="" ng-click="vm.showModal(huanLuyenVien)"><i class="fa fa-edit"></i> Chi Tiết</a></td>
+        </tr>
+        <tr ng-if="vm.huanLuyenViens.length == 0">
+            <td colspan="10">
+                <p style="text-align:center">Không tìm thấy bản ghi nào</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div ng-include="'app/main/home/lichLamViec/partials/pagination.html'"></div>
+

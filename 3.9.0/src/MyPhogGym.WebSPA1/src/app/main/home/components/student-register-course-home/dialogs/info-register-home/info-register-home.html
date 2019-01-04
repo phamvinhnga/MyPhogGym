@@ -1,0 +1,49 @@
+<form role="form" name="vm.categoryDialogForm" novalidate ng-submit="vm.saveCategory(vm.categoryDialogForm)" id="categoryDialogForm">
+    <div class="content-container">
+        <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.dismiss()"></button> -->
+            <h2 class="modal-title sbold font-blue text-center">
+                Đăng Ký Học Thành Công
+            </h2>
+        </div>
+        <div class="modal-body row-space-1 ">
+            <div class="form-body row">
+                <span class="col-md-6">
+                    Tổng Học phí Cần phải Đóng
+                </span>
+                <span class="col-md-6">
+                    : {{vm.resolve.dangKyHoc.hocPhi | currency : '':'0'}}
+                </span>
+                <span class="col-md-6">
+                    Đã Thanh Toán
+                </span>
+                <span class="col-md-6">
+                    : {{vm.resolve.dangKyHoc.hocPhiDto.daThanhToan | currency : '':'0'}}
+                </span>
+                <span class="col-md-6">
+                    Miễn Giảm
+                </span>
+                <span class="col-md-6">
+                    : {{vm.resolve.dangKyHoc.hocPhiDto.mienGiam | currency : '':'0'}}
+                </span>
+                <span class="col-md-6">
+                    Còn Nợ
+                </span>
+                <span class="col-md-6">
+                    : {{vm.resolve.dangKyHoc.hocPhiDto.conNo | currency : '':'0'}}
+                </span>
+
+            </div>
+        </div>
+        <div class="modal-footer border-t">
+            <div class="form-actions">
+                <div class="btn-set pull-right">
+                    <button autofocus type="button" class="btn green left" ng-click="vm.dismiss()" ui-sref="app.home.home-page">
+                        Xác Nhận
+                        <i class="glyphicon glyphicon-log-out"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

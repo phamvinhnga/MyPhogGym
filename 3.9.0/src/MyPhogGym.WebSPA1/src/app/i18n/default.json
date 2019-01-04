@@ -1,0 +1,121 @@
+{
+    "XYZ": {
+        "COPYRIGHT": "© 20/04/2006 - 2015 Bản quyền thuộc edu.trenet.com.vn",
+        "ADDRESS": "Địa chỉ: ",
+        "PHONE": "ĐIỆN THOẠI: ",
+        "HOTLINE": "E-mail: ",
+        "NO": "Giấy phép số :  - Sở Thông Tin cấp",
+        "HOME": "Home",
+        "NEWS": {
+            "TITLE": "NEWS",
+            "OTHER": "OTHER"
+        },
+        "MENU": {
+            "SHOW": "MENU (Hide)",
+            "HIDE": "MENU (Show)"
+        },
+        "CHANGE_PASSWORD": {
+            "TITLE": "Đổi mật khẩu",
+            "CURRENT_PASSWORD": "Mật khẩu hiện tại",
+            "REQUIRED_CURRENT_PASSWORD": "Nhập mật khẩu hiện tại",
+            "NEW_PASSWORD": "Mật khẩu mới",
+            "REQUIRED_NEW_PASSWORD": "Nhập mật khẩu mới",
+            "RE_NEW_PASSWORD": "Nhập lại mật khẩu mới",
+            "MATCH_RE_NEW_PASSWORD": "Mật khẩu mới không khớp",
+            "SAVE": "Cập nhật",
+            "CLOSE": "Đóng",
+            "SUCCESS": "Password is updated",
+            "ERRORS": {
+                "NOT_VALID": "Old password is incorrect"
+            }
+        },
+        "FORGOT_PASSWORD": {
+            "TITLE": "Thiết lập lại mật khẩu",
+            "TENANCY_NAME_ADDRESS": "Tổ chức",
+            "EMAIL_ADDRESS": "Email đã đăng ký",
+            "EMAIL_REQUIRED": "Nhập Email đã đăng ký",
+            "EMAIL_MUST_VALID": "Email không chính xác",
+            "SEND_RESET_LINK": "Gửi yêu cầu",
+            "REQUEST_SUCCESSFUL_INFO": "Vui lòng kiểm tra Email để nhận thông tin thiết lập lại mật khẩu",
+            "GO_BACK": "Quay trở lại Đăng nhập",
+            "ERRORS": {
+                "NOT_VALID": "Thông tin không chính xác"
+            }
+        },
+        "LOGIN": {
+            "TITLE": "Đăng nhập",
+            "SUB_TITLE": "Nhập thông tin đăng nhập",
+            "USERNAME": "Tên đăng nhập",
+            "REQUIRED_USERNAME": "Nhập Tên đăng nhập",
+            "PASSWORD": "Mật khẩu",
+            "REQUIRED_PASSWORD": "Nhập Mật khẩu",
+            "SUBMIT": "Đăng nhập",
+            "REGISTER": "Đăng ký",
+            "SUBJECT": "QUÝ KHÁCH ĐĂNG NHẬP MẬT  KHẨU CŨ",
+            "SUPPORT1": "HOẶC GỌI: ",
+            "SUPPORT2": "DĐ: ",
+            "HOTLINE": "HOT: ",
+            "ERRORS": {
+                "NOT_VALID": "Thông tin không chính xác"
+            }
+        },
+        "REGISTER": {
+            "TITLE": "Đăng ký",
+            "SUB_TITLE": "Nhập thông tin đăng ký:",
+            "SUB_TITLE_UPDATE": "Thay đổi Thông tin đăng ký:",
+            "SUB_TITLE_VIEW": "Thông tin đăng ký:",
+            "FULLNAME": "Họ và tên",
+            "REQUIRED_FULLNAME": "Nhập Họ và tên",
+            "EMAIL": "Email",
+            "REQUIRED_EMAIL": "Nhập Email",
+            "INVALID_EMAIL": "Email không chính xác",
+            "PHONENUMBER": "Số điện thoại",
+            "ADDRESS": "Địa chỉ",
+            "BIRTHDATE": "Ngày sinh",
+            "INFO": "Thông tin",
+            "IMAGE": "Hình ảnh",
+            "REQUIRED_PHONENUMBER": "Nhập Số điện thoại",
+            "INVALID_PHONENUMBER": "Số điện thoại không chính xác",
+            "ACCOUNT_TITLE": "Nhập thông tin đăng ký:",
+            "ACCOUNT": "Tên đăng nhập (Email / Số điện thoại)",
+            "REQUIRED_ACCOUNT": "Nhập Tên đăng nhập",
+            "INVALID_ACCOUNT": "Email / Số điện thoại không chính xác",
+            "PASSWORD": "Mật khẩu",
+            "REQUIRED_PASSWORD": "Nhập Mật khẩu",
+            "RE_PASSWORD": "Nhập lại Mật khẩu",
+            "MATH_RE_PASSWORD": "Mật khẩu không khớp",
+            "ACCEPT_TITLE": "Tôi đồng ý với ",
+            "RETURN": "Trở ra",
+            "STATUS": "Trạng thái",
+            "SUBMIT": "Đăng ký",
+            "EDIT": "Chỉnh sửa thông tin",
+            "SAVE": "Lưu thông tin",
+            "SUCCESS_UPDATE": "Đã cập nhật thông tin",
+            "ERRORS": {
+                "NOT_VALID": "Email hoặc Tên đăng nhập không được trùng"
+            }
+        },
+        "USER_MENU": {
+            "CMS": "Quản lý tin tức",
+            "PROFILE": "Thông tin tài khoản",
+            "CHANGE_PASSWORD": "Đổi mật khẩu",
+            "LOGOUT": "Thoát"
+        },
+        "PAY": {
+            "EXPIRED": "Hạn sử dụng",
+            "TITLE": "Thông tin thanh toán",
+            "FROM": "Từ ngày",
+            "TO": "Đến ngày",
+            "INFO": "Nội dung",
+            "NOTE": "Ghi chú",
+            "DATE": "Ngày",
+            "TOTAL": "Giá trị",
+            "DISCOUNT": "Giảm giá",
+            "VALUE": "Thanh toán"
+        },
+        "USER_INFO": {
+            "ERRORS": { "INVALID_OR_LIMIT": "Thông tin truy cập không chính xác (hoặc khách hàng truy cập quá số lượng thiết bị cho phép)" }
+
+        }
+    }
+}

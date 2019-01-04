@@ -1,0 +1,55 @@
+<div class="page-wrapper-row web-header">
+    <div class="page-wrapper-top">
+        <div class="page-header margin-0 padding-0">
+            <!-- BEGIN HEADER -->
+            <!-- BEGIN HEADER TOP -->
+            <div class="page-header-top row no-space">
+                <a ui-sref="dashboard">
+                    <img src="{{vm.settings.layoutPath}}/img/logo.png" alt="logo" class="logo-default">
+                </a>
+                <web-application></web-application>
+                <div class="pull-right user">
+                    <user-info></user-info>
+                </div>
+                <a href="javascript:;" class="menu-toggler"></a>
+            </div>
+            <!-- END HEADER TOP -->
+            <!-- BEGIN HEADER MENU -->
+            <div class="page-header-menu">
+                <!-- container -->
+                <div class="text-center">
+                    <!-- BEGIN MEGA MENU -->
+                    <!-- BEGIN MENU TOP-->
+                    <div class="hor-menu">
+                        <ul class="nav navbar-nav">
+                            <li class="menu-dropdown classic-menu-dropdown " ng-repeat="item in vm.menus" ng-class="{'active': item.isActive}">
+                                <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" ng-if="(!item.children || item.children.length == 0)" ui-sref="{{item.url}}">
+                                    {{item.name}}
+                                    <i class="{{item.iconCss}}"></i>
+                                    <span class="arrow"></span>
+                                </a>
+
+                                <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" ng-if="!(!item.children || item.children.length == 0)">
+                                    {{item.name}}
+                                    <i class="{{item.iconCss}}"></i>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="dropdown-menu pull-left" ng-if="!(!item.children || item.children.length == 0)">
+                                    <li aria-haspopup="true" ng-repeat="child in item.children" ng-class="{'active': child.isActive}">
+                                        <a ui-sref="{{child.url}}" class="nav-link ">
+                                            <i class="{{child.iconCss}}"></i> {{child.name}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU TOP-->
+                    <!-- END MEGA MENU -->
+                </div>
+            </div>
+            <!-- END HEADER MENU -->
+            <!-- END HEADER -->
+        </div>
+    </div>
+</div>

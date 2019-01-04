@@ -1,0 +1,53 @@
+.register-other {
+    width: 100%;
+    padding-bottom: 55px;
+
+    .form-group.form-md-line-input {
+        margin: 0 0 5px;
+    }
+
+    .image {
+        position: relative;
+
+
+        &:hover {
+            > div:nth-child(2) {
+
+                a {
+                    display: block;
+                }
+            }
+        }
+
+        > div:nth-child(2) {
+            position: absolute;
+            bottom: 0px;
+
+            a {
+                font-size: 20px;
+                display: none;
+            }
+        }
+
+        label {
+            display: unset;
+        }
+
+        img {
+            min-height: 100px;
+            padding: 0px;
+            max-width: 350px;
+            max-height: 300px;
+        }
+    }
+
+    button {
+        label {
+            font-size: 18px !important;
+        }
+    }
+
+    input[type = "checkbox"] {
+        height: unset;
+    }
+}

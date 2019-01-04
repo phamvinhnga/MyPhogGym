@@ -1,0 +1,42 @@
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+
+.web-header {
+    .page-header {
+        height: 121px;
+
+        .page-header-top {
+            height: 70px;
+            text-align:left;
+
+            > a {
+                margin: 10px 0px 0px 10px;
+                display: inline-block;
+
+                > img {
+                    max-height: 40px !important;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            .menu-toggler {
+                background: url(themes/xyz/assets/img/sidebar_inline_toggler_icon_grey.jpg) center center;
+                margin: 0px;
+                position: fixed;
+                right: 10px;
+                top: 10px;
+                display:none;
+            }
+        }
+
+        .page-header-menu {
+            .hor-menu {
+                display: inline-block;
+                float: none;
+            }
+        }
+    }
+}

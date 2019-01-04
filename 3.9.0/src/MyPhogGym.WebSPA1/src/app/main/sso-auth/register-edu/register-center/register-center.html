@@ -1,0 +1,192 @@
+<form class="register-center text-center container margin-b-0" name="registerForm" novalidate ng-submit="vm.saveRegister(registerForm)">
+    <div class="title text-center">
+        <h1 class="caption-subject uppercase text-danger sbold">
+            ĐĂNG KÝ CƠ SỞ GIÁO DỤC
+        </h1>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-7 col-xs-12 bg-white text-left display-inline float-none padding-40">
+        <!-- thu nhỏ chiều rộng input  -->
+        <!-- Mã Công Ty -->
+        <div class="form-group form-md-line-input"
+             ng-class="vm.requiredFactory.titleInput(registerForm.code)">
+            <input autofocus
+                   required
+                   type="text"
+                   class="form-control"
+                   name="code"
+                   ng-model="vm.register.code"
+                   ng-blur="vm.requiredTenancyName(vm.register.code,$event)"
+                   placeholder="Mã cơ sở giáo dục" />
+            <label class="font-dark">Mã cơ sở giáo dục</label>
+            <div class="help-block "
+                 ng-messages="registerForm.code.$error"
+                 ng-if="registerForm.code.$dirty || registerForm.code.$error.required || registerForm.code.$touched"
+                 role="alert">
+                <div ng-messages="required">Nhập mã cơ sở giáo dục</div>
+            </div>
+            <div ng-if="registerForm.code.$touched && registerForm.code.$error.required"
+                 class="help-block help-block-error">
+                Mã không được để trống
+            </div>
+        </div>
+        <!-- Tên Công Ty -->
+        <div class="form-group form-md-line-input"
+             ng-class="vm.requiredFactory.titleInput(registerForm.name)">
+            <input autofocus
+                   required
+                   type="text"
+                   class="form-control"
+                   name="name"
+                   ng-model="vm.register.name"
+                   placeholder="Tên Cơ Sở Giáo Dục" />
+            <label class="font-dark">Tên Cơ Sở Giáo Dục</label>
+            <div class="help-block "
+                 ng-messages="registerForm.name.$error"
+                 ng-if="registerForm.name.$dirty || registerForm.name.$error.required || registerForm.name.$touched"
+                 role="alert">
+                <div ng-messages="required">Nhập tên cơ sở giáo dục</div>
+            </div>
+            <div ng-if="registerForm.name.$touched && registerForm.name.$error.required"
+                 class="help-block help-block-error">
+                Tên cơ sở giáo dục
+            </div>
+        </div>
+        <!-- Số Điện Thoại -->
+        <!--<div class="form-group form-md-line-input"
+             ng-class="vm.requiredFactory.titlePhone(registerForm.dienThoai)">
+            <input autofocus
+                   required
+                   type="text"
+                   ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/"
+                   name="dienThoai"
+                   class="form-control"
+                   ng-model="vm.register.dienThoai"
+                   placeholder="Điện Thoại" />
+            <label class="font-dark">Điện Thoại</label>
+            <div class="help-block "
+                 ng-messages="registerForm.dienThoai.$error"
+                 ng-if="registerForm.dienThoai.$dirty || registerForm.dienThoai.$error.required || registerForm.dienThoai.$touched"
+                 role="alert">
+                <div ng-messages="required">Số Điện Thoại</div>
+            </div>
+            <div ng-if="registerForm.dienThoai.$touched && registerForm.dienThoai.$error.required"
+                 class="help-block help-block-error">
+                Số Điện Thoại Không Được Để Trống
+            </div>
+            <div ng-if="registerForm.dienThoai.$touched && registerForm.dienThoai.$error.pattern"
+                 class="help-block help-block-error">
+                Số điện thoại sai
+            </div>
+        </div>-->
+        <!--Mail-->
+        <div class="form-group form-md-line-input"
+             ng-class="vm.requiredFactory.titleMail(registerForm.email)">
+            <input autofocus
+                   required
+                   type="email"
+                   name="email"
+                   class="form-control"
+                   ng-blur="vm.checkUserName(vm.register.email,$event)"
+                   ng-model="vm.register.email"
+                   placeholder="Email" />
+            <label for="email" class="font-dark">Email</label>
+            <div class="help-block "
+                 ng-messages="registerForm.email.$error"
+                 ng-if="registerForm.email.$dirty || registerForm.email.$error.required || registerForm.email.$touched"
+                 role="alert">
+                <div ng-messages="required">Email</div>
+            </div>
+            <div ng-if="registerForm.email.$touched && registerForm.email.$error.required"
+                 class="help-block help-block-error">
+                Email không được để trống
+            </div>
+            <div ng-if="registerForm.email.$touched && registerForm.email.$error.email"
+                 class="help-block help-block-error">
+                Emai Chưa Chính Xác
+            </div>
+        </div>
+        <!-- pass -->
+        <div class="form-group form-md-line-input"
+             ng-if="!vm.isCreateTenant"
+             ng-class="vm.requiredFactory.titlePassWord(registerForm.password)">
+            <input required class="form-control placeholder-no-fix"
+                   type="password"
+                   autocomplete="off"
+                   name="password"
+                   ng-class="vm.touched"
+                   ng-model="vm.register.password"
+                   placeholder="Nhập Mật Khẩu" />
+            <label class="font-dark"> Mật Khẩu</label>
+            <div class="help-block "
+                 ng-messages="registerForm.password.$error"
+                 ng-if="registerForm.password.$dirty || registerForm.password.$error.required || registerForm.password.$touched"
+                 role="alert">
+                <div ng-messages="required">Nhập mật khẩu</div>
+            </div>
+            <div ng-if="registerForm.password.$touched && registerForm.password.$error.required"
+                 class="help-block help-block-error">
+                Mật Khẩu không được để trống
+            </div>
+
+        </div>
+        <div class="form-group form-md-line-input"
+             ng-if="!vm.isCreateTenant"
+             ng-class="vm.requiredFactory.titleConfirmPassword(registerForm.passwordConfirm)">
+            <input match="vm.register.password"
+                   ng-class="vm.touched"
+                   class="form-control placeholder-no-fix"
+                   type="password"
+                   autocomplete="off"
+                   ng-model="vm.register.passwordConfirm"
+                   name="passwordConfirm"
+                   placeholder="Nhập Lại Mật Khẩu" />
+            <label class="font-dark">Nhập Lại Mật Khẩu</label>
+            <div class="help-block "
+                 ng-messages="registerForm.passwordConfirm.$error"
+                 ng-if="registerForm.passwordConfirm.$dirty || registerForm.passwordConfirm.$error.required || registerForm.passwordConfirm.$touched"
+                 role="alert">
+                <div ng-messages="required">Nhập lại mật khẩu</div>
+            </div>
+            <div ng-if="registerForm.passwordConfirm.$touched && registerForm.passwordConfirm.$error.required"
+                 class="help-block help-block-error">
+                Mật khẩu không được để trống
+            </div>
+            <div ng-if="registerForm.passwordConfirm.$touched && registerForm.passwordConfirm.$error.match"
+                 class="help-block help-block-error">
+                Mật Khẩu Không Khớp
+            </div>
+        </div>
+        <!-- end pass -->
+        <!-- Địa chỉ Thường Trú -->
+        <!--<div class="form-group">
+            <button type="button"
+                    class="btn gray left"
+                    data-style="expand-left"
+                    ng-click="vm.addDiaDiem(vm.register.diaDiem)">
+                Thêm Địa Điểm
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>-->
+        <!-- điều khoản -->
+        <div class="col-md-12 no-padding">
+            <label class="mt-checkbox mt-checkbox-outline">
+                <input type="checkbox" required ng-model="vm.form.acceptTerm">
+                Tôi Đồng Ý Với
+                <a href="javascript:;">Điều Khoản Dịch Vụ </a> &
+                <a href="javascript:;">Chính Sách Bảo Mật </a>
+                <span></span>
+            </label>
+        </div>
+        <!-- submit -->
+        <div class="col-md-12 margin-top-10 padding-r-0">
+            <button type="submit"
+                    class="space btn blue pull-right"
+                    ng-disabled="registerForm.$invalid"
+                    ladda="vm.loading"
+                    data-style="slide-right">
+                Hoàn Thành
+            </button>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,305 @@
+<div class="modal-content" ng-init="vm.get()">
+    <div class="ng-scope ng-isolate-scope">
+        <div class="application-dialog-form ng-pristine ng-invalid ng-invalid-required">
+            <!--thông tin khách hàng-->
+            <form name="crudForm" role="form">
+                <div class="portlet box grey-steel" style="height:250px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.dismiss()"
+                            style="margin-right:10px; margin-top:15px"></button>
+                    <div class="portlet-title">
+                        <div class="caption  uppercase">
+                            <i class="fa fa-info"></i>Khách Hàng
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <!--id khach hang-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <input ng-model="vm.khachHang.id" name="khachHangID"
+                                               class="form-control placeholder-no-fix" readonly />
+                                        <i class="fa fa-key"></i>
+                                        <label class="font-dark"> ID Khách Hàng <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end khach hang-->
+                            <!--họ và tên-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <span ng-bind="vm.khachHang.hoTen" name="hoTen" class="form-control"></span>
+                                    <label class="font-dark">Họ & Tên <span class="font-red">*</span></label>
+                                </div>
+                            </div>
+                            <!--end họ và tên-->
+                            <!--Ngày sinh-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <span ng-bind="vm.khachHang.ngaySinh | date:'dd-MM-yyyy'" class="form-control"></span>
+                                        <i class="fa fa-calendar"></i>
+                                        <label class="font-dark">Ngày Sinh <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end ngày sinh-->
+                            <!--Gioi tinh-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <span ng-bind="vm.khachHang.gioiTinh == 1 ? 'Nam' : 'Nữ'" class="form-control"></span>
+                                        <i class="fa fa-user"></i>
+                                        <label class="font-dark">Giới Tính <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end gioi tinh-->
+                            <!--số điện thoại-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <span ng-bind="vm.khachHang.sdt" name="sdt" class="form-control"></span>
+                                        <i class="fa fa-phone"></i>
+                                        <label class="font-dark">Số Điện Thoại <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end số điện thoại-->
+                            <!--ghi chú-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <textarea ng-model="vm.khachHang.ghiChu" name="ghiChu" readonly
+                                              style="height:35px"
+                                              class="form-control">
+                                </textarea>
+                                    <label class="font-dark">Ghi chú </label>
+                                </div>
+                            </div>
+                            <!--end ghi chú-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet box grey-steel">
+                    <div class="portlet-title">
+                        <div class="caption  uppercase">
+                            <i class="fa fa-bars"></i>Đăng ký gói tập
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <!--id goi tap-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <input ng-model="vm.khachHang.dichVu.id" name="khachHangID"
+                                               class="form-control placeholder-no-fix" readonly />
+                                        <i class="fa fa-key"></i>
+                                        <label class="font-dark"> ID Gói Tập <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end id goi tap-->
+                            <!--tên goi-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <span ng-bind="vm.khachHang.dichVu.tenDichVu"
+                                           class="form-control placeholder-no-fix"></span>
+                                    <label class="font-dark">Tên Gói Tập <span class="font-red">*</span></label>
+                                </div>
+                            </div>
+                            <!--end ten goi-->
+                            <!--loại gói tập-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <span ng-bind="vm.khachHang.dichVu.loaiGoi == 1 ? 'Theo tháng' : vm.khachHang.dichVu.loaiGoi == 2 ?  'Theo buổi' : 'Theo Ngày'" class="form-control"></span>
+                                    <label class="font-dark">Loại Gói Tập <span class="font-red">*</span></label>
+                                </div>
+                            </div>
+                            <!--end loại gói-->
+                            <!--Buổi tập-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <span ng-bind="vm.khachHang.dichVu.buoiTap == 1 ? 'Cả ngày' : vm.khachHang.dichVu.buoiTap == 2 ? 'Buổi sáng' : vm.khachHang.dichVu.buoiTap == 3 ? 'Buổi trưa' : 'Buổi chiều'" class="form-control"></span>
+                                    <label class="font-dark">Buổi Tập <span class="font-red">*</span></label>
+                                </div>
+                            </div>
+                            <!--end buổi tập-->
+                            <!--giá tiền-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <span name="gia" class="form-control placeholder-no-fix" ng-bind="vm.khachHang.dichVu.gia  | number "></span>
+                                        <i class="fa fa-dollar"></i>
+                                        <label class="font-dark">Giá Tiền <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end giá tiền-->
+                            <!--số tháng + số buổi + số ngày-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input"> 
+                                    <span ng-bind="vm.khachHang.dichVu.soLuong" class="form-control placeholder-no-fix"></span>
+                                    <label class="font-dark" ng-bind="vm.khachHang.dichVu.loaiGoi == 1 ? 'Số Tháng' : vm.khachHang.dichVu.loaiGoi == 2 ? 'Số Buổi' : 'Số Ngày'">Số Buổi <span class="font-red">*</span></label>
+                                </div>
+                            </div>
+                            <!--end số tháng + số buổi + số ngày-->
+                            <!--thời gian bắt đầu tập-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <span ng-bind="vm.khachHang.dichVu.batDau" name="thoiGianBatDau"
+                                              class="form-control placeholder-no-fix"></span>
+                                        <i class="fa fa-clock-o"></i>
+                                        <label class="font-dark">Thời Gian Bắt Đầu <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end thời gian bắt đầu tập-->
+                            <!--thời gian kết thúc-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <span ng-bind="vm.khachHang.dichVu.ketThuc" name="thoiGianBatDau"
+                                              class="form-control placeholder-no-fix"></span>
+                                        <i class="fa fa-clock-o"></i>
+                                        <label class="font-dark">Thời Gian Kết Thúc <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end thời gian kết thúc-->
+                            <!--ngày đăng ký-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <div class="input-icon">
+                                        <span ng-bind="vm.khachHang.dangKy | date:'dd-MM-yyyy'" class="form-control placeholder-no-fix"></span>
+                                        <i class="fa fa-calendar"></i>
+                                        <label class="font-dark">Ngày đăng ký <span class="font-red">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end ngày đăng ký-->
+                            <!--còn lại-->
+                            <div class="col-md-6">
+                                <div class="form-group form-md-line-input">
+                                    <span ng-bind="vm.soNgayConLai(vm.khachHang)"
+                                          class="form-control placeholder-no-fix"></span>
+                                    <label class="font-dark">Còn lại(Ngày/Buổi) </label>
+                                </div>
+                            </div>
+                            <!--end còn lại-->
+                            <!--ngày tập-->
+                            <div class="col-md-12" ng-show="vm.khachHang.dichVu.loaiGoi == 1 ? false : true">
+                                <table class="table table-border table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                            <td>Thứ 2</td>
+                                            <td>Thứ 3</td>
+                                            <td>Thứ 4</td>
+                                            <td>Thứ 5</td>
+                                            <td>Thứ 6</td>
+                                            <td>Thứ 7</td>
+                                            <td>Chủ nhật</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ngày Tập</td>
+                                            <td>
+                                                <div class="md-checkbox">
+                                                    <input ng-model="vm.khachHang.lichTap.thuHai"
+                                                           ng-checked="vm.khachHang.lichTap.thuHai"
+                                                           id="{{ vm.khachHang.id + '_thuHai'  }}" type="checkbox" class="md-check" disabled>
+                                                    <label for="{{ vm.khachHang.id + '_thuHai'  }}">
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="md-checkbox">
+                                                    <input ng-model="vm.khachHang.lichTap.thuBa"
+                                                           ng-checked="vm.khachHang.lichTap.thuBa"
+                                                           id="{{ vm.khachHang.id + '_thuBa'  }}" type="checkbox" class="md-check" disabled>
+                                                    <label for="{{ vm.khachHang.id + '_thuBa'  }}">
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="md-checkbox">
+                                                    <input ng-model="vm.khachHang.lichTap.thuTu"
+                                                           ng-checked="vm.khachHang.lichTap.thuTu"
+                                                           id="{{ vm.khachHang.id + '_thuTu'  }}" type="checkbox" class="md-check" disabled>
+                                                    <label for="{{ vm.khachHang.id + '_thuTu'  }}">
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="md-checkbox">
+                                                    <input ng-model="vm.khachHang.lichTap.thuNam"
+                                                           ng-checked="vm.khachHang.lichTap.thuNam"
+                                                           id="{{ vm.khachHang.id + '_thuNam'  }}" type="checkbox" class="md-check" disabled>
+                                                    <label for="{{ vm.khachHang.id + '_thuNam'  }}">
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="md-checkbox">
+                                                    <input ng-model="vm.khachHang.lichTap.thuSau"
+                                                           ng-checked="vm.khachHang.lichTap.thuSau"
+                                                           id="{{ vm.khachHang.id + '_thuSau'  }}" type="checkbox" class="md-check" disabled>
+                                                    <label for="{{ vm.khachHang.id + '_thuSau'  }}">
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="md-checkbox">
+                                                    <input ng-model="vm.khachHang.lichTap.thuBay"
+                                                           ng-checked="vm.khachHang.lichTap.thuBay"
+                                                           id="{{ vm.khachHang.id + '_thuBay'  }}" type="checkbox" class="md-check" disabled>
+                                                    <label for="{{ vm.khachHang.id + '_thuBay'  }}">
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="md-checkbox">
+                                                    <input ng-model="vm.khachHang.lichTap.chuNhat"
+                                                           ng-checked="vm.khachHang.lichTap.chuNhat"
+                                                           id="{{ vm.khachHang.id + '_chuNhat'  }}" type="checkbox" class="md-check" disabled>
+                                                    <label for="{{ vm.khachHang.id + '_chuNhat'  }}">
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end ngày tập-->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-actions">
+                        <div class="btn-set pull-right">
+                            <button ng-click="vm.dismiss()" autofocus="" type="button" class="btn dark btn-outline left" data-dismiss="modal" aria-hidden="false">Đóng <i class="fa fa-close"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.user-information {
+    display: inline-block;
+    margin:15px 20px 0px 0px;
+
+    > div
+    {
+        margin-right:10px;
+    }
+
+    > a {
+        > img
+        {
+            max-height:16px;
+            margin-right: 5px;
+        }
+    }
+
+    > ul
+    {
+        left:auto !important;
+        right:0px !important;
+        width:100%;
+    }
+    .dropdown.btn-group :hover > ul {
+        display: inline-block;
+    }
+}

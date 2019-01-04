@@ -1,0 +1,51 @@
+<form class="add-center text-center container margin-b-0" name="registerForm" novalidate ng-submit="vm.submit()">
+    <div class="title text-center">
+        <h1 class="caption-subject uppercase text-danger sbold">
+            Đăng Ký Vào cơ sở giáo dục
+        </h1>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-7 col-xs-12 bg-white text-left display-inline float-none padding-40">
+        <!-- thu nhỏ chiều rộng input  -->
+        <!-- Mã Công Ty -->
+        <div class="form-group form-md-line-input" ng-class="vm.requiredFactory.titleInput(registerForm.code)">
+            <input autofocus required type="text" disabled class="form-control" name="code" ng-model="vm.register.code"
+                placeholder="Mã cơ sở giáo dục" />
+            <label class="font-dark">Mã cơ sở giáo dục <span class="font-red">*</span></label>
+            <div class="help-block " ng-messages="registerForm.code.$error" ng-if="registerForm.code.$dirty || registerForm.code.$error.required || registerForm.code.$touched"
+                role="alert">
+                <div ng-messages="required">Nhập mã cơ sở giáo dục</div>
+            </div>
+            <div ng-if="registerForm.code.$touched && registerForm.code.$error.required" class="help-block help-block-error">
+                Mã không được để trống
+            </div>
+        </div>
+        <div class="form-group form-md-line-input">
+            <select class="form-control" ng-model="vm.register.organizationId" ng-change="vm.changeOrganization()">
+                <option value=""></option>
+                <option ng-repeat="organization in vm.listOrganization" value="{{organization.id}}">{{organization.displayName}}</option>
+            </select>
+            <label>Tổ chức</label>
+        </div>
+        <div class="form-group form-md-line-input">
+            <select class="form-control" ng-model="vm.register.titleId">
+                <option value=""></option>
+                <option ng-repeat="title in vm.listTitle" value="{{title.id}}">{{title.displayName}}</option>
+            </select>
+            <label>Chức vụ</label>
+        </div>
+        <div class="form-group form-md-line-input" ng-class="vm.requiredFactory.titleInput(registerForm.code)">
+                <input autofocus type="text" class="form-control" ng-model="vm.register.securityCode"
+                       placeholder="Mã Bảo Mật" />
+                <label class="font-dark">Mã Bảo Mật</label>
+                <div class="help-block ">
+                    <div ng-messages="required">Mã Bảo Mật</div>
+                </div>
+            </div>
+        <!-- submit -->
+        <div class="col-md-12 margin-top-10 padding-r-0">
+            <button type="submit" class="space btn blue pull-right" ladda="vm.loading" data-style="slide-right">
+                Hoàn Thành
+            </button>
+        </div>
+    </div>
+</form>

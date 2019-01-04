@@ -1,0 +1,57 @@
+<div class="portlet box grey-steel">
+    <div class="portlet-title">
+        <div class="caption uppercase">
+            <i class="fa fa-info"></i> Thông Tin Trung Tâm
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img ng-src="{{vm.thongTinTrungTam.imageFileUrl}}" alt="">
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        Tên trung Tâm :
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        {{vm.thongTinTrungTam.name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        email :
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        {{vm.thongTinTrungTam.email}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        Điện thoại liên hệ :
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        {{vm.thongTinTrungTam.dienThoai}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        website :
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        {{vm.thongTinTrungTam.website}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        Địa Chỉ :
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        <span ng-repeat="diaDiem in vm.thongTinTrungTam.diaDiems">{{diaDiem.diaChi}} <br></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

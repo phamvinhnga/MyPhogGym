@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-4">
+        <label>Hiển thị</label>
+        <select class="form-control input-xs input-sm input-inline"
+                ng-model="vm.pagenation.maxResultCount"
+                ng-change="vm.filterData()"
+                ng-init="vm.pagenation.maxResultCount = '10'">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="150">150</option>
+        </select>
+    </div>
+    <div class="col-md-8">
+        <div class="pull-right">
+            <nav class="col-md-12 text-center">
+                <ul class="pagination">
+                    <li ng-show="vm.pagenation.pre.show" class="page-item {{ vm.pagenation.pre.active }}" ng-click="vm.loadEachPage(vm.pagenation.pre.skipCount,vm.pagenation.pre.pageNumber, vm.pagenation.pre.isDisabled)">
+                        <a class="page-link" href="javascript:void(0)">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Trước</span>
+                        </a>
+                    </li>
+
+                    <li ng-repeat="i in vm.pagenation.pageList" class="page-item {{ i.active }}" ng-click="vm.loadEachPage(i.skipCount, i.pageNumber, i.isDisabled )">
+                        <a class="page-link" href="javascript:void(0)">{{ i.pageNumber + 1}}</a>
+                    </li>
+                    <li ng-show="vm.pagenation.next.show" id="next" class="page-item {{ vm.pagenation.next.active }}" ng-click="vm.loadEachPage(vm.pagenation.next.skipCount,vm.pagenation.next.pageNumber, vm.pagenation.next.isDisabled)">
+                        <a class="page-link" href="javascript:void(0)">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Sau</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+

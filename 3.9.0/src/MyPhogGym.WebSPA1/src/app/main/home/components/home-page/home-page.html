@@ -1,0 +1,106 @@
+<is-load-form ng-if="vm.loadForm"></is-load-form>
+<form class="container home-page">
+    <div class="row margin-t-30">
+        <!-- Khóa học -->
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input form-md-floating-label">
+                <input type="text" class="form-control" ng-class="{'edited' : vm.typeaheadKhoaHoc}" 
+                        ng-model="vm.typeaheadKhoaHoc"
+                        typeahead-loading="loadingKhoaHoc" 
+                        ng-model-toption="{debounce: 500}"
+                        uib-typeahead="khoaHoc for khoaHoc in vm.getTypeheadKhoaHoc($viewValue)"
+                        />
+                <label>Khóa Học</label>
+                <div style="position: absolute;">
+                    <i ng-show="loadingKhoaHoc" class="glyphicon glyphicon-refresh fa-spin loading"></i>
+                </div>
+            </div>
+        </div>
+        <!-- /khóa Học -->
+        <!-- trung tâm -->
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input form-md-floating-label">
+                <input type="text" 
+                    class="form-control" 
+                    ng-class="{'edited' : vm.typeheadTrungTam}"  
+                    ng-model="vm.typeheadTrungTam"   
+                    typeahead-loading="loadingTrungTam" 
+                    ng-model-toption="{debounce: 500}" 
+                    uib-typeahead="trungTam for trungTam in vm.getTypeheadTrungTam($viewValue) " />
+                <label class="">Trung Tâm</label>
+                <div style="position: absolute;">
+                    <i ng-show="loadingTrungTam" class="glyphicon glyphicon-refresh fa-spin loading"></i>
+                </div>
+            </div>
+        </div>
+        <!-- /trung tâm -->
+        <!-- địa điểm -->
+        <div class="col-md-2">
+            <div class="form-group form-md-line-input form-md-floating-label">
+                <input type="text" class="form-control" ng-class="{'edited' : vm.typeaheadDiaDiem}" ng-model="vm.typeaheadDiaDiem" 
+                uib-typeahead="diaDiem as diaDiem.name for diaDiem in vm.diaDiems | filter : {name : $viewValue} | limitTo : 8"/>
+                <label class="">Địa Điểm</label>
+            </div>
+        </div>
+        <!-- /Địa Điểm -->
+        <!-- button -->
+        <div class="col-md-2 margin-t-20">
+            <button class="btn green img" type="button" ladda="vm.isSearch" data-style="slide-left" ng-click="vm.search()"><i class="fa fa-search"></i> Tìm Kiếm</button>
+        </div>
+        <!-- /button -->
+    </div>
+    <table class="table table-bordered table-hover bg-white">
+        <thead>
+            <tr class="font-lg bold uppercase text-center">
+                <td class="col-md-3">Trung Tâm</td>
+                <td>Khóa Học</td>
+                <td>Thời Gian Đăng Ký</td>
+                <td>Thông Tin Khóa Học</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat=" khoaHoc in vm.khoaHocs track by $index">
+                <!-- Tên trung Tâm -->
+                <td class="ten-trung-tam" rowspan="{{vm.calcRowTrungTamGroup(khoaHoc.trungTamId)}}" ng-if="!(vm.khoaHocs[$index -1].trungTamId == khoaHoc.trungTamId)">
+                    <img ng-src="{{khoaHoc.trungTam.imageFileUrl}}" alt="no img" class="img pull-left margin-r-10">
+                    <span class="bold font-lg uppercase font-blue-soft" ng-click="" ui-sref="app.home.info-center-home({trungTamId : khoaHoc.trungTamId})">
+                        {{khoaHoc.trungTam.name}}
+                    </span>
+                </td>
+                <!-- /tên trung tâm -->
+                <!-- Khóa Học -->
+                <td rowspan="{{vm.calcKhoaHoc(khoaHoc)}}" ng-click="" ui-sref="app.home.student-register-course-home({khoaHocId : khoaHoc.id})">
+                    <span>{{khoaHoc.name}}</span> <br>
+                    <span>{{khoaHoc.thoiGianBatDau | date : 'dd/MM/yyyy'}} -
+                        {{khoaHoc.thoiGianKetThuc | date :
+                        'dd/MM/yyyy'}}</span>
+                </td>
+                <!-- /khóa học -->
+                <!-- thời gian đăng ký -->
+                <td ng-click="" ui-sref="app.home.student-register-course-home({khoaHocId : khoaHoc.id})">
+                    <span ng-repeat="thoiGianDangKy in khoaHoc.thoiGianDangKys track by $index">
+                        {{thoiGianDangKy.thoiGianBatDau | date : 'dd/MM/yyyy'}} -
+                        {{thoiGianDangKy.thoiGianKetThuc
+                        |date : 'dd/MM/yyyy'}}
+                        <br>
+                        </span>
+                </td>
+                <!-- /thời gian đăng ký -->
+
+                <td ng-click="" ui-sref="app.home.student-register-course-home({khoaHocId : khoaHoc.id})">
+                    <!-- địa điểm -->
+                    <div ng-repeat="diaDiem in khoaHoc.diaDiemHocs track by $index" class="border bg-default padding-5" ng-class="{'margin-t-10' : !$first}">
+                        Địa Điểm : {{diaDiem.diaDiem.diaChi}}
+                        <div ng-repeat="lopDoiTuong in diaDiem.lopDoiTuongs">
+                            Lớp Học : {{lopDoiTuong.doiTuongHoc.loaiDoiTuong.name}}
+                            <span ng-repeat="chuongTrinhHoc in lopDoiTuong.doiTuongHoc.chuongTrinhHocs ">
+                                    <span ng-if="!$first"> / </span>{{chuongTrinhHoc.monHoc.name}}
+                                </span>
+                        </div>
+                    </div>
+                    <!-- /địa điểm -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>

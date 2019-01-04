@@ -1,0 +1,243 @@
+<div class="modal-content" ng-init="vm.get()">
+    <div class="ng-scope ng-isolate-scope">
+        <form name="crudForm" class="application-dialog-form ng-pristine ng-invalid ng-invalid-required" ng-submit="vm.update()">
+            <div class="portlet box grey-steel">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.dismiss()"
+                        style="margin-right:10px; margin-top:15px"></button>
+                <div class="portlet-title">
+                    <div class="caption  uppercase">
+                        <i class="fa fa-user"></i>Huấn Luyện Viên
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <!--id huấn luyện viên-->
+                        <div class="col-md-6">
+                            <div class="form-group form-md-line-input">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.id" name="huanLuyenVienID"
+                                           class="form-control placeholder-no-fix" type="text"
+                                           placeholder="xxxxx-xxx-xxx-xxx-xxx" readonly />
+                                    <label class="font-dark"> ID Huấn Luyện Viên <span class="font-red">*</span></label>
+                                    <i class="fa fa-key"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end id huấn luyện viên-->
+                        <!--họ tên-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.hoTen)">
+                                <input ng-model="vm.huanLuyenVien.hoTen" name="hoTen" required
+                                       class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" type="text" />
+                                <label class="font-dark">Họ & Tên <span class="font-red">*</span></label>
+                                <div ng-show="crudForm.hoTen.$touched" class="help-block help-block-error ng-scope ng-inactive">
+                                    <div ng-show="crudForm.hoTen.$error.required"
+                                         class="ng-inactive" style="color:#a94442">
+                                        Tên huấn luyện viên không được để trống.
+                                    </div>
+                                </div>
+                                <div ng-messages="crudForm.hoTen.$error" class="help-block" role="alert">
+                                    <div ng-message="required">Nhập tên huấn luyện viên</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end họ tên-->
+                        <!--điện thoại-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.sdt)">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.sdt" name="sdt" required
+                                           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" type="text" />
+                                    <label class="font-dark">Số Điện Thoại <span class="font-red">*</span></label>
+                                    <i class="fa fa-phone"></i>
+                                    <div ng-show="crudForm.sdt.$touched" class="help-block help-block-error ng-scope ng-inactive">
+                                        <div ng-show="crudForm.sdt.$error.required"
+                                             class="ng-inactive" style="color:#a94442">
+                                            Số điện thoại không được để trống.
+                                        </div>
+                                    </div>
+                                    <div ng-messages="crudForm.sdt.$error" class="help-block" role="alert">
+                                        <div ng-message="required">Nhập số điện thoại.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end điên thoại-->
+                        <!--email-->
+                        <div class="col-md-6">
+                            <div class="form-group form-md-line-input">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.email" name="email"
+                                           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" type="text" />
+                                    <label class="font-dark">Email </label>
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end email-->
+                        <!--ngày sinh-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.ngaySinh)"
+                                 moment-picker="vm.huanLuyenVien.ngaySinh" format="YYYY-MM-DD" locale="vi">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.ngaySinh" name="ngaySinh" readonly required class="form-control placeholder-no-fix" />
+                                    <label class="font-dark">Ngày Sinh <span class="font-red">*</span></label>
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ngày sinh-->
+                        <!--loại hợp đồng-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.hopDong)">
+                                <select ng-init="loaiHopDongs = [{ value: 1, name: 'Hợp đồng thử việc'},{ value: 2, name: 'Hợp đồng lao động'}]"
+                                        ng-model="vm.huanLuyenVien.hopDong" name="hopDong"
+                                        ng-options="option.value as option.name for option  in loaiHopDongs"
+                                        autofocus="" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                        required="" style=""></select>
+                                <label class="font-dark">Loại Hợp Đồng <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end loại hợp đồng-->
+                        <!--ngày bắt đầu-->
+                        <div class="col-md-6">
+                            <div moment-picker="vm.huanLuyenVien.batDauLam" format="YYYY-MM-DD" locale="vi"
+                                 ng-class="vm.validation.validClassInput(crudForm.batDauLam)">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.batDauLam" name="batDauLam" readonly class="form-control placeholder-no-fix" />
+                                    <label class="font-dark">Ngày Bắt Đầu </label>
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ngày bắt đầu-->
+                        <!--ngày ký hợp đồng-->
+                        <div class="col-md-6">
+                            <div moment-picker="vm.huanLuyenVien.ngayKiHopDong" format="YYYY-MM-DD" locale="vi"
+                                 class="form-group form-md-line-input">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.ngayKiHopDong"
+                                           name="kiHopDong" readonly
+                                           class="form-control placeholder-no-fix" />
+                                    <label class="font-dark">Ngày Kí Hợp Đồng </label>
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ngày ký hợp đồng-->
+                        <!--ngày kết thúc-->
+                        <div class="col-md-6">
+                            <div moment-picker="vm.huanLuyenVien.ketThuc" format="YYYY-MM-DD" locale="vi"
+                                 class="form-group form-md-line-input">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.ketThuc"
+                                           name="ketThuc" readonly class="form-control placeholder-no-fix" />
+                                    <label class="font-dark">Ngày Hết Hợp Đồng </label>
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ngày kết thúc-->
+                        <!--ngày nghĩ việc-->
+                        <div class="col-md-6">
+                            <div moment-picker="vm.huanLuyenVien.nghiViec" format="YYYY-MM-DD" locale="vi"
+                                 class="form-group form-md-line-input">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.nghiViec"
+                                           name="nghiViec" readonly class="form-control placeholder-no-fix" />
+                                    <label class="font-dark">Ngày Nghĩ Việc </label>
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ngày nghĩ việc-->
+                        <!--mức lương-->
+                        <div class="col-md-6">
+                            <div class="form-group form-md-line-input">
+                                <div class="input-icon">
+                                    <input ng-model="vm.huanLuyenVien.luong" name="luong"
+                                           min="0" class="form-control placeholder-no-fix" type="number" />
+                                    <label class="font-dark">Lương </label>
+                                    <i class="fa fa-dollar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end mức lương-->
+                        <!--Trạng thái-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.trangThai)">
+                                <select ng-init="trangThais = [{ value: true, name: 'Đang làm'},{ value: false, name: 'Nghĩ việc'}]"
+                                        ng-model="vm.huanLuyenVien.trangThai" name="trangThai"
+                                        ng-options="option.value as option.name for option  in trangThais"
+                                        autofocus="" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                        required="" style=""></select>
+                                <label class="font-dark">Trạng Thái <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end trạng thái-->
+                        <!--dia chi-->
+                        <div class="col-md-12">
+                            <div ng-class="vm.validation.validClassInput(crudForm.diaChi)">
+                                <textarea ng-model="vm.huanLuyenVien.diaChi" name="diaChi"
+                                          style="height:70px" required
+                                          class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched">
+                                </textarea>
+                                <label class="font-dark">Địa Chỉ <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end dia chi-->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-actions">
+                    <div class="btn-set pull-left" ng-show="!vm.isConfirm">
+                        <button ng-disabled="!crudForm.$valid"
+                                autofocus="" type="submit" class="btn green left ng-scope ladda-button" ladda="vm.saving" data-style="expand-left">
+                            <span class="ladda-label">
+                                Lưu thông tin <i class="fa fa-save"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+
+                        <button type="button" autofocus=""
+                                ng-show="vm.showButtonDelete()"
+                                ng-click="vm.isDelete()"
+                                class="btn red left ng-scope ladda-button"
+                                ladda="vm.saving" data-style="expand-left">
+                            <span class="ladda-label">
+                                Xóa <i class="fa fa-recycle"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                    </div>
+                    <!--confirm-->
+                    <div class="btn-set pull-left" ng-show="vm.isConfirm">
+                        <button autofocus=""
+                                type="button"
+                                class="btn red left ng-scope ladda-button"
+                                ladda="vm.saving"
+                                data-style="expand-left"
+                                ng-click="vm.confirmDelete(vm.huanLuyenVien)">
+                            <span class="ladda-label">
+                                Chắc chắn xóa <i class="fa fa-recycle"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                        <button ng-click="vm.isDelete()"
+                                autofocus=""
+                                type="button"
+                                class="btn info left ng-scope ladda-button"
+                                ladda="vm.saving"
+                                data-style="expand-left">
+                            <span class="ladda-label">
+                                Quay lại <i class="fa fa-reply"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                    </div>
+                    <!--end confirm-->
+                    <div class="btn-set pull-right">
+                        <button ng-click="vm.dismiss()" autofocus="" type="button" class="btn dark btn-outline left" data-dismiss="modal" aria-hidden="false">Đóng <i class="fa fa-close"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

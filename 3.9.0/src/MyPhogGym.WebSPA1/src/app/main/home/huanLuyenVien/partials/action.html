@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col col-md-6">
+        <div class="btn-set pull-left">
+            <button autofocus="" ng-click="vm.showModal({})" ladda="vm.loading" data-style="slide-right" class="btn sbold green ladda-button">
+                <span class="ladda-label">
+                    Tạo Huấn Luyện Viên
+                    <i class="fa fa-plus"></i>
+                </span><span class="ladda-spinner"></span>
+            </button>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="row">
+            <div class="form-group form-md-line-input padding-t-0 marrgin-b-0">
+                <span class="sbold">Hợp Đồng</span>
+                <select autofocus="" class="form-control ng-pristine ng-valid ng-not-empty ng-touched"
+                        ng-change="vm.filterData()" ng-model="vm.filter.hopDong">
+                    <option value="-1" class="ng-binding ng-scope" selected="selected" style=""></option>
+                    <option value="1" class="ng-binding ng-scope">Hợp đồng thử việc </option>
+                    <option value="2" class="ng-binding ng-scope">Hợp đồng lao động </option>
+                </select>
+                <label></label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="row">
+            <div class="form-group form-md-line-input padding-t-0 marrgin-b-0">
+                <span class="sbold">Trạng Thái</span>
+                <select autofocus="" class="form-control ng-pristine ng-valid ng-not-empty ng-touched"
+                        ng-change="vm.filterData()" ng-model="vm.filter.trangThai">
+                    <option value="-1" class="ng-binding ng-scope" selected="selected" style=""></option>
+                    <option value="1" class="ng-binding ng-scope"> Đang làm </option>
+                    <option value="2" class="ng-binding ng-scope"> Nghĩ việc </option>
+                </select>
+                <label></label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group form-md-line-input padding-t-0 marrgin-b-0">
+            <span class="sbold">Tìm Kiếm</span>
+            <div class="input-group">
+                <input type="text" class="form-control ng-valid ng-touched ng-dirty ng-valid-parse ng-empty" ng-change="vm.filterData()" ng-model="vm.filter.keySearch" style="">
+                <label></label><span class="input-group-addon">
+                    <i class="fa fa-search font-size-18"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,79 @@
+﻿<is-load-form ng-if="vm.loadForm"></is-load-form>
+<form class="container info-center-home">
+    <info-center-home-component thong-tin-trung-tam="vm.thongTinTrungTam"></info-center-home-component>
+    <div class="row text-right padding-r-15 margin-b-10">
+        <button class="btn btn-outline green" ui-sref="app.sso.join-organization({tenant : vm.thongTinTrungTam.name})">Gia nhập Trung tâm</button>
+    </div>
+    <div class="row">
+        <div class="col-md-6" ng-repeat-start="khoaHoc in vm.khoaHocs">
+            <div class="portlet box default">
+                <div class="portlet-title">
+                    <div class="caption">
+                        {{khoaHoc.name}}
+                    </div>
+                    <div class="actions font-dark">
+                        {{khoaHoc.thoiGianBatDau | date : 'dd/MM/yyyy'}} - {{
+                        khoaHoc.thoiGianKetThuc | date :
+                        'dd/MM/yyyy'
+                        }}
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <pre class="margin-t-10" ng-if="khoaHoc.moTa">{{khoaHoc.moTa}}</pre>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="col-md-5 padding-0">
+                                Thời Gian Đăng ký :
+                            </span>
+                            <div class="col-md-7 padding-0 text-right">
+                                <span ng-repeat="thoiGianDangKy in khoaHoc.thoiGianDangKys">
+                                    {{
+                                    thoiGianDangKy.thoiGianBatDau
+                                    | date : 'dd/MM/yyyy'
+                                    }} - {{thoiGianDangKy.thoiGianKetThuc | date : 'dd/MM/yyyy'}}
+                                    <br>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat="diaDiem in khoaHoc.diaDiemHocs">
+                        <div class="row">
+                            <div class="col-md-4">
+                                Địa Điểm Học :
+                            </div>
+                            <div class="col-md-8 text-right">
+                                {{diaDiem.diaDiem.diaChi}}
+                            </div>
+                        </div>
+                        <table class="table table-bordered table-hover bg-white">
+                            <thead>
+                                <tr>
+                                    <th>Đối Tượng</th>
+                                    <th>Môn học</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="lopDoiTuong in diaDiem.lopDoiTuongs">
+                                    <td>{{lopDoiTuong.doiTuongHoc.loaiDoiTuong.name}}</td>
+                                    <td>
+                                        <span ng-repeat="chuongTrinhHoc in lopDoiTuong.doiTuongHoc.chuongTrinhHocs">
+                                            <span ng-if="!$first"> - </span>{{chuongTrinhHoc.monHoc.name}}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row margin-t-5 padding-t-10 text-center">
+                        <button class="btn default" ui-sref="app.home.student-register-course-home({khoaHocId : khoaHoc.id})">Đăng
+                            Ký Học</button>
+                        <p class="font-red" ng-if="!khoaHoc._isDangKyHoc">Đăng Ký Học Chưa mở</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ng-if=" $index%2 " -->
+        <div ng-repeat-end ng-if="false" class="row col-md-12"></div>
+    </div>
+</form>

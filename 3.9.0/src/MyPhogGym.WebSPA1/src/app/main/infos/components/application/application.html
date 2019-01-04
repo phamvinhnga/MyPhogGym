@@ -1,0 +1,13 @@
+<div class="btn-group application">
+    <a class="btn btn-default dropdown-toggle bold font-red" data-toggle="dropdown" href="javascript:;" aria-expanded="false">
+        {{vm.applicationName}}
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+        <li ng-repeat="application in vm.applications">
+            <a href="{{application.url}}">
+                {{application.name}}
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,130 @@
+<div class="modal-content" ng-init="vm.get()">
+    <div class="ng-scope ng-isolate-scope">
+        <form name="crudForm" class="application-dialog-form ng-pristine ng-invalid ng-invalid-required" ng-submit="vm.update()">
+            <div class="portlet box grey-steel">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.dismiss()"
+                        style="margin-right:10px; margin-top:15px"></button>
+                <div class="portlet-title">
+                    <div class="caption  uppercase">
+                        <i class="fa fa-info"></i>Ca Làm Việc
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <!--id ca làm việc-->
+                        <div class="col-md-12">
+                            <div class="form-group form-md-line-input">
+                                <input ng-model="vm.caLamViec.id" name="caLamViecID"
+                                       class="form-control placeholder-no-fix" type="text"
+                                       placeholder="xxxxx-xxx-xxx-xxx-xxx" readonly />
+                                <label class="font-dark"> ID Ca Làm Việc <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end id ca làm việc-->
+                        <!--tên ca-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.tenCa)">
+                                <input ng-model="vm.caLamViec.tenCa" name="tenCa" required
+                                       class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" type="text" />
+                                <label class="font-dark">Tên Ca <span class="font-red">*</span></label>
+                                <div ng-show="crudForm.tenCa.$touched" class="help-block help-block-error ng-scope ng-inactive">
+                                    <div ng-show="crudForm.tenCa.$error.required"
+                                         class="ng-inactive" style="color:#a94442">
+                                        Tên ca không được để trống.
+                                    </div>
+                                </div>
+                                <div ng-messages="crudForm.tenCa.$error" class="help-block" role="alert">
+                                    <div ng-message="required">Nhập tên ca làm việc</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ten ca-->
+                        <!--thời gian bắt đầu tập-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.thoiGianBatDau)"
+                                 moment-picker="vm.caLamViec.batDau" format="HH:mm:ss" locale="vi">
+                                <input ng-model="vm.caLamViec.batDau" name="thoiGianBatDau"
+                                       placeholder="hh:mm:ss" required readonly
+                                       class="form-control placeholder-no-fix" />
+                                <label class="font-dark">Thời Gian Bắt Đầu <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end thời gian bắt đầu tập-->
+                        <!--thời gian kết thúc-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.thoiGianketThuc)"
+                                 moment-picker="vm.caLamViec.ketThuc" format="HH:mm:ss" locale="vi">
+                                <input ng-model="vm.caLamViec.ketThuc" name="thoiGianketThuc"
+                                       placeholder="hh:mm:ss" readonly required
+                                       class="form-control placeholder-no-fix" />
+                                <label class="font-dark">Thời Gian Kết Thúc <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end thời gian kết thúc-->
+                        <!--Trạng thái-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.trangThai)">
+                                <select ng-init="trangThais = [{ value: true, name: 'Hiệu lực'},{ value: false, name: 'Hết hiệu lực'}]"
+                                        ng-model="vm.caLamViec.trangThai" name="trangThai"
+                                        ng-options="option.value as option.name for option  in trangThais"
+                                        autofocus="" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                        required="" style=""></select>
+                                <label class="font-dark">Trạng Thái <span class="font-red">*</span></label>
+                            </div>
+                        </div>
+                        <!--end trạng thái-->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-actions">
+                    <div class="btn-set pull-left" ng-show="!vm.isConfirm">
+                        <button ng-disabled="!crudForm.$valid"
+                                autofocus="" type="submit" class="btn green left ng-scope ladda-button" ladda="vm.saving" data-style="expand-left">
+                            <span class="ladda-label">
+                                Lưu thông tin <i class="fa fa-save"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                        <button type="button" autofocus=""
+                                ng-show="vm.showButtonDelete()"
+                                ng-click="vm.isDelete()"
+                                class="btn red left ng-scope ladda-button"
+                                ladda="vm.saving" data-style="expand-left">
+                            <span class="ladda-label">
+                                Xóa <i class="fa fa-recycle"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                    </div>
+                    <!--confirm-->
+                    <div class="btn-set pull-left" ng-show="vm.isConfirm">
+                        <button autofocus=""
+                                type="button"
+                                class="btn red left ng-scope ladda-button"
+                                ladda="vm.saving"
+                                data-style="expand-left"
+                                ng-click="vm.confirmDelete(vm.caLamViec)">
+                            <span class="ladda-label">
+                                Chắc chắn xóa <i class="fa fa-recycle"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                        <button ng-click="vm.isDelete()"
+                                autofocus=""
+                                type="button"
+                                class="btn info left ng-scope ladda-button"
+                                ladda="vm.saving"
+                                data-style="expand-left">
+                            <span class="ladda-label">
+                                Quay lại <i class="fa fa-reply"></i>
+                            </span><span class="ladda-spinner"></span>
+                        </button>
+                    </div>
+                    <!--end confirm-->
+                    <div class="btn-set pull-right">
+                        <button ng-click="vm.dismiss()" autofocus="" type="button" class="btn dark btn-outline left" data-dismiss="modal" aria-hidden="false">Đóng <i class="fa fa-close"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

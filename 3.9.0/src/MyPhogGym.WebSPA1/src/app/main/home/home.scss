@@ -1,0 +1,38 @@
+$screen-md-min: 992px;
+
+.home {
+    web-header {
+        display: table;
+        width: 100%;
+    }
+
+    web-footer {
+        display: table;
+        width: 100%;
+    }
+
+    .page-content {
+        margin: auto;
+        background-color: #563131;
+
+        .container {
+            margin: auto;
+        }
+    }
+
+    @media(max-width: $screen-md-min) {
+        .page-content {
+            background-color: #FFF;
+        }
+    }
+}
+
+.checkbox-days > span:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #ff0000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
