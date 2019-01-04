@@ -117,19 +117,17 @@
 
         function soNgayConLai(input) {
             var output;
-            if (input != null) {
-                switch (input.dichVu.loaiGoi) {
-                    case 1:
-                        var ngayKetThuc = moment(input.dangKy, 'YYYY-MM-DD').add(input.dichVu.soLuong, 'months');
-                        output = moment(ngayKetThuc).diff(moment(), 'days') + " Ngày";
-                        break;
-                    case 2:
-                        output = input.conLai + " Buổi";
-                        break;
-                    default:
-                        output = input.conLai + " Ngày";
-                        break;
-                }
+            switch (input.dichVu.loaiGoi) {
+                case 1:
+                    var ngayKetThuc = moment(input.dangKy, 'YYYY-MM-DD').add(input.dichVu.soLuong, 'months');
+                    output = moment(ngayKetThuc).diff(moment(), 'days') + " Ngày";
+                    break;
+                case 2:
+                    output = input.conLai + " Buổi";
+                    break;
+                default:
+                    output = input.conLai + " Ngày";
+                    break;
             }
             return output;
         }
@@ -137,5 +135,6 @@
         function filterData() {
             getAll();
         }
+
     }
 })();

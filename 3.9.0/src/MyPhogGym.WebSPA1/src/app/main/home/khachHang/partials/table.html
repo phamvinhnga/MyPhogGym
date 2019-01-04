@@ -22,7 +22,7 @@
             <td ng-bind="khachHang.sdt"></td>
             <td ng-bind="khachHang.dichVu.tenDichVu"></td>
             <td ng-bind="khachHang.dangKy |date:'dd-MM-yyyy'"></td>
-            <td ng-bind="vm.soNgayConLai(khachHang)"></td>
+            <td ng-init="ngayConLai = vm.soNgayConLai(khachHang)" ng-bind="ngayConLai"></td>
             <td ng-bind="khachHang.ghiChu"></td>
             <td><a href="" ng-click="vm.showModalKhachHangDetail(khachHang)"><i class="fa fa-edit"></i> Chi Tiết</a></td>
             <td><a href="" ng-click="vm.showModalThongTinKhachHang(khachHang)"><i class="fa fa-edit"></i> Thông Tin</a></td>
