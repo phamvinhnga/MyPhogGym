@@ -32,7 +32,7 @@
         function getkhachHang() {
             var input = vm.resolve.khachHang;
             if (input.id != null) {
-                abpApi.resolve('app.khachHang@get', input)
+                return abpApi.resolve('app.khachHang@get', input)
                     .then(function (response) {
                         vm.khachHang = response;
                         vm.khachHang.lichTap = angular.fromJson(response.lichTap);
@@ -41,20 +41,19 @@
         }
 
         function soNgayConLai(input) {
+            console.log(input);
             var output;
-            if (input.dichVu != null) {
-                switch (input.dichVu.loaiGoi) {
-                    case 1:
-                        var ngayKetThuc = moment(input.dangKy, 'YYYY-MM-DD').add(input.dichVu.soLuong, 'months');
-                        output = moment(ngayKetThuc).diff(moment(), 'days') + " Ngày";
-                        break;
-                    case 2:
-                        output = input.conLai + " Buổi";
-                        break;
-                    default:
-                        output = input.conLai + " Ngày";
-                        break;
-                }
+            switch (input.dichVu.loaiGoi) {
+                case 1:
+                    var ngayKetThuc = moment(input.dangKy, 'YYYY-MM-DD').add(input.dichVu.soLuong, 'months');
+                    output = moment(ngayKetThuc).diff(moment(), 'days') + " Ngày";
+                    break;
+                case 2:
+                    output = input.conLai + " Buổi";
+                    break;
+                default:
+                    output = input.conLai + " Ngày";
+                    break;
             }
             return output;
         }

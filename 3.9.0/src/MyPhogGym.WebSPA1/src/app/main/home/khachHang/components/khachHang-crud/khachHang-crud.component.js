@@ -38,7 +38,7 @@
         function getkhachHang() {
             var input = vm.resolve.khachHang;
             if (input.id != null) {
-                abpApi.resolve('app.khachHang@get', input)
+                return abpApi.resolve('app.khachHang@get', input)
                     .then(function (response) {
                         vm.khachHang = response;
                     });
