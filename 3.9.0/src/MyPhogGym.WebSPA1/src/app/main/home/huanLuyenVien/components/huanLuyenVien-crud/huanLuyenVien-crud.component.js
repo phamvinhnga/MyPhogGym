@@ -26,6 +26,7 @@
         vm.get = getHuanLuyenVien;
         vm.update = update;
         vm.cancel = cancel;
+        vm.dismiss = dismiss;
         vm.showButtonDelete = showButtonDelete;
         vm.isDelete = isDelete;
         vm.confirmDelete = confirmDelete;
@@ -67,6 +68,10 @@
 
         function showButtonDelete() {
             return vm.huanLuyenVien.id == null ? false : true;
+        }
+
+        function dismiss() {
+            vm.modalInstance.dismiss();
         }
 
         function isDelete() {

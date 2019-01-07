@@ -8,7 +8,6 @@
     /** @ngInject */
     function MainController($scope, $rootScope) {
         // Data
-
         //////////
     }
 })();
