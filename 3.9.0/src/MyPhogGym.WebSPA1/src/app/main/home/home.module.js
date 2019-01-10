@@ -47,9 +47,13 @@
                 url: '/lich-lam-viec',
                 template: '<lich-lam-viec-page></lich-lam-viec-page>'
             })
-            .state('app.home.khach-hang-page', {
-                url: '/khach-hang',
-                template: '<khach-hang-page></khach-hang-page>'
+            .state('app.home.quan-ly-khach-hang-page', {
+                url: '/quan-ly-khach-hang',
+                template: '<quan-ly-khach-hang-page></quan-ly-khach-hang-page>'
+            })
+            .state('app.home.khach-hang-den-tap-page', {
+                url: '/khach-hang-den-tap',
+                template: '<khach-hang-den-tap-page></khach-hang-den-tap-page>'
             })
                // },
                 //data: {

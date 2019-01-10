@@ -220,29 +220,9 @@
     <Compile Include="EntityFramework\MyPhogGymDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\MyPhogGymRepositoryBase.cs" />
     <Compile Include="EntityFramework\_BusinessDbContext.cs" />
-    <Compile Include="Migrations\201812180952553_init_table_huanLuyenVien_caLamViec_dichVu_lichLamViec_khachHang.cs" />
-    <Compile Include="Migrations\201812180952553_init_table_huanLuyenVien_caLamViec_dichVu_lichLamViec_khachHang.Designer.cs">
-      <DependentUpon>201812180952553_init_table_huanLuyenVien_caLamViec_dichVu_lichLamViec_khachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812190657075_add_column_maVach_table_khachHang.cs" />
-    <Compile Include="Migrations\201812190657075_add_column_maVach_table_khachHang.Designer.cs">
-      <DependentUpon>201812190657075_add_column_maVach_table_khachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812200144301_add_column_conLai_in_table_khachHang.cs" />
-    <Compile Include="Migrations\201812200144301_add_column_conLai_in_table_khachHang.Designer.cs">
-      <DependentUpon>201812200144301_add_column_conLai_in_table_khachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812280820505_Change_DichVu_Table.cs" />
-    <Compile Include="Migrations\201812280820505_Change_DichVu_Table.Designer.cs">
-      <DependentUpon>201812280820505_Change_DichVu_Table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812280941439_Change_column_type_column_batDau_and_ketThuc_in_table_dichVu.cs" />
-    <Compile Include="Migrations\201812280941439_Change_column_type_column_batDau_and_ketThuc_in_table_dichVu.Designer.cs">
-      <DependentUpon>201812280941439_Change_column_type_column_batDau_and_ketThuc_in_table_dichVu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812310801362_change_table_khachHang.cs" />
-    <Compile Include="Migrations\201812310801362_change_table_khachHang.Designer.cs">
-      <DependentUpon>201812310801362_change_table_khachHang.cs</DependentUpon>
+    <Compile Include="Migrations\201901090821494_init_table_all.cs" />
+    <Compile Include="Migrations\201901090821494_init_table_all.Designer.cs">
+      <DependentUpon>201901090821494_init_table_all.cs</DependentUpon>
     </Compile>
     <Compile Include="MyPhogGymDataModule.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.cs" />
@@ -281,24 +261,8 @@
     <EmbeddedResource Include="Migrations\201810150846132_Upgraded_To_ABP_v3_9_0.resx">
       <DependentUpon>201810150846132_Upgraded_To_ABP_v3_9_0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812180952553_init_table_huanLuyenVien_caLamViec_dichVu_lichLamViec_khachHang.resx">
-      <DependentUpon>201812180952553_init_table_huanLuyenVien_caLamViec_dichVu_lichLamViec_khachHang.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812190657075_add_column_maVach_table_khachHang.resx">
-      <DependentUpon>201812190657075_add_column_maVach_table_khachHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812200144301_add_column_conLai_in_table_khachHang.resx">
-      <DependentUpon>201812200144301_add_column_conLai_in_table_khachHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812280820505_Change_DichVu_Table.resx">
-      <DependentUpon>201812280820505_Change_DichVu_Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812280941439_Change_column_type_column_batDau_and_ketThuc_in_table_dichVu.resx">
-      <DependentUpon>201812280941439_Change_column_type_column_batDau_and_ketThuc_in_table_dichVu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812310801362_change_table_khachHang.resx">
-      <DependentUpon>201812310801362_change_table_khachHang.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901090821494_init_table_all.resx">
+      <DependentUpon>201901090821494_init_table_all.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

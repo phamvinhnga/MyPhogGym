@@ -27,8 +27,14 @@ namespace MyPhogGym._Business.DichVu.Dto
         [DefaultValue(0)]
         public decimal Gia { get; set; }
 
-        public string BatDau { get; set; }
+        public string GioBatDau { get; set; }
 
-        public string KetThuc { get; set; }
+        public string GioKetThuc { get; set; }
+
+        public DateTime? NgayBatDau { get; set; }
+
+        public DateTime? NgayKetThuc { get; set; }
+
+        public string LichTap { get; set; }
     }
 }

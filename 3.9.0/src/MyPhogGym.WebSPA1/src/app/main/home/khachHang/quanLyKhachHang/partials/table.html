@@ -1,0 +1,37 @@
+<table class="table table-striped table-bordered table-hover" id="menus">
+    <thead>
+        <tr>
+            <th style="width:10%">Họ & Tên</th>
+            <th style="width:10%">Ngày Sinh</th>
+            <th style="width:5%">Giới Tính</th>
+            <th style="width:10%">Số Điện Thoại</th>
+            <th style="width:15%">Gói Tập</th>
+            <th style="width:10%">Ngày Đăng Ký</th>
+            <th style="width:5%">Còn Lại</th>
+            <th style="width:10%">Ghi Chú</th>
+            <th style="width:5%"></th>
+            <th style="width:5%"></th>
+            <th style="width:5%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="khachHang in vm.khachHangs">
+            <td ng-bind="khachHang.hoTen"></td>
+            <td ng-bind="khachHang.ngaySinh |date:'dd-MM-yyyy'"></td>
+            <td ng-bind="khachHang.gioiTinh == 1 ? 'Nam' : 'Nữ'"></td>
+            <td ng-bind="khachHang.sdt"></td>
+            <td ng-bind="khachHang.dichVu.tenDichVu"></td>
+            <td ng-bind="khachHang.ngayDangKy |date:'dd-MM-yyyy'"></td>
+            <td ng-init="ngayConLai = vm.soNgayConLai(khachHang)" ng-bind="ngayConLai"></td>
+            <td ng-bind="khachHang.ghiChu"></td>
+            <td><a href="" ng-click="vm.showModalKhachHangDetail(khachHang)"><i class="fa fa-edit"></i> Chi Tiết</a></td>
+            <td><a href="" ng-click="vm.showModalThongTinKhachHang(khachHang)"><i class="fa fa-edit"></i> Thông Tin</a></td>
+            <td><a href="" ng-click="vm.showModalDangKyGoiTapModal(khachHang)"><i class="fa fa-edit"></i> Đăng Ký</a></td>
+        </tr>
+        <tr ng-if="vm.dichVu.length == 0">
+            <td colspan="10">
+                <p style="text-align:center">Không tìm thấy bản ghi nào</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

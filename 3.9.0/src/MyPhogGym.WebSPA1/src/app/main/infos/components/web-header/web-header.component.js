@@ -13,7 +13,7 @@
     /** @ngInject */
     function webHeaderController($rootScope, $state) {
         var vm = this;
-
+        console.log(1);
         vm.loading = false;
 
         vm.applicationName = "HỆ THỐNG QUẢN LÝ GIÁO DỤC";
@@ -22,7 +22,14 @@
 
         vm.menus = [
 
-            { name: 'Khách hàng', url: 'app.home.khach-hang-page', iconCss: 'fa fa-users', isActive: false, permissions: [] },
+            //{ name: 'Khách hàng', url: 'app.home.khach-hang-page', iconCss: 'fa fa-users', isActive: false, permissions: [] },
+
+            {
+                name: 'Khách hàng', url: '', iconCss: 'fa fa-users', isActive: false, children: [
+                    { name: 'Quản Lý Khách Hàng', url: 'app.home.quan-ly-khach-hang-page', isActive: false },
+                    { name: 'Khánh Hàng Đến Tập', url: 'app.home.khach-hang-den-tap-page', isActive: false },
+                ]
+            },
 
             { name: 'Dịch vụ', url: 'app.home.dich-vu-page', iconCss: 'fa fa-bars', isActive: false, permissions: [] },
 

@@ -7,7 +7,8 @@ using MyPhogGym.Authorization.Users;
 using MyPhogGym.MultiTenancy;
 using MyPhogGym._Business.CaLamViec.Entity;
 using System.Data.Entity;
-using MyPhogGym._Business.KhachHang.Entity;
+using MyPhogGym._Business.KhachHang.QuanLyKhachHang.Entity;
+using MyPhogGym._Business.KhachHang.KhachHangDenTap.Entity;
 
 namespace MyPhogGym.EntityFramework
 {
@@ -22,5 +23,7 @@ namespace MyPhogGym.EntityFramework
         public virtual IDbSet<DichVu> DichVus { get; set; }
 
         public virtual IDbSet<KhachHang> KhachHangs { get; set; }
+
+        public virtual IDbSet<KhachHangDenTap> KhachHangDenTaps { get; set; }
     }
 }

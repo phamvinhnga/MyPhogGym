@@ -18,12 +18,12 @@ namespace MyPhogGym._Business.DichVu
     public class DichVuAppService : AsyncCrudAppService<Entity.DichVu, DichVuDto, Guid, GetAllDichVuInput>, IDichVuAppService
     {
         private readonly IRepository<Entity.DichVu, Guid> _dichVuRepository;
-        private readonly IRepository<KhachHang.Entity.KhachHang, Guid> _khachHangRepository;
+        private readonly IRepository<KhachHang.QuanLyKhachHang.Entity.KhachHang, Guid> _khachHangRepository;
 
         #region khời tạo
         public DichVuAppService(
             IRepository<Entity.DichVu, Guid> dichVuRepository,
-            IRepository<KhachHang.Entity.KhachHang, Guid> khachHangRepository) : base(dichVuRepository)
+            IRepository<KhachHang.QuanLyKhachHang.Entity.KhachHang, Guid> khachHangRepository) : base(dichVuRepository)
         {
             _dichVuRepository = dichVuRepository;
             _khachHangRepository = khachHangRepository;
@@ -60,9 +60,21 @@ namespace MyPhogGym._Business.DichVu
         #region delete
         public override Task Delete(EntityDto<Guid> input)
         {
-            _khachHangRepository.GetAll().Where(w => w.DichVuID == input.Id).ToList().ForEach(f =>  f.DangKy = null);
+            _khachHangRepository.GetAll().Where(w => w.DichVuID == input.Id).ToList().ForEach(f =>  f.NgayDangKy = null);
             return base.Delete(input);
         }
         #endregion
+
+        public async override Task<DichVuDto> Get(EntityDto<Guid> input)
+        {
+            var person = await _dichVuRepository.GetAsync(input.Id);
+            var k = person.MapTo<DichVuDto>();
+            return k;
+        }
+
+        public override Task<DichVuDto> Create(DichVuDto input)
+        {
+            return base.Create(input);
+        }
     }
 }

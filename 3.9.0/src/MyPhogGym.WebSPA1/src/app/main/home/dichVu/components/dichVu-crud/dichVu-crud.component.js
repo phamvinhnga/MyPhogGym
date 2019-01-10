@@ -49,13 +49,16 @@
             if (input.id != null) {
                 return abpApi.resolve('app.dichVu@get', input)
                     .then(function (response) {
+                        console.log(response);
                         vm.dichVu = response;
+                        vm.dichVu.lichTap = angular.fromJson(response.lichTap);
                     });
             }
         }
 
         function update() {
             var callApi = vm.dichVu.id == null ? 'app.dichVu@create' : 'app.dichVu@update';
+            vm.dichVu.lichTap = JSON.stringify(vm.dichVu.lichTap);
             return abpApi.resolve(callApi, vm.dichVu)
                 .then(function (response) {
                     logger.logSuccess('Cập nhật thành công', null, true);

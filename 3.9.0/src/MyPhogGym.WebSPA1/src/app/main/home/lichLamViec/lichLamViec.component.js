@@ -74,6 +74,7 @@
             angular.forEach(chiTiet, function (caValue, key) {
                 abpApi.resolve('app.caLamViec@get', { id: caValue.id })
                     .then(function (response) {
+                        console.log(response);
                         if (response.trangThai) {
                             angular.forEach(caValue.days, function (dayValue, key) {
                                 var ca = dayValue == true ? "- " + caValue.tenCa + "<br/>" : "";

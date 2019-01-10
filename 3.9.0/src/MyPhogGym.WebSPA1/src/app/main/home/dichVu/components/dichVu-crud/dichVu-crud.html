@@ -22,7 +22,6 @@
                             </div>
                         </div>
                         <!--end id goi tap-->
-
                         <!--tên goi-->
                         <div class="col-md-6">
                             <div ng-class="vm.validation.validClassInput(crudForm.tenDichVu)">
@@ -31,7 +30,7 @@
                                 <label class="font-dark">Tên Gói Tập <span class="font-red">*</span></label>
                                 <div ng-show="crudForm.tenDichVu.$touched" class="help-block help-block-error ng-scope ng-inactive">
                                     <div ng-show="crudForm.tenDichVu.$error.required"
-                                         class="ng-inactive" style="color:#a94442" >
+                                         class="ng-inactive" style="color:#a94442">
                                         Tên gói tập không được để trống.
                                     </div>
                                 </div>
@@ -41,22 +40,18 @@
                             </div>
                         </div>
                         <!--end ten goi-->
-
                         <!--loại gói tập-->
                         <div class="col-md-6">
                             <div ng-class="vm.validation.validClassInput(crudForm.loaiGoi)">
-                                <select
-                                        ng-init="loaiGois = [{ value: 1, name: 'Theo tháng'},{ value: 2, name: 'Theo buổi'},{ value: 3, name: 'Theo ngày'}]"
+                                <select ng-init="loaiGois = [{ value: 1, name: 'Theo tháng'},{ value: 2, name: 'Theo buổi'},{ value: 3, name: 'Theo ngày'}]"
                                         ng-model="vm.dichVu.loaiGoi" name="loaiGoi"
                                         ng-options="option.value as option.name for option  in loaiGois"
                                         autofocus="" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-                                        required="" style="">
-                                </select>
+                                        required="" style=""></select>
                                 <label class="font-dark">Loại Gói Tập <span class="font-red">*</span></label>
                             </div>
                         </div>
                         <!--end loại gói-->
-
                         <!--Buổi tập-->
                         <div class="col-md-6">
                             <div ng-class="vm.validation.validClassInput(crudForm.buoiTap)">
@@ -69,7 +64,6 @@
                             </div>
                         </div>
                         <!--end buổi tập-->
-
                         <!--giá tiền-->
                         <div class="col-md-6">
                             <div ng-class="vm.validation.validClassInput(crudForm.gia)">
@@ -91,7 +85,6 @@
                             </div>
                         </div>
                         <!--end giá tiền-->
-
                         <!--số tháng + số buổi + số ngày-->
                         <div class="col-md-6">
                             <div ng-class="vm.validation.validClassInput(crudForm.soLuong)">
@@ -112,32 +105,153 @@
                             </div>
                         </div>
                         <!--end số tháng + số buổi + số ngày-->
-
-                        <!--thời gian bắt đầu tập-->
+                        <!--từ giờ-->
                         <div class="col-md-6">
-                            <div ng-class="vm.validation.validClassInput(crudForm.thoiGianBatDau)"
-                                 moment-picker="vm.dichVu.batDau" format="HH:mm:ss" locale="vi">
+                            <div ng-class="vm.validation.validClassInput(crudForm.gioBatDau)"
+                                 moment-picker="vm.dichVu.gioBatDau" format="HH:mm:ss" locale="vi">
                                 <div class="input-icon">
-                                    <input ng-model="vm.dichVu.batDau" name="thoiGianBatDau" placeholder="hh:mm:ss" required readonly class="form-control placeholder-no-fix" />
-                                    <label class="font-dark">Thời Gian Bắt Đầu <span class="font-red">*</span></label>
+                                    <input ng-model="vm.dichVu.gioBatDau" name="gioBatDau" required readonly class="form-control" />
+                                    <label class="font-dark">Từ Giờ <span class="font-red">*</span></label>
                                     <i class="fa fa-clock-o"></i>
                                 </div>
                             </div>
                         </div>
-                        <!--end thời gian bắt đầu tập-->
-
-                        <!--thời gian kết thúc-->
+                        <!--end tới giờ-->
+                        <!--giờ kết thúc-->
                         <div class="col-md-6">
-                            <div ng-class="vm.validation.validClassInput(crudForm.thoiGianketThuc)"
-                                 moment-picker="vm.dichVu.ketThuc" format="HH:mm:ss" locale="vi">
+                            <div ng-class="vm.validation.validClassInput(crudForm.gioKetThuc)"
+                                 moment-picker="vm.dichVu.gioKetThuc" format="HH:mm:ss" locale="vi">
                                 <div class="input-icon">
-                                    <input ng-model="vm.dichVu.ketThuc" name="thoiGianketThuc" placeholder="hh:mm:ss" readonly required class="form-control placeholder-no-fix" />
-                                    <label class="font-dark">Thời Gian Kết Thúc <span class="font-red">*</span></label>
+                                    <input ng-model="vm.dichVu.gioKetThuc" name="gioKetThuc" readonly required class="form-control" />
+                                    <label class="font-dark">Tới Giờ <span class="font-red">*</span></label>
                                     <i class="fa fa-clock-o"></i>
                                 </div>
                             </div>
                         </div>
-                        <!--end thời gian kết thúc-->
+                        <!--end giờ kết thúc-->
+                        <!--Ngày bắt đầu-->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.ngayBatDau)" moment-picker="vm.dichVu.ngayBatDau" format="YYYY-MM-DD" locale="vi">
+                                <div class="input-icon">
+                                    <input ng-model="vm.dichVu.ngayBatDau" name="ngayBatDau" readonly type="text" class="form-control" />
+                                    <i class="fa fa-calendar"></i>
+                                    <label class="font-dark">Ngày Bắt Đầu <span class="font-red"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ngày bắt đầu-->
+                        <!--Ngày kết thúc -->
+                        <div class="col-md-6">
+                            <div ng-class="vm.validation.validClassInput(crudForm.ngayKetThuc)" moment-picker="vm.dichVu.ngayKetThuc" format="YYYY-MM-DD" locale="vi">
+                                <div class="input-icon">
+                                    <input ng-model="vm.dichVu.ngayKetThuc" name="ngayKetThuc" readonly type="text" class="form-control" />
+                                    <i class="fa fa-calendar"></i>
+                                    <label class="font-dark">Ngày Kết Thúc <span class="font-red"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end ngày kết thúc-->
+
+                        <!--lịch tập-->
+                        <div class="col-md-12" ng-show="vm.dichVu.loaiGoi == 1 ? false : true">
+                            <table class="table table-border table-hover">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td>Thứ 2</td>
+                                        <td>Thứ 3</td>
+                                        <td>Thứ 4</td>
+                                        <td>Thứ 5</td>
+                                        <td>Thứ 6</td>
+                                        <td>Thứ 7</td>
+                                        <td>Chủ nhật</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Lịch Tập</td>
+                                        <td>
+                                            <div class="md-checkbox">
+                                                <input ng-model="vm.dichVu.lichTap.thuHai"
+                                                       ng-checked="vm.dichVu.lichTap.thuHai"
+                                                       id="{{ vm.dichVu.id + '_thuHai'  }}" type="checkbox" class="md-check">
+                                                <label for="{{ vm.dichVu.id + '_thuHai'  }}">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="md-checkbox">
+                                                <input ng-model="vm.dichVu.lichTap.thuBa"
+                                                       ng-checked="vm.dichVu.lichTap.thuBa"
+                                                       id="{{ vm.dichVu.id + '_thuBa'  }}" type="checkbox" class="md-check">
+                                                <label for="{{ vm.dichVu.id + '_thuBa'  }}">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="md-checkbox">
+                                                <input ng-model="vm.dichVu.lichTap.thuTu"
+                                                       ng-checked="vm.dichVu.lichTap.thuTu"
+                                                       id="{{ vm.dichVu.id + '_thuTu'  }}" type="checkbox" class="md-check">
+                                                <label for="{{ vm.dichVu.id + '_thuTu'  }}">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="md-checkbox">
+                                                <input ng-model="vm.dichVu.lichTap.thuNam"
+                                                       ng-checked="vm.dichVu.lichTap.thuNam"
+                                                       id="{{ vm.dichVu.id + '_thuNam'  }}" type="checkbox" class="md-check">
+                                                <label for="{{ vm.dichVu.id + '_thuNam'  }}">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="md-checkbox">
+                                                <input ng-model="vm.dichVu.lichTap.thuSau"
+                                                       ng-checked="vm.dichVu.lichTap.thuSau"
+                                                       id="{{ vm.dichVu.id + '_thuSau'  }}" type="checkbox" class="md-check">
+                                                <label for="{{ vm.dichVu.id + '_thuSau'  }}">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="md-checkbox">
+                                                <input ng-model="vm.dichVu.lichTap.thuBay"
+                                                       ng-checked="vm.dichVu.lichTap.thuBay"
+                                                       id="{{ vm.dichVu.id + '_thuBay'  }}" type="checkbox" class="md-check">
+                                                <label for="{{ vm.dichVu.id + '_thuBay'  }}">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="md-checkbox">
+                                                <input ng-model="vm.dichVu.lichTap.chuNhat"
+                                                       ng-checked="vm.dichVu.lichTap.chuNhat"
+                                                       id="{{ vm.dichVu.id + '_chuNhat'  }}" type="checkbox" class="md-check">
+                                                <label for="{{ vm.dichVu.id + '_chuNhat'  }}">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--end ngày tập-->
 
                     </div>
                 </div>

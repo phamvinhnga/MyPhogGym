@@ -1,14 +1,16 @@
 <table class="table table-striped table-bordered table-hover" id="menus">
     <thead>
         <tr>
-            <th style="width: 200px">Tên Gói Tập</th>
-            <th style="width: 200px">Loại Gói</th>
-            <th style="width: 200px">Buổi Tập</th>
-            <th style="width: 200px">Số Buổi/Tháng/Ngày</th>
-            <th style="width: 200px">Giá Tiền</th>
-            <th style="width: 200px">Bắt Đầu</th>
-            <th style="width: 200px">Kết Thúc</th>
-            <th style="width: 100px"></th>
+            <th style="width: 15%">Tên Gói Tập</th>
+            <th style="width: 10%">Loại Gói</th>
+            <th style="width: 10%">Buổi Tập</th>
+            <th style="width: 10%">Số Buổi/Tháng/Ngày</th>
+            <th style="width: 10%">Giá Tiền</th>
+            <th style="width: 10%">Từ Giờ</th>
+            <th style="width: 10%">Tới Giờ</th>
+            <th style="width: 10%">Ngày Bắt Đầu</th>
+            <th style="width: 10%">Ngày Kết Thúc</th>
+            <th style="width: 5%"></th>
         </tr>
     </thead>
     <tbody>
@@ -18,8 +20,10 @@
             <td ng-bind="dichVu.buoiTap == 1 ? 'Cả ngày' : dichVu.buoiTap == 2 ? 'Buổi sáng' : dichVu.buoiTap == 3 ? 'Buổi trưa' : 'Buổi chiều'"></td>
             <td ng-bind="dichVu.loaiGoi == 1 ? dichVu.soLuong + ' Tháng' : dichVu.loaiGoi == 2 ? dichVu.soLuong + ' Buổi' : dichVu.soLuong + ' Ngày'"></td>
             <td ng-bind="(dichVu.gia | number) + ' đ'"></td>
-            <td ng-bind="dichVu.batDau"></td>
-            <td ng-bind="dichVu.ketThuc"></td>
+            <td ng-bind="dichVu.gioBatDau"></td>
+            <td ng-bind="dichVu.gioKetThuc"></td>
+            <td ng-bind="dichVu.ngayBatDau | date:'dd-MM-yyyy'"></td>
+            <td ng-bind="dichVu.ngayKetThuc | date:'dd-MM-yyyy'"></td>
             <td><a href="" ng-click="vm.showModal(dichVu)"><i class="fa fa-edit"></i> Chi Tiết</a></td>
         </tr>
         <tr ng-if="vm.dichVu.length == 0">

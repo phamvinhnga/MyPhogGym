@@ -45,7 +45,7 @@
                     var token = response.token || response;
                     authService.setAccessToken({ access_token: token });
                     logger.logSuccess('Đăng nhập thành công', null, true);
-                    $state.go('app.home.khach-hang-page');
+                    $state.go('app.home.quan-ly-khach-hang-page');
                 })
                 .catch(function (error) {
                     errorHandler.handleValidationErrors("Đăng nhập không thành công", true);

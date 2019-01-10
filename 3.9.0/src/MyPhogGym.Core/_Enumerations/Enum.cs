@@ -30,7 +30,8 @@ namespace MyPhogGym._Enumerations
     public enum DichVuLoaiGoi
     {
         THANG = 1,
-        LANQUET = 2
+        BUOI = 2,
+        NGAY = 3
     }
     public enum KhachHangGioiTinh
     {

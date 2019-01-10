@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col col-md-6">
+        <div class="form-group form-md-line-input form-md-floating-label has-success" style="width:30%">
+            <div class="input-group">
+                <div class="input-group-control">
+                    <input ng-model="vm.quetThe" type="text" class="form-control edited">
+                    <label for="form_control_1">Khách Hàng Quẹt Thẻ</label>
+                    <span class="help-block">Khách hàng quẹt thẻ..</span>
+                </div>
+                <span class="input-group-btn btn-right">
+                    <button autofocus="" ng-click="vm.khachHangQuetThe(vm.quetThe)" ladda="vm.loading" data-style="slide-right" class="btn green-haze dropdown-toggle">
+                        Quẹt Thẻ
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group form-md-line-input form-md-floating-label has-success">
+            <div class="input-group" style="width:90%">
+                <select class="form-control edited">
+                    <option value="-1" selected="selected"></option>
+                </select>
+                <label>Gói Tập</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group form-md-line-input form-md-floating-label has-success">
+            <div class="input-group" style="width:90%">
+                <select class="form-control edited" ng-model="vm.filter.trangThai">
+                    <option value="-1" selected="selected"></option>
+                    <option value="1"> Đang tập </option>
+                    <option value="2"> Hết thời gian tập </option>
+                </select>
+                <label>Trạng Thái</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group form-md-line-input form-md-floating-label has-success">
+            <div class="input-group">
+                <input ng-model="vm.filter.keySearch"
+                       type="text" class="form-control edited">
+                <label for="form_control_1">Tìm Kiếm</label>
+                <span class="help-block">Tìm kiếm khách hàng..</span>
+                <span class="input-group-addon">
+                    <i class="fa fa-search font-size-18"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

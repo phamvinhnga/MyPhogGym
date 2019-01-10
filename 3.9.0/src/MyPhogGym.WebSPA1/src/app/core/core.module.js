@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
@@ -11,6 +11,7 @@
             'ngResource',
             'ngSanitize',
             'pascalprecht.translate',
-            'ui.router'
+            'ui.router',
+            'mwl.confirm'
         ]);
 })();

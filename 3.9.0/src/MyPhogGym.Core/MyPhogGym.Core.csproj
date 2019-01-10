@@ -238,7 +238,8 @@
     <Compile Include="_Business\DichVu\Entity\DichVu.cs" />
     <Compile Include="_Business\CaLamViec\Entity\CaLamViec.cs" />
     <Compile Include="_Business\HuanLuyenVien\Entity\HuanLuyenVien.cs" />
-    <Compile Include="_Business\KhachHang\Entity\KhachHang.cs" />
+    <Compile Include="_Business\KhachHang\QuanLyKhachHang\Entity\KhachHang.cs" />
+    <Compile Include="_Business\KhachHang\KhachHangDenTap\Entity\KhachHangDenTap.cs" />
     <Compile Include="_Business\LichLamViec\Entity\LichLamViec.cs" />
     <Compile Include="_Enumerations\Enum.cs" />
   </ItemGroup>

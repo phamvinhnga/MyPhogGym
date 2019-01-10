@@ -42,6 +42,7 @@
             return abpApi.resolve('app.dichVu@getAll', input)
                 .then(function (response) {
                     vm.dichVus = response.items;
+                    console.log(response.items);
                 })
                 .catch(function (error) {
                     errorHandler.handleValidationErrors(error, true);

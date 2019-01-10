@@ -122,16 +122,20 @@
     <Content Include="src\app\main\home\dichVu\dichVu.html" />
     <Content Include="src\app\main\home\dichVu\partials\action.html" />
     <Content Include="src\app\main\home\dichVu\partials\table.html" />
-    <Content Include="src\app\main\home\khachHang\components\dangKyGoiTap\dangKyGoiTap.component.js" />
-    <Content Include="src\app\main\home\khachHang\components\dangKyGoiTap\dangKyGoiTap.html" />
-    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\detail.html" />
-    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\detail.component.js" />
-    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\khachHang-crud.html" />
-    <Content Include="src\app\main\home\khachHang\components\khachHang-crud\khachHang-crud.component.js" />
-    <Content Include="src\app\main\home\khachHang\khachHang.component.js" />
-    <Content Include="src\app\main\home\khachHang\khachHang.html" />
-    <Content Include="src\app\main\home\khachHang\partials\action.html" />
-    <Content Include="src\app\main\home\khachHang\partials\table.html" />
+    <Content Include="src\app\main\home\khachHang\khachHangDenTap\khachHangDenTap.component.js" />
+    <Content Include="src\app\main\home\khachHang\khachHangDenTap\khachHangDenTap.html" />
+    <Content Include="src\app\main\home\khachHang\khachHangDenTap\partials\action.html" />
+    <Content Include="src\app\main\home\khachHang\khachHangDenTap\partials\table.html" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\components\dangKyGoiTap\dangKyGoiTap.component.js" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\components\dangKyGoiTap\dangKyGoiTap.html" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\components\khachHang-crud\detail.html" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\components\khachHang-crud\detail.component.js" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\components\khachHang-crud\khachHang-crud.html" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\components\khachHang-crud\khachHang-crud.component.js" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\quanLyKhachHang.component.js" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\quanLyKhachHang.html" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\partials\action.html" />
+    <Content Include="src\app\main\home\khachHang\quanLyKhachHang\partials\table.html" />
     <Content Include="src\app\main\home\lichLamViec\components\lichLamViec-crud\lichLamViec-crud.html" />
     <Content Include="src\app\main\home\lichLamViec\components\lichLamViec-crud\lichLamViec-crud.component.js" />
     <Content Include="src\app\main\home\lichLamViec\partials\action.html" />
@@ -556,7 +560,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\app\main\home\dashboards\home-dashboard\components\register-center-dashboard\" />
-    <Folder Include="src\app\main\home\khachHang\img\barCodes\" />
     <Folder Include="src\app\main\sso-auth\components\modules\" />
     <Folder Include="src\app\main\system\i18n\" />
     <Folder Include="src\app\themes\xyz\scss\partials\index\" />
