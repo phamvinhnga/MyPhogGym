@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using AutoMapper;
 using MyPhogGym._Business.KhachHang.KhachHangDenTap.Dto;
 using MyPhogGym._Enumerations;
 using Newtonsoft.Json.Linq;
@@ -34,10 +35,46 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
         {
             return khachHangs.Where(w => w.KhachHang.HoTen.Contains(input.KeySearch));
         }
+
+        private IQueryable<Entity.KhachHangDenTap> FilterData(GetAllKhachHangDenTapInput input, IQueryable<Entity.KhachHangDenTap> khachHang)
+        {
+            switch (input.TrangThai)
+            {
+                case (int)khachHangDenTap.DANGTAP:
+                    khachHang = khachHang.Where(w => w.TrangThai == true);
+                    break;
+                case (int)khachHangDenTap.HETGIOTAP:
+                    khachHang = khachHang.Where(w => w.TrangThai == false);
+                    break;
+            }
+            if(input.DichVuID != null)
+            {
+                khachHang = khachHang.Where(w => w.KhachHang.DichVu.Id == input.DichVuID);
+            }
+            return khachHang;
+        }
         #endregion
+
+        private async Task UpdateDanhSachKhachHangDenTap()
+        {
+            var khachHangs = await _khachHangDenTapRepository.GetAllListAsync();
+            foreach (var item in khachHangs)
+            {
+                if (item.CreationTime.Date < DateTime.Now.Date)
+                {
+                    await _khachHangDenTapRepository.DeleteAsync(item.Id);
+                    continue;
+                }
+                DateTime timeEnd = DateTime.Parse(item.KhachHang.DichVu.GioKetThuc);
+                item.SoPhutConlai = (int)timeEnd.Subtract(DateTime.Now).TotalMinutes;
+                item.TrangThai = item.SoPhutConlai > 0 ? true : false;
+            }
+        }
 
         public async override Task<PagedResultDto<KhachHangDenTapDto>> GetAll(GetAllKhachHangDenTapInput input)
         {
+            await UpdateDanhSachKhachHangDenTap();
+
             var khachHangs = _khachHangDenTapRepository.GetAll();
 
             if (input.KeySearch != null)
@@ -45,18 +82,7 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
                 khachHangs = Search(input, khachHangs);
             }
 
-            var firstItem = khachHangs.FirstOrDefault();
-
-            if(firstItem != null)
-            {
-                if(firstItem.CreationTime.Date < DateTime.Now.Date)
-                {
-                    foreach (var item in khachHangs)
-                    {
-                        await Delete(new EntityDto<Guid>() { Id = item.Id });
-                    }
-                }
-            }
+            khachHangs = FilterData(input, khachHangs);
 
             khachHangs = khachHangs.OrderByDescending(o => o.CreationTime).PageBy(input);
 
@@ -208,6 +234,11 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
         public override Task Delete(EntityDto<Guid> input)
         {
             return base.Delete(input);
+        }
+
+        public override Task<KhachHangDenTapDto> Get(EntityDto<Guid> input)
+        {
+            return base.Get(input);
         }
     }
 }

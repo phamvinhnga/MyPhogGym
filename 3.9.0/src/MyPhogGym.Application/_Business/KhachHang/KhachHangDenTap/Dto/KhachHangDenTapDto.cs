@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using System;
+using System.ComponentModel;
 
 namespace MyPhogGym._Business.KhachHang.KhachHangDenTap.Dto
 {
@@ -9,8 +10,12 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap.Dto
     {
         public Guid KhachHangID { get; set; }
 
+        public int SoPhutConlai { get; set; }
+
+        public bool TrangThai { get; set; }
+
         public DateTime? CreationTime { get; set; }
 
-        public QuanLyKhachHang.Dto.KhachHangDto khachHang { get; set; }
+        public QuanLyKhachHang.Dto.KhachHangDto KhachHang { get; set; }
     }
 }

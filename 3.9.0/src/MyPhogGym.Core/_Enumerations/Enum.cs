@@ -38,4 +38,9 @@ namespace MyPhogGym._Enumerations
         NU = 1,
         NAM = 0
     }
+    public enum khachHangDenTap
+    {
+        DANGTAP = 1,
+        HETGIOTAP = 2
+    }
 }

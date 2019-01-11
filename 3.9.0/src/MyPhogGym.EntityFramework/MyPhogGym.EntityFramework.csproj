@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201901090821494_init_table_all.Designer.cs">
       <DependentUpon>201901090821494_init_table_all.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.cs" />
+    <Compile Include="Migrations\201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.Designer.cs">
+      <DependentUpon>201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyPhogGymDataModule.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.Designer.cs">
@@ -263,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901090821494_init_table_all.resx">
       <DependentUpon>201901090821494_init_table_all.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.resx">
+      <DependentUpon>201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

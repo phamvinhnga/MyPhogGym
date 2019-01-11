@@ -18,8 +18,11 @@
     <div class="col-md-2">
         <div class="form-group form-md-line-input form-md-floating-label has-success">
             <div class="input-group" style="width:90%">
-                <select class="form-control edited">
-                    <option value="-1" selected="selected"></option>
+                <select ng-model="vm.filter.dichVuID"
+                        ng-options="option.id as option.tenDichVu for option  in vm.dichVus"
+                        ng-change="vm.filterData()"
+                        autofocus="" class="form-control edited" style="">
+                    <option value="" selected=""></option>
                 </select>
                 <label>Gói Tập</label>
             </div>
@@ -28,7 +31,7 @@
     <div class="col-md-2">
         <div class="form-group form-md-line-input form-md-floating-label has-success">
             <div class="input-group" style="width:90%">
-                <select class="form-control edited" ng-model="vm.filter.trangThai">
+                <select class="form-control edited" ng-change="vm.filterData()" ng-model="vm.filter.trangThai">
                     <option value="-1" selected="selected"></option>
                     <option value="1"> Đang tập </option>
                     <option value="2"> Hết thời gian tập </option>
@@ -40,7 +43,7 @@
     <div class="col-md-2">
         <div class="form-group form-md-line-input form-md-floating-label has-success">
             <div class="input-group">
-                <input ng-model="vm.filter.keySearch"
+                <input ng-model="vm.filter.keySearch" ng-change="vm.filterData()"
                        type="text" class="form-control edited">
                 <label for="form_control_1">Tìm Kiếm</label>
                 <span class="help-block">Tìm kiếm khách hàng..</span>

@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in vm.khachHangs | filter:vm.filter.keySearch">
+        <tr ng-repeat="item in vm.khachHangs">
             <td class="text-center" ng-bind="$index + 1"></td>
             <td ng-bind="item.khachHang.hoTen"></td>
             <td ng-bind="item.khachHang.dichVu.tenDichVu"></td>
@@ -24,15 +24,15 @@
             <td ng-bind="item.khachHang.dichVu.gioKetThuc"></td>
             <td ng-init="soPhut = vm.thoiGianConLai(item.khachHang.dichVu.gioKetThuc, item)">
                 <div style="margin-top:5px">
-                    <span class="label label-sm label-{{ soPhut > 0 ? 'info' : 'danger'}} label-mini">
-                        {{ soPhut + ' phút' }}
+                    <span class="label label-sm label-{{ item.soPhutConlai > 0 ? 'info' : 'danger'}} label-mini">
+                        {{ item.soPhutConlai + ' phút' }}
                     </span>
                 </div>
             </td>
             <td>
                 <div style="margin-top:5px">
-                    <span class="label label-sm label-{{ soPhut > 0 ? 'success' : 'danger'}} label-mini">
-                        {{ soPhut > 0 ? 'Đang Tập' : 'Hết Thời Gian Tập' }}
+                    <span class="label label-sm label-{{ item.trangThai == true ? 'success' : 'danger'}} label-mini">
+                        {{ item.trangThai ? 'Đang Tập' : 'Hết thời gian tập' }}
                     </span>
                 </div>
             </td>

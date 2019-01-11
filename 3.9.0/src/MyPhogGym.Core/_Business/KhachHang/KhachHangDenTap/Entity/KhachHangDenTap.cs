@@ -21,6 +21,11 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap.Entity
         [Required]
         public Guid? KhachHangID { get; set; }
 
+        public int SoPhutConlai { get; set; }
+
+        [DefaultValue(true)]
+        public bool TrangThai { get; set; }
+
         [ForeignKey("KhachHangID")]
         public virtual QuanLyKhachHang.Entity.KhachHang KhachHang { get; set; }
 

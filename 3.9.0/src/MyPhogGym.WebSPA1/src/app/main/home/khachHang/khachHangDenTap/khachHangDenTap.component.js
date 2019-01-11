@@ -17,9 +17,11 @@
         // -- đôi tượng
         vm.khachHangs = [];
         vm.quetThe = null;
-  
+        vm.dichVus = [];
+
         // -- filter 
         vm.filter = {
+            dichVuID: null,
             trangThai: "-1",
             keySearch: null,
         };
@@ -28,6 +30,8 @@
         vm.khachHangQuetThe = khachHangQuetThe;
         vm.filterData = filterData;
         vm.soNgayConLai = soNgayConLai
+        vm.filterData = filterData;
+        vm.getAllDichVu = getAllDichVu;
 
         // -- activate function
         activate()
@@ -38,12 +42,13 @@
         }
 
         function getAll() {
-            vm.stt = 0;
             var input = {
+                dichVuID: vm.filter.dichVuID,
+                trangThai: vm.filter.trangThai,
                 keySearch: vm.filter.keySearch,
                 maxResultCount: 999
             };
-
+            getAllDichVu();
             return abpApi.resolve('app.khachHangDenTap@getAll', input)
                 .then(function (response) {
                     vm.khachHangs = response.items;
@@ -53,6 +58,16 @@
                 })
                 .finally(function () {
                 });
+        }
+
+        function getAllDichVu() {
+            var input = {
+                maxResultCount: 999
+            };
+            return abpApi.resolve('app.dichVu@getAll', input)
+                .then(function (response) {
+                    vm.dichVus = response.items;
+                })
         }
 
         function filterData() {
@@ -88,8 +103,6 @@
                 });
         }
 
-        $interval(activate, 150000);
-
         function soNgayConLai(input, khachHang) {
             var output = "";
             if (input.dichVu != null) {
@@ -108,6 +121,12 @@
             }
             return output;
         }
+
+        function filterData() {
+            getAll();
+        }
+
+        $interval(activate, 10000);
 
     }
 })();
