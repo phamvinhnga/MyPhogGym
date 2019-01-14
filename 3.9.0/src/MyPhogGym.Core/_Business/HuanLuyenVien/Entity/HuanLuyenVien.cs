@@ -12,8 +12,8 @@ namespace MyPhogGym._Business.HuanLuyenVien.Entity
     {
         public HuanLuyenVien() : base()
         {
-
         }
+
         [Required]
         public string HoTen { get; set; }
 
@@ -45,5 +45,6 @@ namespace MyPhogGym._Business.HuanLuyenVien.Entity
         public bool TrangThai { get; set; }
 
         public virtual List<LichLamViec.Entity.LichLamViec> LichLamViecs { get; set; }
+
     }
 }

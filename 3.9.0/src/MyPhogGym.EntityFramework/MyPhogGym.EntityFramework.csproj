@@ -220,13 +220,9 @@
     <Compile Include="EntityFramework\MyPhogGymDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\MyPhogGymRepositoryBase.cs" />
     <Compile Include="EntityFramework\_BusinessDbContext.cs" />
-    <Compile Include="Migrations\201901090821494_init_table_all.cs" />
-    <Compile Include="Migrations\201901090821494_init_table_all.Designer.cs">
-      <DependentUpon>201901090821494_init_table_all.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.cs" />
-    <Compile Include="Migrations\201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.Designer.cs">
-      <DependentUpon>201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.cs</DependentUpon>
+    <Compile Include="Migrations\201901120138578_Initial_table_symtem_gym.cs" />
+    <Compile Include="Migrations\201901120138578_Initial_table_symtem_gym.Designer.cs">
+      <DependentUpon>201901120138578_Initial_table_symtem_gym.cs</DependentUpon>
     </Compile>
     <Compile Include="MyPhogGymDataModule.cs" />
     <Compile Include="Migrations\201809270654064_InitialMigrations.cs" />
@@ -265,11 +261,8 @@
     <EmbeddedResource Include="Migrations\201810150846132_Upgraded_To_ABP_v3_9_0.resx">
       <DependentUpon>201810150846132_Upgraded_To_ABP_v3_9_0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901090821494_init_table_all.resx">
-      <DependentUpon>201901090821494_init_table_all.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.resx">
-      <DependentUpon>201901101413332_change_table_khachHangDenTap_add_column_trangThai_soPhutConLai.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901120138578_Initial_table_symtem_gym.resx">
+      <DependentUpon>201901120138578_Initial_table_symtem_gym.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

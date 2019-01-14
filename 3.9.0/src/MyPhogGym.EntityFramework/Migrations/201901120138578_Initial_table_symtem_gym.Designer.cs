@@ -7,13 +7,13 @@ namespace MyPhogGym.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class init_table_all : IMigrationMetadata
+    public sealed partial class Initial_table_symtem_gym : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init_table_all));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial_table_symtem_gym));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901090821494_init_table_all"; }
+            get { return "201901120138578_Initial_table_symtem_gym"; }
         }
         
         string IMigrationMetadata.Source

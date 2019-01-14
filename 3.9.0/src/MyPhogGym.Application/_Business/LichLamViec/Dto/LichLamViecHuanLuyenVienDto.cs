@@ -1,20 +1,14 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using MyPhogGym._Business.CaLamViec.Dto;
 using MyPhogGym._Business.HuanLuyenVien.Dto;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace MyPhogGym._Business.LichLamViec.Dto
 {
     [AutoMapTo(typeof(Entity.LichLamViec))]
-    public class LichLamViecDto : EntityDto<Guid>
+    public class LichLamViecHuanLuyenVienDto : EntityDto<Guid>
     {
-        [Required]
         public Guid? HuanLuyenVienID { get; set; }
-
-        [Required]
-        public Guid? CaLamViecID { get; set; }
 
         public bool ThuHai { get; set; }
 
@@ -30,7 +24,7 @@ namespace MyPhogGym._Business.LichLamViec.Dto
 
         public bool ChuNhat { get; set; }
 
-        public CaLamViecLichLamViecDto CaLamViec { get; set; }
-
+        public HuanLuyenVienDto HuanLuyenVien { get; set; }
     }
+
 }

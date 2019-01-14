@@ -1,7 +1,7 @@
 <table class="table table-striped table-bordered table-hover" id="menus">
     <thead>
         <tr>
-            <th style="width: 200px">Huấn Luyện Viên</th>
+            <th style="width: 200px" class="text-center">Tên Ca</th>
             <th style="width: 200px" class="text-center">Thứ 2</th>
             <th style="width: 200px" class="text-center">Thứ 3</th>
             <th style="width: 200px" class="text-center">Thứ 4</th>
@@ -9,31 +9,65 @@
             <th style="width: 200px" class="text-center">Thứ 6</th>
             <th style="width: 200px" class="text-center">Thứ 7</th>
             <th style="width: 200px" class="text-center">Chủ Nhật</th>
-            <th style="width: 100px" class="text-center">
-                Trạng Thái
-            </th>
-            <th style="width: 100px"></th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="lichLamViec in vm.lichLamViecs" ng-init="filterDays = vm.timKiemCaTheoNgay(lichLamViec)">
-            <td ng-bind="lichLamViec.huanLuyenVien.hoTen"></td>
-            <td ng-bind-html="filterDays.thuHai"></td>
-            <td ng-bind-html="filterDays.thuBa"></td>
-            <td ng-bind-html="filterDays.thuTu"></td>
-            <td ng-bind-html="filterDays.thuNam"></td>
-            <td ng-bind-html="filterDays.thuSau"></td>
-            <td ng-bind-html="filterDays.thuBay"></td>
-            <td ng-bind-html="filterDays.chuNhat"></td>
-            <td ng-bind="lichLamViec.huanLuyenVien.trangThai == 1 ? 'Đang làm' : 'Nghĩ việc'"></td>
-            <td><a href="" ng-click="vm.showModal(lichLamViec)"><i class="fa fa-edit"></i> Chi Tiết</a></td>
+        <tr ng-repeat="caLamViec in vm.caLamViecs" ng-init="filterDays = vm.timKiemCaTheoNgay(lichLamViec)">
+            <td ng-bind="caLamViec.tenCa"></td>
+            <td>
+                <ul>
+                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                        <a ng-bind="lichLamViec.thuHai == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                        <a ng-bind="lichLamViec.thuBa == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                        <a ng-bind="lichLamViec.thuTu == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                        <a ng-bind="lichLamViec.thuNam == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                        <a ng-bind="lichLamViec.thuSau == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                        <a ng-bind="lichLamViec.thuBay == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                        <a ng-bind="lichLamViec.chuNhat == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                    </li>
+                </ul>
+            </td>
         </tr>
-        <tr ng-if="vm.lichLamViecs.length == 0">
+        <tr ng-if="vm.caLamViecs.length == 0">
             <td colspan="10">
                 <p style="text-align:center">Không tìm thấy bản ghi nào</p>
             </td>
         </tr>
     </tbody>
 </table>
-<div ng-include="'app/main/home/lichLamViec/partials/pagination.html'"></div>
-

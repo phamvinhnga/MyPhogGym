@@ -4,6 +4,8 @@ using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using MyPhogGym._Business.CaLamViec.Dto;
+using MyPhogGym._Business.HuanLuyenVien.Dto;
 using MyPhogGym._Business.LichLamViec.Dto;
 using MyPhogGym._Enumerations;
 using Newtonsoft.Json.Linq;
@@ -15,8 +17,8 @@ using System.Threading.Tasks;
 
 namespace MyPhogGym._Business.LichLamViec
 {
-    [AbpAuthorize]
-    public class LichLamViecAppService : AsyncCrudAppService<Entity.LichLamViec, LichLamViecDto, Guid, GetAllLichLamViecInput>, ILichLamViecAppService
+    //[AbpAuthorize]
+    public class LichLamViecAppService : AsyncCrudAppService<Entity.LichLamViec, LichLamViecDto, Guid, GetAllLichLamViecInput, CreateUpdateLichLamViecInput, CreateUpdateLichLamViecInput>, ILichLamViecAppService
     {
         private readonly IRepository<Entity.LichLamViec, Guid> _lichLamViecRepository;
         private readonly IRepository<HuanLuyenVien.Entity.HuanLuyenVien, Guid> _huanLuyenVienRepository;
@@ -35,69 +37,59 @@ namespace MyPhogGym._Business.LichLamViec
         }
         #endregion
 
-        #region bộ lọc
-
-        private IQueryable<Entity.LichLamViec> FilterData(GetAllLichLamViecInput input, IQueryable<Entity.LichLamViec> lichLamViecs)
+        #region lấy danh sách ca làm việc
+        public List<CaLamViecHuanLuyenVienDto> GetAllCaLamViec()
         {
-            switch (input.FilterTrangThai)
-            {
-                case (int)HuanLuyenVienTrangThai.DANGLAM:
-                    lichLamViecs = lichLamViecs.Where(w => w.HuanLuyenVien.TrangThai == true);
-                    break;
-                case (int)HuanLuyenVienTrangThai.NGHIVIEC:
-                    lichLamViecs = lichLamViecs.Where(w => w.HuanLuyenVien.TrangThai == false);
-                    break;
-            }
-            return lichLamViecs;
-        }
-
-        private IQueryable<Entity.LichLamViec> Search(GetAllLichLamViecInput input, IQueryable<Entity.LichLamViec> lichLamViecs)
-        {
-            return lichLamViecs.Where(w => w.HuanLuyenVien.HoTen.Contains(input.KeySearch));
-        }
-        #endregion
-
-        #region get all
-        public override async Task<PagedResultDto<LichLamViecDto>> GetAll(GetAllLichLamViecInput input)
-        {
-            var lichLamViecs = _lichLamViecRepository.GetAll();
-            lichLamViecs = FilterData(input, lichLamViecs);
-            if (input.KeySearch != null)
-                lichLamViecs = this.Search(input, lichLamViecs);
-
-            var count = lichLamViecs.Count();
-
-            lichLamViecs = lichLamViecs.OrderByDescending(o => o.CreationTime).PageBy(input);
-
-            var result = new PagedResultDto<LichLamViecDto>
-            (
-               totalCount: count,
-               items: ObjectMapper.Map<List<LichLamViecDto>>(lichLamViecs.ToList())
-            );
-            return await Task.FromResult(result);
+            var caLamViecs = _caLamViecRepository.GetAll().Where(w => w.TrangThai == true).OrderByDescending(o => o.CreationTime).ToList();
+            return caLamViecs.MapTo<List<CaLamViecHuanLuyenVienDto>>();
         }
         #endregion
 
         #region lấy danh sach huấn luyện viên
-        public List<HuanLuyenVien.Dto.GetHoTenTrangThaiHuanLuyenVienDto> GetAllHuanLuyenVien(EntityDto<Guid> input)
+        public List<HuanLuyenVienDto> GetAllHuanLuyenVien()
         {
             var huanLuyenViens = _huanLuyenVienRepository.GetAll().Where(w => w.TrangThai == true);
 
-            var huanLuyenVienLichLamViecs = _lichLamViecRepository.GetAll().Where(w => w.ID_HLV != input.Id);
+            var huanLuyenVienLichLamViecs = _lichLamViecRepository.GetAll();
 
-            var result = huanLuyenViens.Where(w => !huanLuyenVienLichLamViecs.Any(a => a.ID_HLV == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
+            var result = huanLuyenViens.Where(w => !huanLuyenVienLichLamViecs.Any(a => a.HuanLuyenVienID == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
 
-            return result.MapTo<List<HuanLuyenVien.Dto.GetHoTenTrangThaiHuanLuyenVienDto>>();
+            return result.MapTo<List<HuanLuyenVienDto>>();
         }
         #endregion
 
-        #region lấy danh sách ca làm việc
-        public List<CaLamViec.Dto.CaLamViecTenCaDto> GetAllCaLamViec()
+        public HuanLuyenVienLichLamViecDto GetLichLamViecHuanLuyenVien(EntityDto<Guid> input)
         {
+            var huanLuyenVien = _huanLuyenVienRepository.Get(input.Id);
             var caLamViecs = _caLamViecRepository.GetAll().Where(w => w.TrangThai == true).OrderByDescending(o => o.CreationTime).ToList();
+            if (caLamViecs.Count() > huanLuyenVien.LichLamViecs.Count())
+            {
+                var caLamViecTrong = caLamViecs.Where(w => !huanLuyenVien.LichLamViecs.Any(a => a.CaLamViecID == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
+                foreach (var caLamViec in caLamViecTrong)
+                {
+                    var lichLamViecInput = new CreateUpdateLichLamViecInput() { HuanLuyenVienID = input.Id, CaLamViecID = caLamViec.Id };
+                    Create(lichLamViecInput);
+                }
+            }
+            huanLuyenVien = _huanLuyenVienRepository.Get(input.Id);
+            var lichLamViecs = _lichLamViecRepository.GetAll().Where(w => w.HuanLuyenVienID == input.Id && w.CaLamViec.TrangThai == true).ToList();
+            huanLuyenVien.LichLamViecs = lichLamViecs;
+            return huanLuyenVien.MapTo<HuanLuyenVienLichLamViecDto>();
 
-            return caLamViecs.MapTo<List<CaLamViec.Dto.CaLamViecTenCaDto>>();
+            //var lichLamViecsHuanLuyenVien = _lichLamViecRepository.GetAll().Where(w => w.HuanLuyenVienID == input.Id && w.CaLamViec.TrangThai == true).OrderByDescending(o => o.CreationTime).ToList();
+            //if(caLamViecs.Count() > lichLamViecsHuanLuyenVien.Count())
+            //{
+            //    var caLamViecTrong = caLamViecs.Where(w => !lichLamViecsHuanLuyenVien.Any(a => a.CaLamViecID == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
+            //    foreach(var caLamViec in caLamViecTrong)
+            //    {
+            //        var lichLamViecInput = new CreateLichLamViecInput() { HuanLuyenVienID = input.Id, CaLamViecID = caLamViec.Id };
+            //        Create(lichLamViecInput);
+            //    }
+            //}
+
+            //var result = _caLamViecRepository.GetAll().Where(w => w.TrangThai == true).OrderByDescending(o => o.CreationTime).Where(w => !w.LichLamViecs.Any(a => a.HuanLuyenVienID == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
+
+            //return result.MapTo<List<CaLamViecHuanLuyenVienDto>>();
         }
-        #endregion
     }
 }

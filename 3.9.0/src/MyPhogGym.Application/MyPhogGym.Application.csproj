@@ -261,6 +261,8 @@
     <Compile Include="Sessions\ISessionAppService.cs" />
     <Compile Include="Sessions\SessionAppService.cs" />
     <Compile Include="Users\UserAppService.cs" />
+    <Compile Include="_Business\CaLamViec\Dto\CaLamViecHuanLuyenVienDto.cs" />
+    <Compile Include="_Business\CaLamViec\Dto\CaLamViecLichLamViecDto.cs" />
     <Compile Include="_Business\DichVu\DichVuAppService.cs" />
     <Compile Include="_Business\DichVu\Dto\GetAllDichVuInput.cs" />
     <Compile Include="_Business\DichVu\Dto\DichVuDto.cs" />
@@ -271,6 +273,7 @@
     <Compile Include="_Business\DichVu\IDichVuAppService.cs" />
     <Compile Include="_Business\HuanLuyenVien\Dto\GetAllHuanLuyenVienInput.cs" />
     <Compile Include="_Business\HuanLuyenVien\Dto\HuanLuyenVienDto.cs" />
+    <Compile Include="_Business\HuanLuyenVien\Dto\HuanLuyenVienLichLamViecDto.cs" />
     <Compile Include="_Business\HuanLuyenVien\HuanLuyenVienAppService.cs" />
     <Compile Include="_Business\HuanLuyenVien\IHuanLuyenVienAppService.cs" />
     <Compile Include="_Business\KhachHang\KhachHangDenTap\Dto\GetAllKhachHangDenTapInput.cs" />
@@ -283,8 +286,10 @@
     <Compile Include="_Business\KhachHang\QuanLyKhachHang\Dto\KhachHangDto.cs" />
     <Compile Include="_Business\KhachHang\QuanLyKhachHang\IKhachHangAppService.cs" />
     <Compile Include="_Business\KhachHang\QuanLyKhachHang\KhachHangAppService.cs" />
+    <Compile Include="_Business\LichLamViec\Dto\CreateUpdateLichLamViecInput.cs" />
     <Compile Include="_Business\LichLamViec\Dto\GetAllLichLamViecInput.cs" />
     <Compile Include="_Business\LichLamViec\Dto\LichLamViecDto.cs" />
+    <Compile Include="_Business\LichLamViec\Dto\LichLamViecHuanLuyenVienDto.cs" />
     <Compile Include="_Business\LichLamViec\ILichLamViecAppService.cs" />
     <Compile Include="_Business\LichLamViec\LichLamViecAppService.cs" />
     <Compile Include="_Business\UserInfomation\IUserInfomationAppService.cs" />

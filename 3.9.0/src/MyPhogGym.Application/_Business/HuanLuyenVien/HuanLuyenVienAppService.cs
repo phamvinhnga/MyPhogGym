@@ -78,7 +78,7 @@ namespace MyPhogGym._Business.HuanLuyenVien
             var result = new PagedResultDto<HuanLuyenVienDto>
             (
                totalCount: count,
-               items: ObjectMapper.Map<List<HuanLuyenVienDto>>(huanLuyenViens)
+               items: ObjectMapper.Map<List<HuanLuyenVienDto>>(huanLuyenViens.ToList())
             );
             return await Task.FromResult(result);
         }
@@ -87,7 +87,7 @@ namespace MyPhogGym._Business.HuanLuyenVien
         #region delete
         public override async Task Delete(EntityDto<Guid> input)
         {
-            var lichLamViec = _lichLamViecRepository.GetAll().Where(w => w.ID_HLV == input.Id).FirstOrDefault();
+            //var lichLamViec = _lichLamViecRepository.GetAll().Where(w => w.ID_HLV == input.Id).FirstOrDefault();
             await _huanLuyenVienRepository.DeleteAsync(input.Id);
         }
         #endregion

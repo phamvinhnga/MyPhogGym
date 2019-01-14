@@ -12,19 +12,8 @@ using System.Threading.Tasks;
 namespace MyPhogGym._Business.CaLamViec.Dto
 {
     [AutoMapTo(typeof(Entity.CaLamViec))]
-    public class CaLamViecDto : EntityDto<Guid>
+    public class CaLamViecLichLamViecDto : EntityDto<Guid>
     {
-        [Required]
         public string TenCa { get; set; }
-
-        [Required]
-        public string BatDau { get; set; }
-
-        [Required]
-        public string KetThuc { get; set; }
-
-        [Required]
-        [DefaultValue(true)]
-        public bool TrangThai { get; set; }
     }
 }

@@ -22,6 +22,6 @@ namespace MyPhogGym._Business.KhachHang.QuanLyKhachHang.Dto
 
         public int ConLai { get; set; }
 
-        public virtual DichVu.Dto.DichVuDto DichVu { get; set; }
+        public DichVu.Dto.DichVuDto DichVu { get; set; }
     }
 }

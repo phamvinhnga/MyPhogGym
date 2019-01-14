@@ -3,8 +3,6 @@ using Abp.AutoMapper;
 using MyPhogGym._Business.LichLamViec.Dto;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,19 +10,10 @@ using System.Threading.Tasks;
 namespace MyPhogGym._Business.CaLamViec.Dto
 {
     [AutoMapTo(typeof(Entity.CaLamViec))]
-    public class CaLamViecDto : EntityDto<Guid>
+    public class CaLamViecHuanLuyenVienDto : EntityDto<Guid>
     {
-        [Required]
         public string TenCa { get; set; }
 
-        [Required]
-        public string BatDau { get; set; }
-
-        [Required]
-        public string KetThuc { get; set; }
-
-        [Required]
-        [DefaultValue(true)]
-        public bool TrangThai { get; set; }
+        public List<LichLamViecHuanLuyenVienDto> LichLamViecs { get; set; }
     }
 }

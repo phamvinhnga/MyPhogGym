@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using MyPhogGym._Business.LichLamViec.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace MyPhogGym._Business.HuanLuyenVien.Dto
     [AutoMapTo(typeof(Entity.HuanLuyenVien))]
     public class HuanLuyenVienDto : EntityDto<Guid>
     {
-        public HuanLuyenVienDto()
+        public HuanLuyenVienDto() : base()
         {
         }
 
@@ -49,13 +50,4 @@ namespace MyPhogGym._Business.HuanLuyenVien.Dto
         public DateTime? KetThuc { get; set; }
     }
 
-    [AutoMapTo(typeof(Entity.HuanLuyenVien))]
-    public class GetHoTenTrangThaiHuanLuyenVienDto : EntityDto<Guid>
-    {
-        public GetHoTenTrangThaiHuanLuyenVienDto()
-        {
-        }
-        public string HoTen { get; set; }
-        public bool TrangThai { get; set; }
-    }
 }

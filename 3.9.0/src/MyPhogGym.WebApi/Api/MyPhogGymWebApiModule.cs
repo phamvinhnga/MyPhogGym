@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Abp.Application.Services;
 using Abp.Configuration.Startup;
 using Abp.Modules;

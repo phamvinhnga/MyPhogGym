@@ -3560,6 +3560,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyPhogGymControllerBase.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
+    <Compile Include="Filters\AcceessOriginalAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

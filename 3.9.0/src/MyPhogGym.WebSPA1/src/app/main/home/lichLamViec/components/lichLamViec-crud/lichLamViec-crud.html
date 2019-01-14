@@ -1,6 +1,6 @@
 <div class="modal-content" ng-init="vm.get()">
     <div class="ng-scope ng-isolate-scope">
-        <form name="crudForm" role="form" class="application-dialog-form ng-pristine ng-invalid ng-invalid-required" ng-submit="vm.update()">
+        <form name="crudForm" role="form" class="application-dialog-form ng-pristine ng-invalid ng-invalid-required" ng-submit="vm.update(vm.lichLamViecHuanLuyenViens)">
             <div class="portlet box grey-steel">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.dismiss()"
                         style="margin-right:10px; margin-top:15px"></button>
@@ -15,9 +15,8 @@
                         <div class="col-md-6">
                             <div class="form-group form-md-line-input">
                                 <div class="input-icon">
-                                    <input type="hidden" ng-model="vm.lichLamViec.id">
                                     <input class="form-control placeholder-no-fix" type="text" autocomplete="off"
-                                           name="huanLuyenVienID" ng-model="vm.lichLamViec.iD_HLV"
+                                           name="huanLuyenVienID" ng-model="vm.huanLuyenVienID"
                                            placeholder="xxxxx-xxx-xxx-xxx-xxx" readonly />
                                     <label class="font-dark"> ID Huấn Luyện Viên <span class="font-red">*</span></label>
                                     <i class="fa fa-key"></i>
@@ -28,12 +27,9 @@
                         <!--tên huấn luyện viên-->
                         <div class="col-md-6">
                             <div ng-class="vm.validation.validClassInput(crudForm.tenHuanLuyenVien)">
-                                <select ng-change="vm.lichLamViec.iD_HLV = vm.huanLuyenVienID.id"
-                                        autofocus=""
-                                        class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                <select class="form-control"
                                         required="" name="tenHuanLuyenVien"
-                                        ng-model="vm.huanLuyenVienID" ng-options="option.hoTen for option in vm.huanLuyenViens"
-                                        placeholder="Chọn huấn luyện viên" style=""></select>
+                                        ng-model="vm.huanLuyenVienID" ng-options="option.id as option.hoTen for option in vm.huanLuyenViens" style=""></select>
                                 <label class="font-dark">Họ Tên <span class="font-red">*</span></label>
                             </div>
                         </div>
@@ -63,14 +59,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in vm.caLamViecs">
-                                    <td ng-bind="item.tenCa"></td>
+                                <tr ng-repeat="item in vm.lichLamViecHuanLuyenViens">
+                                    <td ng-bind="item.caLamViec.tenCa"></td>
                                     <td>
                                         <div class="md-checkbox">
-                                            <input ng-model="item.days.thuHai"
-                                                   ng-checked="item.days.thuHai"
-                                                   id="{{ item.id + '_thuHai'  }}" type="checkbox" class="md-check">
-                                            <label for="{{ item.id + '_thuHai'  }}">
+                                            <input ng-model="item.thuHai"
+                                                   ng-checked="item.thuHai"
+                                                   id="{{ item.caLamViecID + '_thuHai'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.caLamViecID + '_thuHai'  }}">
                                                 <span class="check"></span>
                                                 <span class="box"></span>
                                             </label>
@@ -78,10 +74,10 @@
                                     </td>
                                     <td>
                                         <div class="md-checkbox">
-                                            <input ng-model="item.days.thuBa"
-                                                   ng-checked="item.days.thuBa"
-                                                   id="{{ item.id + '_thuBa'  }}" type="checkbox" class="md-check">
-                                            <label for="{{ item.id + '_thuBa'  }}">
+                                            <input ng-model="item.thuBa"
+                                                   ng-checked="item.thuBa"
+                                                   id="{{ item.caLamViecID + '_thuBa'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.caLamViecID + '_thuBa'  }}">
                                                 <span class="check"></span>
                                                 <span class="box"></span>
                                             </label>
@@ -89,10 +85,10 @@
                                     </td>
                                     <td>
                                         <div class="md-checkbox">
-                                            <input ng-model="item.days.thuTu"
-                                                   ng-checked="item.days.thuTu"
-                                                   id="{{ item.id + '_thuTu'  }}" type="checkbox" class="md-check">
-                                            <label for="{{ item.id + '_thuTu'  }}">
+                                            <input ng-model="item.thuTu"
+                                                   ng-checked="item.thuTu"
+                                                   id="{{ item.caLamViecID + '_thuTu'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.caLamViecID + '_thuTu'  }}">
                                                 <span class="check"></span>
                                                 <span class="box"></span>
                                             </label>
@@ -100,10 +96,10 @@
                                     </td>
                                     <td>
                                         <div class="md-checkbox">
-                                            <input ng-model="item.days.thuNam"
-                                                   ng-checked="item.days.thuNam"
-                                                   id="{{ item.id + '_thuNam'  }}" type="checkbox" class="md-check">
-                                            <label for="{{ item.id + '_thuNam'  }}">
+                                            <input ng-model="item.thuNam"
+                                                   ng-checked="item.thuNam"
+                                                   id="{{ item.caLamViecID + '_thuNam'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.caLamViecID + '_thuNam'  }}">
                                                 <span class="check"></span>
                                                 <span class="box"></span>
                                             </label>
@@ -111,10 +107,10 @@
                                     </td>
                                     <td>
                                         <div class="md-checkbox">
-                                            <input ng-model="item.days.thuSau"
-                                                   ng-checked="item.days.thuSau"
-                                                   id="{{ item.id + '_thuSau'  }}" type="checkbox" class="md-check">
-                                            <label for="{{ item.id + '_thuSau'  }}">
+                                            <input ng-model="item.thuSau"
+                                                   ng-checked="item.thuSau"
+                                                   id="{{ item.caLamViecID + '_thuSau'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.caLamViecID + '_thuSau'  }}">
                                                 <span class="check"></span>
                                                 <span class="box"></span>
                                             </label>
@@ -122,10 +118,10 @@
                                     </td>
                                     <td>
                                         <div class="md-checkbox">
-                                            <input ng-model="item.days.thuBay"
-                                                   ng-checked="item.days.thuBay"
-                                                   id="{{ item.id + '_thuBay'  }}" type="checkbox" class="md-check">
-                                            <label for="{{ item.id + '_thuBay'  }}">
+                                            <input ng-model="item.thuBay"
+                                                   ng-checked="item.thuBay"
+                                                   id="{{ item.caLamViecID + '_thuBay'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.caLamViecID + '_thuBay'  }}">
                                                 <span class="check"></span>
                                                 <span class="box"></span>
                                             </label>
@@ -133,10 +129,10 @@
                                     </td>
                                     <td>
                                         <div class="md-checkbox">
-                                            <input ng-model="item.days.chuNhat"
-                                                   ng-checked="item.days.chuNhat"
-                                                   id="{{ item.id + '_chuNhat'  }}" type="checkbox" class="md-check">
-                                            <label for="{{ item.id + '_chuNhat'  }}">
+                                            <input ng-model="item.chuNhat"
+                                                   ng-checked="item.chuNhat"
+                                                   id="{{ item.caLamViecID + '_chuNhat'  }}" type="checkbox" class="md-check">
+                                            <label for="{{ item.caLamViecID + '_chuNhat'  }}">
                                                 <span class="check"></span>
                                                 <span class="box"></span>
                                             </label>
@@ -175,7 +171,7 @@
                                 class="btn red left ng-scope ladda-button"
                                 ladda="vm.saving"
                                 data-style="expand-left"
-                                ng-click="vm.confirmDelete(vm.lichLamViec)">
+                                ng-click="vm.confirmDelete(vm.lichLamViecHuanLuyenViens)">
                             <span class="ladda-label">
                                 Chắc chắn xóa <i class="fa fa-recycle"></i>
                             </span><span class="ladda-spinner"></span>

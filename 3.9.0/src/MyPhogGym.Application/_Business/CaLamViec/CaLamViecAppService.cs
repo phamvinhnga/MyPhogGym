@@ -55,10 +55,10 @@ namespace MyPhogGym._Business.CaLamViec
         {
             var caLamViecs = _caLamViecRepository.GetAll();
 
-            caLamViecs = this.FilterData(input, caLamViecs);
+            caLamViecs = FilterData(input, caLamViecs);
 
             if (input.KeySearch != null)
-                caLamViecs = this.Search(input, caLamViecs);
+                caLamViecs = Search(input, caLamViecs);
 
             var count = caLamViecs.Count();
 
@@ -67,12 +67,17 @@ namespace MyPhogGym._Business.CaLamViec
             var result = new PagedResultDto<CaLamViecDto>
             (
                totalCount: _caLamViecRepository.Count(),
-               items: ObjectMapper.Map<List<CaLamViecDto>>(caLamViecs)
+               items: ObjectMapper.Map<List<CaLamViecDto>>(caLamViecs.ToList())
             );
+
             return await Task.FromResult(result);
         }
         #endregion
 
+        //public override Task<PagedResultDto<CaLamViecDto>> GetAll(GetAllCaLamViecInput input)
+        //{
+        //    return base.GetAll(input);
+        //}
         #region create
         //public override async Task<CaLamViecDto> Create(CaLamViecDto input)
         //{
