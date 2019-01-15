@@ -21,7 +21,7 @@
         vm.isConfirm = false;
         vm.validation = valid;
         vm.huanLuyenVienID = "";
-
+ 
         // -- doi tuong
         vm.lichLamViecHuanLuyenViens = [];
         vm.huanLuyenViens = [];
@@ -34,6 +34,13 @@
         vm.dismiss = dismiss;
         vm.confirmDelete = confirmDelete;
         activate();
+
+        vm.isOptionsRequired = function () {
+            return vm.volunteerOptions.some(function (options) {
+                return options.selected;
+            });
+        }
+
 
         // -- function 
         function activate() { }
@@ -89,13 +96,12 @@
                 value.huanLuyenVienID = vm.huanLuyenVienID;
                 abpApi.resolve(callApi, value)
                     .then(function (response) {
-
+                        vm.modalInstance.close();
                     })
                     .catch(function (error) {
                         errorHandler.handleValidationErrors(error, true);
                     });
             });
-            vm.modalInstance.close();
             logger.logSuccess('Cập nhật thành công', null, true);
         }
 
@@ -112,6 +118,7 @@
                 abpApi.resolve('app.lichLamViec@delete', { id: value.id })
                     .then(function (response) {
                         logger.logSuccess('Xóa thành công', null, true);
+                        vm.modalInstance.close();
                     })
                     .catch(function (error) {
                         errorHandler.handleValidationErrors(error, true);
@@ -119,7 +126,6 @@
                     .finally(function () {
                     });
             });
-            vm.modalInstance.close();
         }
 
         function dismiss() {

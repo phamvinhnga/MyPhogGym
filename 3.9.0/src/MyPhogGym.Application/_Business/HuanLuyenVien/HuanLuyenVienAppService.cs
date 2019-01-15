@@ -5,6 +5,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using MyPhogGym._Business.HuanLuyenVien.Dto;
+using MyPhogGym._Business.LichLamViec.Dto;
 using MyPhogGym._Enumerations;
 using System;
 using System.Collections.Generic;
@@ -84,10 +85,36 @@ namespace MyPhogGym._Business.HuanLuyenVien
         }
         #endregion
 
+        public async override Task<HuanLuyenVienDto> Update(HuanLuyenVienDto input)
+        {
+            var huanLuyenVien = _huanLuyenVienRepository.Get(input.Id);
+            if (huanLuyenVien == null)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                input.MapTo(huanLuyenVien);
+
+                _huanLuyenVienRepository.Update(huanLuyenVien);
+
+                var lichLamViecs = _lichLamViecRepository.GetAll().ToList().Where(w => w.HuanLuyenVien.TrangThai == false);
+
+                foreach (var lichLamViec in lichLamViecs)
+                {
+                    await _lichLamViecRepository.DeleteAsync(lichLamViec.Id);
+                }
+            }
+            return huanLuyenVien.MapTo<HuanLuyenVienDto>();
+        }
         #region delete
         public override async Task Delete(EntityDto<Guid> input)
         {
-            //var lichLamViec = _lichLamViecRepository.GetAll().Where(w => w.ID_HLV == input.Id).FirstOrDefault();
+            var lichLamViecs = _lichLamViecRepository.GetAll().Where(w => w.HuanLuyenVienID == input.Id).ToList();
+            foreach(var lichLamViec in lichLamViecs)
+            {
+                await _lichLamViecRepository.DeleteAsync(lichLamViec.Id);
+            }
             await _huanLuyenVienRepository.DeleteAsync(input.Id);
         }
         #endregion

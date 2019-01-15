@@ -136,8 +136,10 @@
     <Content Include="src\app\main\home\khachHang\quanLyKhachHang\quanLyKhachHang.html" />
     <Content Include="src\app\main\home\khachHang\quanLyKhachHang\partials\action.html" />
     <Content Include="src\app\main\home\khachHang\quanLyKhachHang\partials\table.html" />
+    <Content Include="src\app\main\home\lichLamViec\components\lichLamViec-crud\checklist-model.js" />
     <Content Include="src\app\main\home\lichLamViec\components\lichLamViec-crud\lichLamViec-crud.html" />
     <Content Include="src\app\main\home\lichLamViec\components\lichLamViec-crud\lichLamViec-crud.component.js" />
+    <None Include="src\app\main\home\lichLamViec\lichLamViec.scss" />
     <Content Include="src\app\main\home\lichLamViec\partials\action.html" />
     <Content Include="src\app\main\home\lichLamViec\partials\pagination.html" />
     <Content Include="src\app\main\home\lichLamViec\partials\table.html" />

@@ -12,18 +12,18 @@
             }
         });
 
-    function lichLamViecController(logger, errorHandler, abpApi, $uibModal, valid) {
+    function lichLamViecController(logger, errorHandler, abpApi, $uibModal) {
         var vm = this;
 
         //--- đối tướng
         vm.caLamViecs = [];
-        vm.lichLamViecs = [];
-        vm.validation = valid;
+        vm.search = null;
 
         // -- fitter
 
         //--- methoad
         vm.showModal = showModal;
+        vm.compare = compare;
         activate();
 
         //--- function
@@ -35,6 +35,7 @@
             return abpApi.resolve('app.lichLamViec@getAllCaLamViec')
                 .then(function (response) {
                     vm.caLamViecs = response;
+                    console.log(response);
                 })
                 .catch(function (error) {
                     errorHandler.handleValidationErrors(error, true);
@@ -60,6 +61,14 @@
             modalInstance.result.then(function () {
                 getAll();
             });
+        }
+
+        function compare(hoTen) {
+            if (hoTen.indexOf(vm.search) != -1 || vm.search == null) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 })();

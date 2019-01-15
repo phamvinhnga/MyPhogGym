@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
 {
+    [AbpAuthorize]
     public class KhachHangDenTapAppService : AsyncCrudAppService<Entity.KhachHangDenTap, KhachHangDenTapDto, Guid, GetAllKhachHangDenTapInput>, IKhachHangDenTapAppService
     {
         private readonly IRepository<Entity.KhachHangDenTap, Guid> _khachHangDenTapRepository;
@@ -240,5 +242,6 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
         {
             return base.Get(input);
         }
+
     }
 }

@@ -45,6 +45,8 @@
                         vm.huanLuyenVien = response;
                     });
             }
+            vm.huanLuyenVien.hopDong = 1;
+            vm.huanLuyenVien.trangThai = true;
         }
 
         function cancel() {

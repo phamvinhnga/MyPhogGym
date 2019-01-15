@@ -19,12 +19,16 @@ namespace MyPhogGym._Business.CaLamViec
     public class CaLamViecAppService : AsyncCrudAppService<Entity.CaLamViec, CaLamViecDto, Guid, GetAllCaLamViecInput>, ICaLamViecAppService
     {
         private readonly IRepository<Entity.CaLamViec, Guid> _caLamViecRepository;
+        private readonly IRepository<LichLamViec.Entity.LichLamViec, Guid> _lichLamViecRepository;
+
 
         #region khời tạo
         public CaLamViecAppService(
-            IRepository<Entity.CaLamViec, Guid> caLamViecRepository) : base(caLamViecRepository)
+            IRepository<Entity.CaLamViec, Guid> caLamViecRepository,
+            IRepository<LichLamViec.Entity.LichLamViec, Guid> lichLamViecRepository) : base(caLamViecRepository)
         {
             _caLamViecRepository = caLamViecRepository;
+            _lichLamViecRepository = lichLamViecRepository;
         }
         #endregion
 
@@ -88,20 +92,27 @@ namespace MyPhogGym._Business.CaLamViec
         #endregion
 
         #region update
-        //public override async Task<CaLamViecDto> Update(CaLamViecDto input)
-        //{
-        //    var calamviec = await _caLamViecRepository.GetAsync(input.Id);
-        //    if (calamviec == null)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //    else
-        //    {
-        //        input.MapTo(calamviec);
-        //        await _caLamViecRepository.UpdateAsync(calamviec);
-        //    }
-        //    return calamviec.MapTo<CaLamViecDto>();
-        //}
+        public override async Task<CaLamViecDto> Update(CaLamViecDto input)
+        {
+            var calamviec = await _caLamViecRepository.GetAsync(input.Id);
+            if (calamviec == null)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                input.MapTo(calamviec);
+                 _caLamViecRepository.Update(calamviec);
+
+                var lichLamViecs = _lichLamViecRepository.GetAll().ToList().Where(w => w.CaLamViec.TrangThai == false);
+
+                foreach (var lichLamViec in lichLamViecs)
+                {
+                    await _lichLamViecRepository.DeleteAsync(lichLamViec.Id);
+                }
+            }
+            return calamviec.MapTo<CaLamViecDto>();
+        }
         #endregion
 
         #region get
@@ -116,11 +127,16 @@ namespace MyPhogGym._Business.CaLamViec
         //}
         #endregion
 
-        #region delte
-        //public override async Task Delete(EntityDto<Guid> input)
-        //{
-        //    await _caLamViecRepository.DeleteAsync(input.Id);
-        //}
+        #region delete
+        public async override Task Delete(EntityDto<Guid> input)
+        {
+            var lichLamViecs = _lichLamViecRepository.GetAll().Where(w => w.CaLamViecID == input.Id).ToList();
+            foreach (var lichLamViec in lichLamViecs)
+            {
+                await _lichLamViecRepository.DeleteAsync(lichLamViec.Id);
+            }
+            await _caLamViecRepository.DeleteAsync(input.Id);
+        }
         #endregion
     }
 }

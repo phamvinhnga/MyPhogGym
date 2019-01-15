@@ -45,6 +45,7 @@
                         vm.caLamViec = response;
                     });
             }
+            vm.caLamViec.trangThai = true;
         }
 
         function dismiss() {

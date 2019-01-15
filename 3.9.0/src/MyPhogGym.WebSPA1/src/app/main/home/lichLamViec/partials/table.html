@@ -12,56 +12,49 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="caLamViec in vm.caLamViecs" ng-init="filterDays = vm.timKiemCaTheoNgay(lichLamViec)">
+        <tr ng-repeat="caLamViec in vm.caLamViecs | filter:vm.query">
             <td ng-bind="caLamViec.tenCa"></td>
             <td>
-                <ul>
-                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
-                        <a ng-bind="lichLamViec.thuHai == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
-                    </li>
-                </ul>
+                <div class="inner-table" ng-repeat="lichLamViec in caLamViec.lichLamViecs" >
+                    <i class="fa fa-user" ng-show="lichLamViec.thuHai && vm.compare(lichLamViec.huanLuyenVien.hoTen)"></i>
+                    <a ng-bind="lichLamViec.thuHai == true && vm.compare(lichLamViec.huanLuyenVien.hoTen) ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                </div>
             </td>
             <td>
-                <ul>
-                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
-                        <a ng-bind="lichLamViec.thuBa == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
-                    </li>
-                </ul>
+                <div class="inner-table" ng-repeat="lichLamViec in caLamViec.lichLamViecs">
+                    <i class="fa fa-user" ng-show="lichLamViec.thuBa && vm.compare(lichLamViec.huanLuyenVien.hoTen)"></i>
+                    <a ng-bind="lichLamViec.thuBa == true && vm.compare(lichLamViec.huanLuyenVien.hoTen) ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                </div>
             </td>
             <td>
-                <ul>
-                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
-                        <a ng-bind="lichLamViec.thuTu == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
-                    </li>
-                </ul>
+                <div class="inner-table" ng-repeat="lichLamViec in caLamViec.lichLamViecs" >
+                    <i class="fa fa-user" ng-show="lichLamViec.thuTu && vm.compare(lichLamViec.huanLuyenVien.hoTen)"></i>
+                    <a ng-bind="lichLamViec.thuTu == true && vm.compare(lichLamViec.huanLuyenVien.hoTen) ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                </div>
             </td>
             <td>
-                <ul>
-                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
-                        <a ng-bind="lichLamViec.thuNam == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
-                    </li>
-                </ul>
+                <div class="inner-table" ng-repeat="lichLamViec in caLamViec.lichLamViecs" >
+                    <i class="fa fa-user" ng-show="lichLamViec.thuNam && vm.compare(lichLamViec.huanLuyenVien.hoTen)"></i>
+                    <a ng-bind="lichLamViec.thuNam == true && vm.compare(lichLamViec.huanLuyenVien.hoTen) ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                </div>
             </td>
             <td>
-                <ul>
-                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
-                        <a ng-bind="lichLamViec.thuSau == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
-                    </li>
-                </ul>
+                <div class="inner-table" ng-repeat="lichLamViec in caLamViec.lichLamViecs" >
+                    <i class="fa fa-user" ng-show="lichLamViec.thuSau && vm.compare(lichLamViec.huanLuyenVien.hoTen)"></i>
+                    <a ng-bind="lichLamViec.thuSau == true && vm.compare(lichLamViec.huanLuyenVien.hoTen) ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                </div>
             </td>
             <td>
-                <ul>
-                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
-                        <a ng-bind="lichLamViec.thuBay == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
-                    </li>
-                </ul>
+                <div class="inner-table" ng-repeat="lichLamViec in caLamViec.lichLamViecs" >
+                    <i class="fa fa-user" ng-show="lichLamViec.thuBay && vm.compare(lichLamViec.huanLuyenVien.hoTen)"></i>
+                    <a ng-bind="lichLamViec.thuBay == true && vm.compare(lichLamViec.huanLuyenVien.hoTen) ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                </div>
             </td>
             <td>
-                <ul>
-                    <li ng-repeat="lichLamViec in caLamViec.lichLamViecs">
-                        <a ng-bind="lichLamViec.chuNhat == true ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
-                    </li>
-                </ul>
+                <div class="inner-table" ng-repeat="lichLamViec in caLamViec.lichLamViecs" >
+                    <i class="fa fa-user" ng-show="lichLamViec.chuNhat && vm.compare(lichLamViec.huanLuyenVien.hoTen)"></i>
+                    <a ng-bind="lichLamViec.chuNhat == true && vm.compare(lichLamViec.huanLuyenVien.hoTen) ? lichLamViec.huanLuyenVien.hoTen : ''" ng-click="vm.showModal({id:lichLamViec.huanLuyenVien.id})"></a>
+                </div>
             </td>
         </tr>
         <tr ng-if="vm.caLamViecs.length == 0">

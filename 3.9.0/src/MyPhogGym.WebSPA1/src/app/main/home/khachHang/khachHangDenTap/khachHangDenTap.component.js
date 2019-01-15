@@ -26,6 +26,7 @@
             keySearch: null,
         };
 
+        vm.confirmClicked = confirmDelete;
         vm.thoiGianConLai = thoiGianConLai
         vm.khachHangQuetThe = khachHangQuetThe;
         vm.filterData = filterData;
@@ -124,6 +125,19 @@
 
         function filterData() {
             getAll();
+        }
+
+        function confirmDelete(input) {
+            return abpApi.resolve('app.khachHangDenTap@delete', { id: input.id })
+                .then(function (response) {
+                    logger.logSuccess('Xóa thành công', null, true);
+                    getAll();
+                })
+                .catch(function (error) {
+                    errorHandler.handleValidationErrors(error, true);
+                })
+                .finally(function () {
+                });
         }
 
         $interval(activate, 10000);

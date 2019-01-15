@@ -11,7 +11,5 @@ namespace MyPhogGym._Business.LichLamViec.Dto
     [AutoMapTo(typeof(Entity.LichLamViec))]
     public class GetAllLichLamViecInput : PagedAndSortedResultRequestDto, IPagedResultRequest
     {
-        public string KeySearch { get; set; }
-        public int FilterTrangThai { get; set; }
     }
 }

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace MyPhogGym._Business.LichLamViec
 {
-    //[AbpAuthorize]
+    [AbpAuthorize]
     public class LichLamViecAppService : AsyncCrudAppService<Entity.LichLamViec, LichLamViecDto, Guid, GetAllLichLamViecInput, CreateUpdateLichLamViecInput, CreateUpdateLichLamViecInput>, ILichLamViecAppService
     {
         private readonly IRepository<Entity.LichLamViec, Guid> _lichLamViecRepository;
@@ -91,5 +91,6 @@ namespace MyPhogGym._Business.LichLamViec
 
             //return result.MapTo<List<CaLamViecHuanLuyenVienDto>>();
         }
+
     }
 }
