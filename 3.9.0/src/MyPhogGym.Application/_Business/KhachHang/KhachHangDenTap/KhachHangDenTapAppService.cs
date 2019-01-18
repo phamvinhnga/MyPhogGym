@@ -32,26 +32,26 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
         }
         #endregion
 
-        #region bộ lọc
-        private IQueryable<Entity.KhachHangDenTap> Search(GetAllKhachHangDenTapInput input, IQueryable<Entity.KhachHangDenTap> khachHangs)
+        #region bộ List
+        private List<Entity.KhachHangDenTap> Search(GetAllKhachHangDenTapInput input, List<Entity.KhachHangDenTap> khachHangs)
         {
-            return khachHangs.Where(w => w.KhachHang.HoTen.Contains(input.KeySearch));
+            return khachHangs.Where(w => w.KhachHang.HoTen.Contains(input.KeySearch)).ToList();
         }
 
-        private IQueryable<Entity.KhachHangDenTap> FilterData(GetAllKhachHangDenTapInput input, IQueryable<Entity.KhachHangDenTap> khachHang)
+        private List<Entity.KhachHangDenTap> FilterData(GetAllKhachHangDenTapInput input, List<Entity.KhachHangDenTap> khachHang)
         {
             switch (input.TrangThai)
             {
                 case (int)khachHangDenTap.DANGTAP:
-                    khachHang = khachHang.Where(w => w.TrangThai == true);
+                    khachHang = khachHang.Where(w => w.TrangThai == true).ToList();
                     break;
                 case (int)khachHangDenTap.HETGIOTAP:
-                    khachHang = khachHang.Where(w => w.TrangThai == false);
+                    khachHang = khachHang.Where(w => w.TrangThai == false).ToList();
                     break;
             }
             if(input.DichVuID != null)
             {
-                khachHang = khachHang.Where(w => w.KhachHang.DichVu.Id == input.DichVuID);
+                khachHang = khachHang.Where(w => w.KhachHang.DichVu.Id == input.DichVuID).ToList();
             }
             return khachHang;
         }
@@ -77,7 +77,7 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
         {
             await UpdateDanhSachKhachHangDenTap();
 
-            var khachHangs = _khachHangDenTapRepository.GetAll();
+            var khachHangs = _khachHangDenTapRepository.GetAll().ToList();
 
             if (input.KeySearch != null)
             {
@@ -86,12 +86,12 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
 
             khachHangs = FilterData(input, khachHangs);
 
-            khachHangs = khachHangs.OrderByDescending(o => o.CreationTime).PageBy(input);
+            khachHangs = khachHangs.OrderByDescending(o => o.CreationTime).ToList();
 
             var result = new PagedResultDto<KhachHangDenTapDto>
             (
                totalCount: await _khachHangDenTapRepository.CountAsync(),
-               items: ObjectMapper.Map<List<KhachHangDenTapDto>>(khachHangs.ToList())
+               items: ObjectMapper.Map<List<KhachHangDenTapDto>>(khachHangs)
             );
             return await Task.FromResult(result);
         }
@@ -148,7 +148,11 @@ namespace MyPhogGym._Business.KhachHang.KhachHangDenTap
                     case "Sunday":
                         messager = lichTap.chuNhat == true ? messager : "SUCCESS";
                         break;
+                    default:
+                        messager = lichTap.thuHai == false && lichTap.thuBa == false && lichTap.thuTu == false && lichTap.thuNam == false && lichTap.thuSau == false && lichTap.thuBay == false && lichTap.chuNhat == false || lichTap == null ? messager : "SUCCESS";
+                        break;
                 }
+                messager = lichTap.thuHai == false && lichTap.thuBa == false && lichTap.thuTu == false && lichTap.thuNam == false && lichTap.thuSau == false && lichTap.thuBay == false && lichTap.chuNhat == false ? "SUCCESS" : messager;
             }
             return messager;
         }

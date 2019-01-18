@@ -13,7 +13,6 @@
     /** @ngInject */
     function webHeaderController($rootScope, $state) {
         var vm = this;
-        console.log(1);
         vm.loading = false;
 
         vm.applicationName = "HỆ THỐNG QUẢN LÝ GIÁO DỤC";

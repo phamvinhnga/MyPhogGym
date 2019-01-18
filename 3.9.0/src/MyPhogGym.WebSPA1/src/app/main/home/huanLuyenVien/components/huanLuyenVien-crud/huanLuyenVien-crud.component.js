@@ -54,7 +54,6 @@
         }
 
         function update() {
-            console.log(vm.huanLuyenVien);
             var callApi = vm.huanLuyenVien.id == null ? 'app.huanLuyenVien@create' : 'app.huanLuyenVien@update';
             return abpApi.resolve(callApi, vm.huanLuyenVien)
                 .then(function (response) {

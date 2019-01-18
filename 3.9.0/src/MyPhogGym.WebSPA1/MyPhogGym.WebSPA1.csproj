@@ -122,6 +122,8 @@
     <Content Include="src\app\main\home\dichVu\dichVu.html" />
     <Content Include="src\app\main\home\dichVu\partials\action.html" />
     <Content Include="src\app\main\home\dichVu\partials\table.html" />
+    <Content Include="src\app\main\home\khachHang\khachHangDenTap\components\giaHanKhachHang\giaHanKhachHang.html" />
+    <Content Include="src\app\main\home\khachHang\khachHangDenTap\components\giaHanKhachHang\giaHanKhachHang.component.js" />
     <Content Include="src\app\main\home\khachHang\khachHangDenTap\khachHangDenTap.component.js" />
     <Content Include="src\app\main\home\khachHang\khachHangDenTap\khachHangDenTap.html" />
     <Content Include="src\app\main\home\khachHang\khachHangDenTap\partials\action.html" />

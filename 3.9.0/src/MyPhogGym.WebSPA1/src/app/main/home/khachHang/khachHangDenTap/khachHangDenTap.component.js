@@ -33,7 +33,7 @@
         vm.soNgayConLai = soNgayConLai
         vm.filterData = filterData;
         vm.getAllDichVu = getAllDichVu;
-
+        vm.showModalKhachHangGiaHan = showModalKhachHangGiaHan;
         // -- activate function
         activate()
 
@@ -138,6 +138,25 @@
                 })
                 .finally(function () {
                 });
+        }
+
+        function showModalKhachHangGiaHan(input) {
+            var modalInstance = $uibModal.open({
+                backdrop: false,
+                component: 'giaHanKhachHang',
+                resolve: {
+                    khachHang: function () {
+                        return { id: input.khachHangID };
+                    }
+                }
+            });
+
+            modalInstance.rendered.then(function () {
+            });
+
+            modalInstance.result.then(function () {
+                getAll();
+            });
         }
 
         $interval(activate, 10000);

@@ -13,7 +13,6 @@
         });
 
     function quanLykhachHangController(logger, errorHandler, abpApi, $uibModal) {
-        console.log(moment());
         var vm = this;
         // -- đôi tượng
         vm.khachHangs = [];

@@ -59,7 +59,6 @@
 
             return abpApi.resolve('app.huanLuyenVien@getAll', input)
                 .then(function (response) {
-                    console.log(response);
                     vm.huanLuyenViens = response.items;
                     renderPagenation(response.totalCount);
                 })

@@ -4,13 +4,14 @@
             <th class="text-center" style="width:1%">#</th>
             <th style="width:10%">Họ & Tên</th>
             <th style="width:10%">Gói Tập</th>
-            <th style="width:10%">Buổi Tập</th>
+            <th style="width:5%">Buổi Tập</th>
             <th style="width:10%">Còn Lại (Buổi/Tháng/Ngày)</th>
             <th style="width:5%">Vào Lúc</th>
             <th style="width:5%">Giờ Ra</th>
             <th style="width:5%">Còn Lại (phút)</th>
             <th style="width:5%">Trạng Thái</th>
-            <th style="width:2%"></th>
+            <th style="width:3%"></th>
+            <th style="width:3%"></th>
         </tr>
     </thead>
     <tbody>
@@ -37,30 +38,34 @@
                 </div>
             </td>
             <td>
-                <div style="margin-top:5px">
-                    <!--<button class="btn label-sm red-mint"
-                            mwl-confirm="" title="Bạn có chắc chắn không?"
-                            message="Bạn có thực sự chắc chắn muốn làm điều này?"
-                            confirm-text="Có <i class='glyphicon glyphicon-ok'></i>"
-                            cancel-text="Không <i class='glyphicon glyphicon-remove'></i>"
-                            placement="left" confirm-button-type="danger" cancel-button-type="default"
-                            on-confirm="vm.confirmClicked({ id: item.id })"
-                            on-cancel="cancelClicked = true"
-                            animation="true">
-                        <span class="label">Xóa</span>
-                    </button>-->
-                     <a class="label label-sm label-danger label-mini"
-                            mwl-confirm="" title="Bạn có chắc chắn không?"
-                            message="Bạn có thực sự chắc chắn muốn làm điều này?"
-                            confirm-text="Có <i class='glyphicon glyphicon-ok'></i>"
-                            cancel-text="Không <i class='glyphicon glyphicon-remove'></i>"
-                            placement="left" confirm-button-type="danger" cancel-button-type="default"
-                            on-confirm="vm.confirmClicked({ id: item.id })"
-                            on-cancel="cancelClicked = true"
-                            animation="true">
-                      Xóa
+                <a href="" ng-click="vm.showModalKhachHangGiaHan(item)"><i class="fa fa-edit"></i>Gia hạn</a>
+            </td>
+            <td>
+                <a href=""
+                   mwl-confirm="" title="Bạn có chắc chắn không?"
+                   message="Bạn có thực sự chắc chắn muốn làm điều này?"
+                   confirm-text="Có <i class='glyphicon glyphicon-ok'></i>"
+                   cancel-text="Không <i class='glyphicon glyphicon-remove'></i>"
+                   placement="left" confirm-button-type="danger" cancel-button-type="default"
+                   on-confirm="vm.confirmClicked({ id: item.id })"
+                   on-cancel="cancelClicked = true"
+                   animation="true">
+                    <i class="fa fa-recycle"></i> Xóa
+                </a>
+
+                <!--<div style="margin-top:5px">
+                    <a class="label label-sm label-danger label-mini"
+                       mwl-confirm="" title="Bạn có chắc chắn không?"
+                       message="Bạn có thực sự chắc chắn muốn làm điều này?"
+                       confirm-text="Có <i class='glyphicon glyphicon-ok'></i>"
+                       cancel-text="Không <i class='glyphicon glyphicon-remove'></i>"
+                       placement="left" confirm-button-type="danger" cancel-button-type="default"
+                       on-confirm="vm.confirmClicked({ id: item.id })"
+                       on-cancel="cancelClicked = true"
+                       animation="true">
+                        Xóa
                     </a>
-                </div>
+                </div>-->
             </td>
         </tr>
         <tr ng-if="vm.khachHangs.length == 0">

@@ -60,36 +60,20 @@ namespace MyPhogGym._Business.LichLamViec
 
         public HuanLuyenVienLichLamViecDto GetLichLamViecHuanLuyenVien(EntityDto<Guid> input)
         {
-            var huanLuyenVien = _huanLuyenVienRepository.Get(input.Id);
+            var lichLamViecHuanLuyenVien = _lichLamViecRepository.GetAllList().Where(w => w.HuanLuyenVienID == input.Id);
             var caLamViecs = _caLamViecRepository.GetAll().Where(w => w.TrangThai == true).OrderByDescending(o => o.CreationTime).ToList();
-            if (caLamViecs.Count() > huanLuyenVien.LichLamViecs.Count())
+            if (caLamViecs.Count() > lichLamViecHuanLuyenVien.Count())
             {
-                var caLamViecTrong = caLamViecs.Where(w => !huanLuyenVien.LichLamViecs.Any(a => a.CaLamViecID == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
+                var caLamViecTrong = caLamViecs.ToList().Where(w => !lichLamViecHuanLuyenVien.Any(a => a.CaLamViecID == w.Id)).OrderByDescending(o => o.CreationTime);
                 foreach (var caLamViec in caLamViecTrong)
                 {
-                    var lichLamViecInput = new CreateUpdateLichLamViecInput() { HuanLuyenVienID = input.Id, CaLamViecID = caLamViec.Id };
-                    Create(lichLamViecInput);
+                    var lichLamViecInput = new CreateUpdateLichLamViecInput() { HuanLuyenVienID = input.Id, CaLamViecID = caLamViec.Id }.MapTo<Entity.LichLamViec>();
+                    var lichLamViec = _lichLamViecRepository.Insert(lichLamViecInput);
                 }
             }
-            huanLuyenVien = _huanLuyenVienRepository.Get(input.Id);
-            var lichLamViecs = _lichLamViecRepository.GetAll().Where(w => w.HuanLuyenVienID == input.Id && w.CaLamViec.TrangThai == true).ToList();
-            huanLuyenVien.LichLamViecs = lichLamViecs;
+            var huanLuyenVien = _huanLuyenVienRepository.Get(input.Id);
+
             return huanLuyenVien.MapTo<HuanLuyenVienLichLamViecDto>();
-
-            //var lichLamViecsHuanLuyenVien = _lichLamViecRepository.GetAll().Where(w => w.HuanLuyenVienID == input.Id && w.CaLamViec.TrangThai == true).OrderByDescending(o => o.CreationTime).ToList();
-            //if(caLamViecs.Count() > lichLamViecsHuanLuyenVien.Count())
-            //{
-            //    var caLamViecTrong = caLamViecs.Where(w => !lichLamViecsHuanLuyenVien.Any(a => a.CaLamViecID == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
-            //    foreach(var caLamViec in caLamViecTrong)
-            //    {
-            //        var lichLamViecInput = new CreateLichLamViecInput() { HuanLuyenVienID = input.Id, CaLamViecID = caLamViec.Id };
-            //        Create(lichLamViecInput);
-            //    }
-            //}
-
-            //var result = _caLamViecRepository.GetAll().Where(w => w.TrangThai == true).OrderByDescending(o => o.CreationTime).Where(w => !w.LichLamViecs.Any(a => a.HuanLuyenVienID == w.Id)).OrderByDescending(o => o.CreationTime).ToList();
-
-            //return result.MapTo<List<CaLamViecHuanLuyenVienDto>>();
         }
 
     }

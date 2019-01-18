@@ -21,7 +21,8 @@
         vm.isConfirm = false;
         vm.validation = valid;
         vm.huanLuyenVienID = "";
- 
+        vm.isRequerd = 0;
+
         // -- doi tuong
         vm.lichLamViecHuanLuyenViens = [];
         vm.huanLuyenViens = [];
@@ -35,10 +36,19 @@
         vm.confirmDelete = confirmDelete;
         activate();
 
-        vm.isOptionsRequired = function () {
-            return vm.volunteerOptions.some(function (options) {
-                return options.selected;
-            });
+        vm.initRequired = function (checked) {
+            if (checked) {
+                vm.isRequerd++
+            }
+        }
+
+        vm.isOptionsRequired = function (checked) {
+            if (checked) {
+                vm.isRequerd++
+            }
+            else if (!checked && vm.isRequerd != 0) {
+                vm.isRequerd--;
+            }
         }
 
 

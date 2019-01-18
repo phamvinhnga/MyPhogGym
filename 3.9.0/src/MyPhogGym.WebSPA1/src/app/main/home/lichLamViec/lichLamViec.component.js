@@ -35,7 +35,6 @@
             return abpApi.resolve('app.lichLamViec@getAllCaLamViec')
                 .then(function (response) {
                     vm.caLamViecs = response;
-                    console.log(response);
                 })
                 .catch(function (error) {
                     errorHandler.handleValidationErrors(error, true);
